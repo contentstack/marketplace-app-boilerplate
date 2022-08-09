@@ -6,10 +6,10 @@
 
 This provider is responsible for the following actions
 
-- Initialise the contentstack SDK
+- Initialize the contentstack SDK
 - Make the SDK instance available via hooks to avoid props drilling
 - Set global properties for Analytics and Error tracking
-- Send "App Initialised / Failed" event
+- Send "App Initialized / Failed" event
 
 ## Hooks
 
@@ -49,6 +49,8 @@ size.
 
 ## Styling
 
-- This setup uses `Tailwind CSS` for styling
-- Instead of writing CSS, it allows styling by adding classes in HTML
-- Use `(text|border|bg|*)-primary` to use the primary color for respective property
+- This setup uses basic CSS for styling
+
+## Reference to documentation
+
+- [Marketplace App Boilerplate](https://www.contentstack.com/docs/developers/developer-hub/marketplace-app-boilerplate/)

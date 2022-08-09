@@ -1,5 +1,3 @@
-import { useEntry } from '../hooks/useEntry';
-
 const EntrySidebarExtension = () => {
   return (
     <div className='entry-sidebar-extension'>
