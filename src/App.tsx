@@ -11,7 +11,6 @@ const CustomFieldExtension = React.lazy(() => import("./routes/CustomField"));
 const EntrySidebarExtension = React.lazy(() => import("./routes/EntrySidebar"));
 const AppConfigurationExtension = React.lazy(() => import("./routes/AppConfiguration"));
 const AssetSidebarExtension = React.lazy(() => import("./routes/AssetSidebar"));
-const JSONRteExtension = React.lazy(() => import("./routes/JSONRte"));
 const StackDashboardExtension = React.lazy(() => import("./routes/StackDashboard"));
 
 function App() {
@@ -49,14 +48,6 @@ function App() {
             element={
               <Suspense>
                 <AssetSidebarExtension />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/json-rte"
-            element={
-              <Suspense>
-                <JSONRteExtension />
               </Suspense>
             }
           />
