@@ -13,7 +13,6 @@ This provider is responsible for the following actions
 
 ## Hooks
 
-- useAnalytics
 - useAppConfig
 - useAppLocation
 - useAppSdk
@@ -22,7 +21,6 @@ This provider is responsible for the following actions
 - useFrame
 - useHostUrl
 - useInstallationData
-- useJSErrorTracking
 - useSdkDataByPath
 - ...*more to be added as needed*
 
