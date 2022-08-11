@@ -1,4 +1,4 @@
-# ContentStack Marketplace App Boilerplate
+# Contentstack Marketplace App Boilerplate
 
 ## Provider
 
