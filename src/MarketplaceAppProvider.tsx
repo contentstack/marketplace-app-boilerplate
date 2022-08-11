@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ContentstackAppSDK from "@contentstack/app-sdk";
 import Extension from "@contentstack/app-sdk/dist/src/extension";
-import { useAnalytics } from "./hooks/useAnalytics";
-import { useJSErrorTracking } from "./hooks/useJSErrorTracking";
 import { KeyValueObj } from "./types";
 import { getAppLocation } from "./functions";
 import { get, isNull } from "lodash";
@@ -21,19 +19,12 @@ type ProviderProps = {
  * @param children: React.ReactNode
  */
 export const MarketplaceAppProvider: React.FC<ProviderProps> = ({ children }) => {
-  const { trackEvent, setEventsGlobalData, setUserId } = useAnalytics();
-  const { setErrorsMetaData, trackError } = useJSErrorTracking();
   const [failed, setFailed] = useState<boolean>(false);
   const [appSdk, setAppSdk] = useAppSdk();
   const [, setConfig] = useAppConfig();
 
   // Initialize the SDK and track analytics event
   useEffect(() => {
-    setEventsGlobalData({
-      "Application Type": "Marketplace app",
-      "Application Name": MARKETPLACE_APP_NAME,
-    });
-
     (async () => {
       try {
         const appSdk: Extension = await ContentstackAppSDK.init();
@@ -50,19 +41,13 @@ export const MarketplaceAppProvider: React.FC<ProviderProps> = ({ children }) =>
           "User Id": get(appSdk, "stack._data.collaborators.0.uid", ""), //first uuid from collaborators
         };
 
-        setUserId(get(appSdk, "stack._data.collaborators.0.uid", ""));
-        setEventsGlobalData(properties); // set global event data for analytics
-        setErrorsMetaData(properties); // set global event data for errors
-        trackEvent("App initialization success");
       } catch (err) {
         setFailed(true);
-        trackError(err);
-        trackEvent("App initialization failure");
       }
     })();
-  }, [setErrorsMetaData, setFailed, setEventsGlobalData, setUserId, setAppSdk, setConfig, trackEvent, trackError]);
+  }, [setFailed, setAppSdk, setConfig]);
 
-  // wait until the SDK is initialised. This will ensure the values are set
+  // wait until the SDK is initialized. This will ensure the values are set
   // correctly for appSdk atom.
   if (!failed && isNull(appSdk)) {
     return <div>Loading...</div>;

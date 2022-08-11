@@ -1,16 +1,6 @@
 import React from "react";
-import { TrackJS } from "trackjs";
 
 const ENV: string = process.env.NODE_ENV;
-
-/**
- * Initialize TrackJS
- */
-TrackJS.install({
-  token: `${process.env.REACT_APP_TRACKER_TOKEN}`,
-  application: process.env.REACT_APP_TRACKER_ENV,
-  console: { display: ENV === "development" }, // show console.log in development
-});
 
 /**
  * Global Error Boundary component
@@ -34,7 +24,6 @@ export class ErrorBoundary extends React.Component {
     if (ENV === "development") {
       console.error(error);
     }
-    TrackJS.track(error);
   }
 
   render() {
