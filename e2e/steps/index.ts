@@ -5,7 +5,7 @@ import { Marketplace } from "../types";
 Given("User is logged into contentstack", async function (this: Marketplace) {});
 
 Given("User navigates to edit entry page", async function (this: Marketplace) {
-  await this.page.goto("/#!/stack/blt79fab0ada81b8ff9/content-type/one/en-us/entry/bltb8e3d89683644953/edit", {
+  await this.page.goto("/#!/stack/<api-key>/content-type/one/en-us/entry/<entry-uid>/edit", {
     waitUntil: "networkidle",
   });
 });
