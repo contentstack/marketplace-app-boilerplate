@@ -4,8 +4,8 @@ import { LoginPage } from "./pages/login";
 import { Marketplace } from "./types";
 import { setDefaultTimeout } from "@cucumber/cucumber";
 
-const userUid = process.env.USER_UID || "blt829fa9ec1c032475";
-const orgUid = process.env.ORG_UID || "blt90f399a6ce838a5a";
+const userUid = process.env.USER_UID;
+const orgUid = process.env.ORG_UID;
 
 setDefaultTimeout(60 * 1000);
 
@@ -58,7 +58,7 @@ Before(async function (this: Marketplace) {
 
   this.page = await this.context.newPage();
   const loginPage = new LoginPage(this.page);
-  await loginPage.login("suraj.air@contentstack.com", "#");
+  await loginPage.login("example@contentstack.com", "#");
 });
 
 // Cleanup after each scenario
