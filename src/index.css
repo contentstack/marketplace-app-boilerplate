@@ -58,34 +58,124 @@ html {
 /* dashboard styles */
 
 .dashboard {
-  padding: 0.5rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  box-sizing: border-box;
+  display: flex;
+  /* background: #F7F9FC; */
+  width: auto;
+  height: 320px;
+  justify-content: center;
+  align-items: center;
 }
 
-.dashboard > label {
-  font-weight: 700;
+.dashboard-container {
+  padding: 8px 0px 8px 0px;
+}
+
+.dashboard-content > p {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: 0em;
+  text-align: center;
+  line-height: 185%;
+  padding: 20px;
+}
+
+.dashboard-icon {
+  display: flex;
+  justify-content: center;
+}
+
+.dashboard-content {
+  display: block;
+  justify-content: center;
+  text-align: center;
+  padding: 35px 0;
+}
+
+.dashboard-content > a {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #6c5ce7;
+  text-decoration: none;
+}
+
+.dashboard > h4 {
+  font-family: Inter;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30px;
+  letter-spacing: -0.0002em;
+  text-align: center;
 }
 
 /* entry sidebar styles */
 
-.entry-sidebar-extension {
-  padding: 0.5rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+.entry-sidebar {
+  box-sizing: border-box;
+  display: flex;
+  background: #F7F9FC;
+  width: auto;
+  height: 533px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
-.entry-sidebar-extension > label {
-  font-weight: 700;
+.entry-sidebar-content {
+  padding: 20px 0;
 }
 
-.entry-sidebar-extension > p {
-  padding: 0.25rem;
-  color: #000000;
-  border-bottom-right-radius: 0.375rem;
-  border-bottom-left-radius: 0.375rem;
-  border-bottom-width: 2px;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+.entry-sidebar-icon {
+  display: flex;
+  justify-content: center;
+}
+
+.entry-sidebar-icon > img {
+  width: 52px;
+  height: 52px;
+}
+
+.entry-sidebar-content > h4 {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 135%;
+  text-align: center;
+  letter-spacing: -0.00019em;
+  color: #222222;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.entry-sidebar-content > p {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: 0em;
+  text-align: center;
+  line-height: 185%;
+  padding: 20px;
+}
+
+.entry-sidebar-content > a {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #6c5ce7;
+  text-decoration: none;
 }
 
 /* JSONRte Extension */
