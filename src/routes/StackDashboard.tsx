@@ -8,7 +8,7 @@ const StackDashboardExtension = () => {
         <div className='dashboard-icon'>
           <img src={Icon} alt='icon' />
         </div>
-        <div className='dashboard-content'>
+        <div className='app-component-content'>
           <h4>Dashboard Widget</h4>
           <p>
             This is the iframe that contains your dashboard widget

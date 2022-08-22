@@ -8,10 +8,10 @@ const EntrySidebarExtension = () => {
       <div className='entry-sidebar-icon'>
         <img src={Icon} alt='icon' />
       </div>
-      <div className='entry-sidebar-content'>
+      <div className='app-component-content'>
         <h4>Sidebar Widget</h4>
         <p>
-          This is the iframe that contains your dashboard widget
+          This is the iframe that contains your entry sidebar widget
           <br />
           Build you app now
         </p>
