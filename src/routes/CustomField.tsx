@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import { useAppSdk } from '../hooks/useAppSdk';
 
 const CustomFieldExtension = () => {
-  console.log('appsdk...', useAppSdk());
-  
   const height = useAppSdk()[0];
   height?.location.CustomField?.frame.updateHeight(260);
 
