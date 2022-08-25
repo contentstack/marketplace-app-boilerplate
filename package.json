@@ -2,6 +2,13 @@
   "name": "marketplace-app-boilerplate",
   "version": "1.1.0",
   "private": true,
+  "entry": "plugin",
+  "output": "plugin.system.js",
+  "main": "dist/plugin.system.js",
+  "typings": "dist/types/plugin.d.ts",
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@contentstack/app-sdk": "^1.1.1",
     "@contentstack/venus-components": "^1.0.4",
@@ -14,12 +21,12 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
-    "typescript": "^4.7.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "HTTPS=true react-scripts start",
-    "build": "react-scripts build",
+    "start-rte": "webpack serve --config webpack.dev.js",
+    "build": "react-scripts build && gulp",
     "test": "react-scripts test --env=jsdom --verbose",
     "eject": "react-scripts eject",
     "test:e2e": "cucumber-js e2e/features/**/*.feature --require-module ts-node/register --require e2e/test-setup.ts --require e2e/steps/**/*.ts"
@@ -52,10 +59,13 @@
     "@types/lodash": "^4.14.182",
     "@types/mixpanel-browser": "^2.38.0",
     "autoprefixer": "^10.4.7",
+    "gulp": "^4.0.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
     "playwright": "^1.23.1",
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",
     "react-test-renderer": "^16.14.0",
-    "ts-node": "^10.8.2"
+    "ts-node": "^10.8.2",
+    "typescript": "^4.7.4"
   }
 }
