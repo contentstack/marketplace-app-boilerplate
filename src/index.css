@@ -4,15 +4,7 @@ body,
 html {
   font-family: 'Inter', sans-serif;
 }
-
-/* common properties for app component content*/
-
-.app-component-content {
-  padding: 20px;
-  text-align: center;
-}
-
-.app-component-content > p {
+p {
   font-family: Inter;
   font-size: 14px;
   font-weight: 400;
@@ -20,11 +12,9 @@ html {
   letter-spacing: 0em;
   text-align: center;
   line-height: 185%;
-  padding: 20px;
 }
 
-.app-component-content > a {
-  font-family: Inter;
+a {
   font-size: 14px;
   font-weight: 400;
   line-height: 26px;
@@ -34,12 +24,22 @@ html {
   text-decoration: none;
 }
 
+/* common properties for app component content*/
+
+.app-component-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.app-component-content > p {
+  padding: 20px;
+}
+
 /* asset sidebar styles */
 
 .asset-sidebar {
   box-sizing: border-box;
   display: flex;
-  background: #f7f9fc;
   width: auto;
   height: 550px;
   justify-content: center;
@@ -80,7 +80,6 @@ html {
 .app-config {
   box-sizing: border-box;
   display: flex;
-  background: #f7f9fc;
   width: auto;
   height: 575px;
   justify-content: center;
@@ -106,7 +105,6 @@ html {
 .custom-field {
   box-sizing: border-box;
   display: flex;
-  background: #f7f9fc;
   height: 260px;
   justify-content: center;
   align-items: center;
@@ -138,12 +136,10 @@ html {
 .dashboard {
   box-sizing: border-box;
   display: flex;
-  /* background: #F7F9FC; */
   width: auto;
   height: 320px;
   justify-content: center;
   align-items: center;
-  /* border: 1px dashed #a9b6cb; */
 }
 
 .dashboard-container {
@@ -160,7 +156,6 @@ html {
 .entry-sidebar {
   box-sizing: border-box;
   display: flex;
-  background: #f7f9fc;
   width: auto;
   height: 533px;
   justify-content: center;

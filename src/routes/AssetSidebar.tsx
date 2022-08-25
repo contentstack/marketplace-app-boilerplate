@@ -11,7 +11,7 @@ const AssetSidebarExtension = () => {
       <div className='app-component-content'>
         <h4>Asset Sidebar Widget</h4>
         <p>
-          This is the iframe that contains your dashboard widget
+          This is the iframe that contains your asset sidebar widget
           <br />
           Build you app now
         </p>

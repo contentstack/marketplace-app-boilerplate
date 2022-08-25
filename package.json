@@ -21,8 +21,7 @@
     "start": "HTTPS=true react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom --verbose",
-    "eject": "react-scripts eject",
-    "test:e2e": "cucumber-js e2e/features/**/*.feature --require-module ts-node/register --require e2e/test-setup.ts --require e2e/steps/**/*.ts"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
