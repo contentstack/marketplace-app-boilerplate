@@ -1,10 +1,10 @@
 import Icon from '../images/customfield.svg';
 import { Link } from 'react-router-dom';
-import { useAppSdk } from '../hooks/useAppSdk';
+import { useAppLocation } from '../hooks/useAppLocation';
 
 const CustomFieldExtension = () => {
-  const height = useAppSdk()[0];
-  height?.location.CustomField?.frame.updateHeight(260);
+  const height = useAppLocation();
+  height.location?.frame.updateHeight(260);
 
   return (
     <div className='custom-field'>
