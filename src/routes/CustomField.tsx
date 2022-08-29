@@ -2,8 +2,8 @@ import Icon from '../images/customfield.svg';
 import { useAppLocation } from '../hooks/useAppLocation';
 
 const CustomFieldExtension = () => {
-  const height = useAppLocation();
-  height.location?.frame.updateHeight(260);
+  const customField = useAppLocation();
+  customField.location?.frame.updateHeight(260);
 
   return (
     <div className='custom-field'>
