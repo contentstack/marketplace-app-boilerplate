@@ -1,5 +1,4 @@
 import Icon from '../images/customfield.svg';
-import { Link } from 'react-router-dom';
 import { useAppLocation } from '../hooks/useAppLocation';
 
 const CustomFieldExtension = () => {
@@ -19,7 +18,7 @@ const CustomFieldExtension = () => {
             <br />
             Build you app now
           </p>
-          <Link to='/'>Learn more</Link>
+          <a target='_blank' rel="noreferrer" href='https://www.contentstack.com/docs/developers/developer-hub/custom-field-location/'>Learn more</a>
         </div>
       </div>
     </div>

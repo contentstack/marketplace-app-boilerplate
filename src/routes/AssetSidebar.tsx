@@ -1,5 +1,4 @@
 import Icon from '../images/assetsidebar.svg';
-import { Link } from 'react-router-dom';
 
 const AssetSidebarExtension = () => {
   return (
@@ -15,7 +14,7 @@ const AssetSidebarExtension = () => {
           <br />
           Build you app now
         </p>
-        <Link to='/'>Learn more</Link>
+        <a target='_blank' rel="noreferrer" href='https://www.contentstack.com/docs/developers/developer-hub/asset-sidebar-location/'>Learn more</a>
       </div>
     </div>
   </div>
