@@ -2,10 +2,6 @@
   "name": "marketplace-app-boilerplate",
   "version": "1.1.0",
   "private": true,
-  "entry": "plugin",
-  "output": "plugin.system.js",
-  "main": "dist/plugin.system.js",
-  "typings": "dist/types/plugin.d.ts",
   "files": [
     "dist"
   ],
@@ -16,7 +12,6 @@
     "@types/node": "^16.11.43",
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
-    "gulp-stylus": "^2.7.1",
     "jotai": "^1.7.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -26,11 +21,9 @@
   },
   "scripts": {
     "start": "HTTPS=true react-scripts start",
-    "start-rte": "webpack serve --config webpack.dev.js",
-    "build": "react-scripts build && gulp",
+    "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom --verbose",
-    "eject": "react-scripts eject",
-    "test:e2e": "cucumber-js e2e/features/**/*.feature --require-module ts-node/register --require e2e/test-setup.ts --require e2e/steps/**/*.ts"
+    "eject": "react-scripts eject"  
   },
   "eslintConfig": {
     "extends": [
@@ -51,12 +44,8 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.18.13",
     "@cucumber/cucumber": "^8.4.0",
     "@playwright/test": "^1.23.1",
-    "@rollup/plugin-commonjs": "^22.0.2",
-    "@rollup/plugin-node-resolve": "^13.3.0",
-    "@rollup/plugin-typescript": "^8.4.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/react-hooks": "^8.0.1",
@@ -64,25 +53,10 @@
     "@types/lodash": "^4.14.182",
     "@types/mixpanel-browser": "^2.38.0",
     "autoprefixer": "^10.4.7",
-    "gulp": "^4.0.2",
-    "gulp-better-rollup": "^4.0.1",
-    "gulp-clean-css": "^4.3.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-inline": "^0.1.3",
-    "gulp-js-import": "^1.0.6",
-    "gulp-rollup": "^2.17.0",
-    "gulp-sourcemaps": "^3.0.0",
-    "gulp-typescript": "^6.0.0-alpha.1",
-    "gulp-uglify": "^3.0.2",
     "playwright": "^1.23.1",
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",
     "react-test-renderer": "^16.14.0",
-    "rollup": "^2.78.1",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "ts-node": "^10.8.2",
-    "typescript": "^4.7.4"
+    "ts-node": "^10.8.2"
   }
 }

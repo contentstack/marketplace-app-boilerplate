@@ -56,6 +56,141 @@ h4 {
     text-decoration: none;
 }
 
+/* asset sidebar styles */
+
+.asset-sidebar {
+    box-sizing: border-box;
+    display: flex;
+    background: #f7f9fc;
+    width: auto;
+    height: 550px;
+    justify-content: center;
+    align-items: center;
+    border: 1px dashed #a9b6cb;
+    text-align: center;
+    margin: 1rem;
+    border-radius: 8px;
+}
+
+.asset-sidebar-icon {
+    display: flex;
+    justify-content: center;
+}
+
+.asset-sidebar-icon>img {
+    width: 52px;
+    height: 52px;
+}
+
+/* app configuration extension styles  */
+
+.app-config {
+    box-sizing: border-box;
+    display: flex;
+    background: #f7f9fc;
+    width: auto;
+    height: 575px;
+    justify-content: center;
+    align-items: center;
+    border: 1px dashed #a9b6cb;
+    text-align: center;
+    margin: 15px;
+    border-radius: 8px;
+}
+
+.app-config-icon {
+    display: flex;
+    justify-content: center;
+}
+
+.app-config-icon>img {
+    width: 52px;
+    height: 52px;
+}
+
+/* custom field styles */
+
+.custom-field {
+    box-sizing: border-box;
+    display: flex;
+    background: #f7f9fc;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px dashed #a9b6cb;
+    border-radius: 8px;
+}
+
+.custom-field-container {
+    height: 186px;
+}
+
+.custom-field-content {
+    padding: 20px 0;
+}
+
+.custom-field-icon {
+    display: flex;
+    justify-content: center;
+    margin-top: 26.5px
+}
+
+.custom-field-icon>img {
+    width: 52px;
+    height: 52px;
+}
+
+/* dashboard styles */
+
+.dashboard {
+    box-sizing: border-box;
+    display: flex;
+    /* background: #F7F9FC; */
+    width: auto;
+    height: 320px;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px dashed #a9b6cb; */
+}
+
+.dashboard-container {
+    padding: 8px 0px 8px 0px;
+}
+
+.dashboard-icon {
+    display: flex;
+    justify-content: center;
+}
+
+/* entry sidebar styles */
+
+.entry-sidebar {
+    box-sizing: border-box;
+    display: flex;
+    background: #f7f9fc;
+    width: auto;
+    height: 533px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px dashed #a9b6cb;
+    border-radius: 8px;
+}
+
+.entry-sidebar-content {
+    padding: 20px 0;
+}
+
+.entry-sidebar-icon {
+    display: flex;
+    justify-content: center;
+}
+
+.entry-sidebar-icon>img {
+    width: 52px;
+    height: 52px;
+}
+
 /* JSONRte Extension */
 
 .jsonrte-extension {
