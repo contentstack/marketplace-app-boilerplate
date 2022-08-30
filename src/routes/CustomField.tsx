@@ -1,10 +1,9 @@
 import Icon from '../images/customfield.svg';
-import { Link } from 'react-router-dom';
-import { useAppSdk } from '../hooks/useAppSdk';
+import { useAppLocation } from '../hooks/useAppLocation';
 
 const CustomFieldExtension = () => {
-  const height = useAppSdk()[0];
-  height?.location.CustomField?.frame.updateHeight(260);
+  const customField = useAppLocation();
+  customField.location?.frame.updateHeight(260);
 
   return (
     <div className='custom-field'>
@@ -19,7 +18,7 @@ const CustomFieldExtension = () => {
             <br />
             Build you app now
           </p>
-          <Link to='/'>Learn more</Link>
+          <a target='_blank' rel="noreferrer" href='https://www.contentstack.com/docs/developers/developer-hub/custom-field-location/'>Learn more</a>
         </div>
       </div>
     </div>

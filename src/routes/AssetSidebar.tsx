@@ -1,5 +1,4 @@
 import Icon from '../images/assetsidebar.svg';
-import { Link } from 'react-router-dom';
 
 const AssetSidebarExtension = () => {
   return (
@@ -11,11 +10,11 @@ const AssetSidebarExtension = () => {
       <div className='app-component-content'>
         <h4>Asset Sidebar Widget</h4>
         <p>
-          This is the iframe that contains your dashboard widget
+          This is the iframe that contains your asset sidebar widget
           <br />
           Build you app now
         </p>
-        <Link to='/'>Learn more</Link>
+        <a target='_blank' rel="noreferrer" href='https://www.contentstack.com/docs/developers/developer-hub/asset-sidebar-location/'>Learn more</a>
       </div>
     </div>
   </div>
