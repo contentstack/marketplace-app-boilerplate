@@ -1,5 +1,4 @@
 import Icon from '../images/sidebarwidget.svg';
-import { Link } from 'react-router-dom';
 
 const EntrySidebarExtension = () => {
   return (
@@ -15,7 +14,7 @@ const EntrySidebarExtension = () => {
           <br />
           Build you app now
         </p>
-        <Link to='/'>Learn more</Link>
+        <a target='_blank' rel="noreferrer" href='https://www.contentstack.com/docs/developers/developer-hub/sidebar-location/'>Learn more</a>
       </div>
     </div>
   </div>
