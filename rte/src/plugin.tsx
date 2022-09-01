@@ -1,6 +1,7 @@
 import React from 'react';
 import { Icon } from '@contentstack/venus-components';
 import ContentstackSDK from '@contentstack/app-sdk';
+import plugin from './public/plugin.svg'
 import './index.css';
 
 export default ContentstackSDK.init().then(async (sdk) => {
@@ -18,7 +19,7 @@ export default ContentstackSDK.init().then(async (sdk) => {
             <div className='custom-field-container'>
               <div className='custom-field-icon'>
                 <img
-                  src='https://images.unsplash.com/photo-1660944485879-a3be005fcd59?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80'
+                  src={plugin}
                   alt='icon'
                 />
               </div>

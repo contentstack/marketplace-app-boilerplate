@@ -1,5 +1,6 @@
 const path = require("path");
 const pkg = require("./package.json");
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: path.resolve(__dirname, "src", pkg.entry + ".tsx"),
@@ -33,9 +34,25 @@ module.exports = {
                     },
                 ],
             },
+            {
+                test: /\.svg/,
+                use: {
+                  loader: "svg-url-loader",
+                  options: {
+                    iesafe: true,
+                  },
+                },
+              },
         ],
     },
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".jsx"],
     },
+    plugins: [
+        new CopyPlugin({
+            patterns: [
+                { from: "src/public", to: path.resolve(__dirname, "dist/public") },
+              ],
+        })
+      ]
 };
