@@ -2,6 +2,7 @@
   "ts-node": {
     "transpileOnly": true
   },
+  "source":"rte/src",
   "compilerOptions": {
     "target": "es5",
     "lib": [
