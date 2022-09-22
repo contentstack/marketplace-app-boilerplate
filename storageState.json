@@ -1,0 +1,49 @@
+{
+  "cookies": [
+    {
+      "sameSite": "Lax",
+      "name": "authtoken",
+      "value": "4P5ZwktFeyKPDj53+V3IDSh0FJ9YrOwZknYa0O8WOFM=",
+      "domain": "app.contentstack.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true
+    },
+    {
+      "sameSite": "Lax",
+      "name": "__cs_user",
+      "value": "blt7f806b220e0abfef",
+      "domain": "app.contentstack.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false
+    },
+    {
+      "sameSite": "Strict",
+      "name": "_dd_s",
+      "value": "rum=1&id=6c77c325-95f0-4c05-9584-1c5ef3778374&created=1663868340122&expire=1663869241124",
+      "domain": "app.contentstack.com",
+      "path": "/",
+      "expires": 1663869242,
+      "httpOnly": false,
+      "secure": false
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://app.contentstack.com",
+      "localStorage": [
+        {
+          "name": "_userId",
+          "value": "70937f10-4270-4b6f-b1fc-a2a218d5524a"
+        },
+        {
+          "name": "organization",
+          "value": "{\"blt0fb11fb8f9ce871f\":\"bltd3ee03e31a17e373\"}"
+        }
+      ]
+    }
+  ]
+}
