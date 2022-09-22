@@ -29,13 +29,11 @@ export class LoginPage {
   }
 
   // login handler
-  async performLogin(email: string | undefined, password: string | undefined) {
+  async performLogin(email: string, password: string) {
     try {
       if ((await this.page.$('.user-session-page')) !== null) {
         // Contentstack classic UI login
-        // @ts-ignore
         await this.emailInput.type(email);
-        // @ts-ignore
         await this.passwordInput.type(password);
         await this.loginButton.click();
         await this.page.click('.user-name');
@@ -46,9 +44,7 @@ export class LoginPage {
         await this.page.context().storageState({ path: 'storageState.json' });
       } else {
         // Contentstack venus UI login
-        //@ts-ignore
         await this.emailInput.type(email);
-        //@ts-ignore
         await this.venusPasswordInput.type(password);
         const venusLoginButton = await this.page.waitForSelector('button:has-text("Log In")');
         await venusLoginButton.click();

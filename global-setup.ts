@@ -3,6 +3,8 @@ import { chromium, FullConfig } from '@playwright/test';
 import { LoginPage } from './e2e/pages/LoginPage';
 import { getAuthToken } from './e2e/utils/helper';
 
+const { EMAIL, PASSWORD }: any = process.env;
+
 async function globalSetup(config: FullConfig) {
   let loginPage: LoginPage;
   const browser = await chromium.launch();
@@ -14,7 +16,7 @@ async function globalSetup(config: FullConfig) {
   });
   loginPage = new LoginPage(page);
   await loginPage.visitLoginPage();
-  await loginPage.performLogin(process.env.EMAIL, process.env.PASSWORD);
+  await loginPage.performLogin(EMAIL, PASSWORD);
   await getAuthToken();
 }
 
