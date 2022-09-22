@@ -41,7 +41,7 @@ size.
 - All e2e test files are stored in e2e folder
 - Create a `.env` file in the root directory & add environment variables as shown in `.env.sample` file.
 - Please refer the below commands to run e2e tests locally and setup the perquisites before running them.
-- `Note`: To run the below commands make sure the app is running in the background i.e on port http://localhost:3000
+- `Note`: To run the below commands make sure the app is running in the background i.e on port `http://localhost:3000`
 
   ```
     "test:chrome": "npx playwright test --config=playwright.config.ts --project=Chromium",
