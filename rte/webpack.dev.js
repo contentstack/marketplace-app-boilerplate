@@ -9,7 +9,7 @@ module.exports = merge(common, {
     watch: true,
     devServer: {
         static: path.join(__dirname, "dist"),
-        https: true,
+        https: false,
         port: 3000,
         compress: true,
         hot: false,
