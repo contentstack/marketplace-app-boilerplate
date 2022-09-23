@@ -20,10 +20,15 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "HTTPS=true react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom --verbose",
-    "eject": "react-scripts eject"  
+    "eject": "react-scripts eject",
+    "show-report": "npx playwright show-report",
+    "test:chrome": "npx playwright test --config=playwright.config.ts --project=Chromium",
+    "test:firefox": "npx playwright test --config=playwright.config.ts --project=firefox",
+    "test:chrome-headed": "npx playwright test --headed --config=playwright.config.ts --project=Chromium",
+    "test:firefox-headed": "npx playwright test --headed --config=playwright.config.ts --project=firefox"
   },
   "eslintConfig": {
     "extends": [

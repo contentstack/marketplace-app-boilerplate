@@ -22,7 +22,6 @@ This provider is responsible for the following actions
 - useHostUrl
 - useInstallationData
 - useSdkDataByPath
-- ...*more to be added as needed*
 
 ## Routes
 
@@ -40,7 +39,17 @@ size.
 ## Testing
 
 - All e2e test files are stored in e2e folder
-- run `npm run test:e2e` to run e2e tests
+- Create a `.env` file in the root directory & add environment variables as shown in `.env.sample` file.
+- Please refer the below commands to run e2e tests locally and setup the perquisites before running them.
+- `Note`: To run the below commands make sure the app is running in the background i.e on port `http://localhost:3000`
+
+  ```
+    "test:chrome": "npx playwright test --config=playwright.config.ts --project=Chromium",
+    "test:firefox": "npx playwright test --config=playwright.config.ts --project=firefox",
+    "test:chrome-headed": "npx playwright test --headed --config=playwright.config.ts --project=Chromium",
+    "test:firefox-headed": "npx playwright test --headed --config=playwright.config.ts --project=firefox" 
+  ```
+
 - Unit & integration tests are stored in `src/__tests__` folder
 - run `npm run test` to run unit and integration tests
 

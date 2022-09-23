@@ -2,14 +2,10 @@
   "ts-node": {
     "transpileOnly": true
   },
-  "source":"rte/src",
+  "source": "rte/src",
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -24,8 +20,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": [
-    "src",
-    "e2e"
-  ]
+  "include": ["src", "e2e"]
 }
