@@ -25,15 +25,15 @@ export const MarketplaceAppProvider: React.FC<ProviderProps> = ({ children }) =>
 
   // Initialize the SDK and track analytics event
   useEffect(() => {
-    try {
-      ContentstackAppSDK.init().then(async (appSdk: Extension) => {
+    ContentstackAppSDK.init()
+      .then(async (appSdk: Extension) => {
         setAppSdk(appSdk);
         const appConfig: KeyValueObj = await appSdk.getConfig();
         setConfig(appConfig);
+      })
+      .catch((error) => {
+        setFailed(true);
       });
-    } catch (err) {
-      setFailed(true);
-    }
   }, []);
 
   // wait until the SDK is initialized. This will ensure the values are set
