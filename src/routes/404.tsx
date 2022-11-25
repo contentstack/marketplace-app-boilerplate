@@ -5,7 +5,7 @@ const PageNotFound = () => {
         <div className="app-component-content">
           <h3> 404: Not Found</h3>
           <p>
-            The link you tried to access doesn't seem to exist. Please verify
+            The link you tried to access doesn't seem to exist. <br/> Please verify
             and enter the correct URL.
           </p>
           <a

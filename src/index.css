@@ -274,6 +274,7 @@ a {
 .ui-location {
   list-style: circle;
   padding: 0 40px;
+  margin-top: -20px;
 }
 
 .ui-location li {

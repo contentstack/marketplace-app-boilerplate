@@ -31,7 +31,7 @@ export const MarketplaceAppProvider: React.FC<ProviderProps> = ({ children }) =>
         const appConfig: KeyValueObj = await appSdk.getConfig();
         setConfig(appConfig);
       })
-      .catch((error) => {
+      .catch(() => {
         setFailed(true);
       });
   }, []);

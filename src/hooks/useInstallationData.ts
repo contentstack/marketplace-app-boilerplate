@@ -8,24 +8,35 @@ type InstallationData = {
   serverConfiguration: { [key: string]: any };
 };
 
-export const installationDataAtom = atom<InstallationData>({ configuration: {}, serverConfiguration: {} });
+export const installationDataAtom = atom<InstallationData>({
+  configuration: {},
+  serverConfiguration: {},
+});
 
 /**
  * Getter & Setter for installation data
  */
-export const useInstallationData = (): [InstallationData, Function, boolean] => {
+export const useInstallationData = (): [
+  InstallationData,
+  Function,
+  boolean
+] => {
   const [loading, setLoading] = useState<boolean>(false);
   const { location } = useAppLocation();
   const [installationData, setInstallation] = useAtom(installationDataAtom);
 
   useEffect(() => {
-    (async () => {
-      if (!isEmpty(installationData)) return;
-      setLoading(true);
-      const data: InstallationData = await location.installation.getInstallationData();
-      setInstallation(data);
-      setLoading(false);
-    })();
+    if (!isEmpty(installationData)) return;
+    setLoading(true);
+    location.installation
+      .getInstallationData()
+      .then((data: InstallationData) => {
+        setInstallation(data);
+        setLoading(false);
+      })
+      .catch((err: Error) => {
+        console.error(err);
+      });
   }, [installationData, location, setLoading, setInstallation]);
 
   const setInstallationData = useCallback(
