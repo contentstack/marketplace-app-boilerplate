@@ -1,7 +1,8 @@
 import React from 'react';
-import { Icon } from '@contentstack/venus-components';
 import ContentstackSDK from '@contentstack/app-sdk';
+import editIcon from './public/edit.svg'
 import plugin from './public/plugin.svg'
+
 import './index.css';
 
 export default ContentstackSDK.init().then(async (sdk) => {
@@ -11,7 +12,7 @@ export default ContentstackSDK.init().then(async (sdk) => {
 
   const RtePlugin = RTE('RTE Plugin', () => ({
     title: 'JSON-RTE-Plugin',
-    icon: <Icon style={{ padding: '0 6px' }} icon='Edit' size='original' />,
+    icon: <img style={{ padding: '0 6px' }} src={editIcon} />,
     render: (props: any) => {
       return (
         <div className='rte-container'>
