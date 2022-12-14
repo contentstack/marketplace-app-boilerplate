@@ -9,16 +9,22 @@ import { Route, Routes } from "react-router-dom";
  */
 const CustomFieldExtension = React.lazy(() => import("./routes/CustomField"));
 const EntrySidebarExtension = React.lazy(() => import("./routes/EntrySidebar"));
-const AppConfigurationExtension = React.lazy(() => import("./routes/AppConfiguration"));
+const AppConfigurationExtension = React.lazy(
+  () => import("./routes/AppConfiguration")
+);
 const AssetSidebarExtension = React.lazy(() => import("./routes/AssetSidebar"));
-const StackDashboardExtension = React.lazy(() => import("./routes/StackDashboard"));
+const StackDashboardExtension = React.lazy(
+  () => import("./routes/StackDashboard")
+);
+const PageNotFound = React.lazy(() => import("./routes/404"));
+const DefaultPage = React.lazy(() => import("./routes/index"));
 
 function App() {
   return (
     <ErrorBoundary>
       <MarketplaceAppProvider>
         <Routes>
-          <Route path="/" element={<div>Nothing to show here</div>} />
+          <Route path="/" element={<DefaultPage />} />
           <Route
             path="/custom-field"
             element={
@@ -59,6 +65,7 @@ function App() {
               </Suspense>
             }
           />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </MarketplaceAppProvider>
     </ErrorBoundary>
