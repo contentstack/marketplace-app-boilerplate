@@ -1,7 +1,8 @@
 import React from "react";
 import { Provider } from "jotai";
+//@ts-ignore
 import { render } from "@testing-library/react";
-import { appSdkRefAtom } from "../hooks/useAppSdk";
+import { useAppSdk } from "../common/hooks/useAppSdk";
 import { appConfigAtom } from "../store";
 
 export const TestProvider = ({
@@ -17,7 +18,7 @@ export const TestProvider = ({
     <Provider
       // @ts-ignore
       initialValues={[
-        [appSdkRefAtom, appSdk],
+        [useAppSdk, appSdk],
         [appConfigAtom, appConfig],
       ]}>
       {children}
@@ -36,6 +37,7 @@ const AllTheProviders = ({ children, initialProps }: any) => {
 const customRender = (ui: any, options?: object) => render(ui, { wrapper: AllTheProviders, ...options });
 
 // re-export everything
+//@ts-ignore
 export * from "@testing-library/react";
 
 // override render method
