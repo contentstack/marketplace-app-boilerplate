@@ -2,7 +2,9 @@ import React, { Suspense } from "react";
 import { ErrorBoundary } from "../../components/ErrorBoundary";
 import { MarketplaceAppProvider } from "../../common/providers/MarketplaceAppProvider";
 import { Route, Routes } from "react-router-dom";
-import { AppSdkProvider } from "../../common/hooks/useAppSdk";
+import { EntrySidebarExtensionProvider } from "../../common/providers/EntrySidebarExtensionProvider";
+import { AppConfigurationExtensionProvider } from "../../common/providers/AppConfigurationExtensionProvider";
+import { CustomFieldExtensionProvider } from "../../common/providers/CustomFieldExtensionProvider";
 
 /**
  * All the routes are Lazy loaded.
@@ -19,54 +21,58 @@ const DefaultPage = React.lazy(() => import("../index"));
 function App() {
   return (
     <ErrorBoundary>
-      <AppSdkProvider>
-        <MarketplaceAppProvider>
-          <Routes>
-            <Route path="/" element={<DefaultPage />} />
-            <Route
-              path="/custom-field"
-              element={
-                <Suspense>
+      <MarketplaceAppProvider>
+        <Routes>
+          <Route path="/" element={<DefaultPage />} />
+          <Route
+            path="/custom-field"
+            element={
+              <Suspense>
+                <CustomFieldExtensionProvider>
                   <CustomFieldExtension />
-                </Suspense>
-              }
-            />
-            <Route
-              path="/entry-sidebar"
-              element={
-                <Suspense>
+                </CustomFieldExtensionProvider>
+              </Suspense>
+            }
+          />
+          <Route
+            path="/entry-sidebar"
+            element={
+              <Suspense>
+                <EntrySidebarExtensionProvider>
                   <EntrySidebarExtension />
-                </Suspense>
-              }
-            />
-            <Route
-              path="/app-configuration"
-              element={
-                <Suspense>
+                </EntrySidebarExtensionProvider>
+              </Suspense>
+            }
+          />
+          <Route
+            path="/app-configuration"
+            element={
+              <Suspense>
+                <AppConfigurationExtensionProvider>
                   <AppConfigurationExtension />
-                </Suspense>
-              }
-            />
-            <Route
-              path="/asset-sidebar"
-              element={
-                <Suspense>
-                  <AssetSidebarExtension />
-                </Suspense>
-              }
-            />
-            <Route
-              path="/stack-dashboard"
-              element={
-                <Suspense>
-                  <StackDashboardExtension />
-                </Suspense>
-              }
-            />
-            <Route path="*" element={<PageNotFound />} />
-          </Routes>
-        </MarketplaceAppProvider>
-      </AppSdkProvider>
+                </AppConfigurationExtensionProvider>
+              </Suspense>
+            }
+          />
+          <Route
+            path="/asset-sidebar"
+            element={
+              <Suspense>
+                <AssetSidebarExtension />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/stack-dashboard"
+            element={
+              <Suspense>
+                <StackDashboardExtension />
+              </Suspense>
+            }
+          />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </MarketplaceAppProvider>
     </ErrorBoundary>
   );
 }

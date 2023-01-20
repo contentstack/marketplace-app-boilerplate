@@ -1,6 +1,3 @@
-import React from "react";
-//@ts-ignore
-
 import { renderHook } from "@testing-library/react";
 import { TestProvider } from "../../test-utils/test-utils";
 import { useAppSdk } from "./useAppSdk";
@@ -24,5 +21,5 @@ test("useAppSdk", async () => {
     ),
   });
 
-  expect(result.current[0]).toBe(appSdkMock);
+  expect(result.current).toBe(appSdkMock);
 });

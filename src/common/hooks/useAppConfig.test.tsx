@@ -1,6 +1,3 @@
-import React from "react";
-//@ts-ignore
-
 import { renderHook } from "@testing-library/react";
 import { TestProvider } from "../../test-utils/test-utils";
 import { useAppConfig } from "./useAppConfig";
@@ -16,6 +13,6 @@ describe("useAppConfig", () => {
       ),
     });
 
-    expect(result.current[0]).toBe(appConfig);
+    expect(result.current).toBe(appConfig);
   });
 });
