@@ -8,8 +8,8 @@ import {
  * Getter & Setter for installation data
  */
 export const useInstallationData = () => {
-  const { installationData, loading } = useContext(
+  const { installationData, setInstallationData, loading } = useContext(
     AppConfigurationExtensionContext
   ) as AppConfigurationExtensionContextType;
-  return { installationData, loading };
+  return { installationData, setInstallationData, loading };
 };

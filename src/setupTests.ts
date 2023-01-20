@@ -5,5 +5,5 @@
 import "@testing-library/jest-dom";
 
 // mock the third party modules
-jest.mock("mixpanel-browser");
-jest.mock("trackjs");
+// jest.mock("mixpanel-browser");
+// jest.mock("trackjs");

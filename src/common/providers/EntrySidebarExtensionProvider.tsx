@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppLocation } from "../hooks/useAppLocation";
 import { isEmpty, isNull } from "lodash";
 import { EntrySidebarExtensionContext } from "../contexts/entrySidebarExtensionContext";
@@ -24,18 +24,8 @@ export const EntrySidebarExtensionProvider = ({ children }: any) => {
     })();
   }, [entryData, location, setLoading, setEntry]);
 
-  const setEntryData = useCallback(
-    async (entry: any) => {
-      setLoading(true);
-      await location.entry.setData(entry);
-      setEntry(entry);
-      setLoading(false);
-    },
-    [location, setEntry, setLoading]
-  );
-
   return (
-    <EntrySidebarExtensionContext.Provider value={{ entryData, setEntryData, loading }}>
+    <EntrySidebarExtensionContext.Provider value={{ entryData, loading }}>
       {children}
     </EntrySidebarExtensionContext.Provider>
   );

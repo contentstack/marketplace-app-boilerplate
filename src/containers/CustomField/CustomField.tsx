@@ -1,12 +1,8 @@
 import Icon from "../../assets/customfield.svg";
 import localeTexts from "../../common/locales/en-us/index";
-import { useAppLocation } from "../../common/hooks/useAppLocation";
 import parse from "html-react-parser";
 
 const CustomFieldExtension = () => {
-  const customField = useAppLocation();
-  customField.location?.frame.updateHeight(260);
-
   return (
     <div className="custom-field">
       <div className="custom-field-container">

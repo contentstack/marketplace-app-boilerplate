@@ -8,7 +8,7 @@ import { useMemo } from "react";
  * @return {locationName, location}
  */
 export const useAppLocation = (): { locationName: string; location: any } => {
-  const { appSdk }: any = useAppSdk();
+  const appSdk = useAppSdk();
   const locations = useMemo(() => keys(appSdk?.location), [appSdk]);
 
   /**

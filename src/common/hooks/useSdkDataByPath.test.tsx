@@ -1,9 +1,5 @@
-import React from "react";
-//@ts-ignore
-
 import { renderHook } from "@testing-library/react";
 import { TestProvider } from "../../test-utils/test-utils";
-import { useAppConfig } from "./useAppConfig";
 import { useSdkDataByPath } from "./useSdkDataByPath";
 
 describe("useSdkDataByPath", () => {

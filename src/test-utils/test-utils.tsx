@@ -1,8 +1,7 @@
 import React from "react";
-import { Provider } from "jotai";
-import { render } from "@testing-library/react";
-import { useAppSdk } from "../common/hooks/useAppSdk";
-import { useAppConfig } from "../common/hooks/useAppConfig";
+import { render, act } from "@testing-library/react";
+import { MarketplaceAppContext } from "../common/contexts/marketplaceContext";
+import { CustomFieldExtensionContext } from "../common/contexts/customFieldExtensionContext";
 
 export const TestProvider = ({
   children,
@@ -13,15 +12,24 @@ export const TestProvider = ({
   children?: React.ReactNode;
   appSdk: any;
 }) => {
+  return <MarketplaceAppContext.Provider value={{ appSdk, appConfig }}>{children}</MarketplaceAppContext.Provider>;
+};
+
+export const CustomFieldTestProvider = ({
+  children,
+  customField,
+  loading = false,
+  setFieldData,
+}: {
+  customField: any;
+  children?: React.ReactNode;
+  loading: boolean;
+  setFieldData: (data: unknown) => void;
+}) => {
   return (
-    <Provider
-      // @ts-ignore
-      initialValues={[
-        [useAppSdk, appSdk],
-        [useAppConfig, appConfig],
-      ]}>
+    <CustomFieldExtensionContext.Provider value={{ customField, loading, setFieldData }}>
       {children}
-    </Provider>
+    </CustomFieldExtensionContext.Provider>
   );
 };
 

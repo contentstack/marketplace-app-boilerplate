@@ -4,7 +4,7 @@ import Extension from "@contentstack/app-sdk/dist/src/extension";
 import { KeyValueObj } from "../types/types";
 import { isNull } from "lodash";
 import { AppFailed } from "../../components/AppFailed";
-import { MarketplaceContext } from "../contexts/marketplaceContext";
+import { MarketplaceAppContext } from "../contexts/marketplaceContext";
 
 const MARKETPLACE_APP_NAME: string = process.env.REACT_APP_MARKETPLACE_APP_NAME as string;
 
@@ -44,5 +44,5 @@ export const MarketplaceAppProvider: React.FC<ProviderProps> = ({ children }) =>
     return <AppFailed />;
   }
 
-  return <MarketplaceContext.Provider value={{ appSdk, appConfig }}>{children}</MarketplaceContext.Provider>;
+  return <MarketplaceAppContext.Provider value={{ appSdk, appConfig }}>{children}</MarketplaceAppContext.Provider>;
 };

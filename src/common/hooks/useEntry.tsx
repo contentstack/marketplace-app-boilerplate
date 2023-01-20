@@ -12,9 +12,7 @@ import { useContext } from "react";
  * const [data, setData, loading] = useEntry();
  */
 export const useEntry = () => {
-  const { entryData, setEntryData, loading } = useContext(
-    EntrySidebarExtensionContext
-  ) as EntrySidebarExtensionContextType;
+  const { entryData, loading } = useContext(EntrySidebarExtensionContext) as EntrySidebarExtensionContextType;
 
-  return { entryData, setEntryData, loading };
+  return { entryData, loading };
 };
