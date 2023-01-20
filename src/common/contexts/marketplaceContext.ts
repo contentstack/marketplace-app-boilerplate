@@ -2,12 +2,12 @@ import React from "react";
 import Extension from "@contentstack/app-sdk/dist/src/extension";
 import { KeyValueObj } from "../types/types";
 
-export type MarketplaceContextType = {
+export type MarketplaceAppContextType = {
   appSdk: Extension | null;
   appConfig: KeyValueObj | null;
 };
 
-export const MarketplaceContext = React.createContext<MarketplaceContextType>({
+export const MarketplaceAppContext = React.createContext<MarketplaceAppContextType>({
   appSdk: null,
   appConfig: null,
 });
