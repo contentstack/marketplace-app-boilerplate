@@ -1,5 +1,5 @@
 import React from "react";
-import { render, act } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { MarketplaceAppContext } from "../common/contexts/marketplaceContext";
 import { CustomFieldExtensionContext } from "../common/contexts/customFieldExtensionContext";
 
