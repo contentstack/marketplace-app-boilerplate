@@ -26,6 +26,8 @@
     "test": "react-scripts test --env=jsdom --verbose",
     "eject": "react-scripts eject",
     "show-report": "npx playwright show-report",
+    "lint": "eslint src/**/*.ts src/**/*.tsx",
+    "prettier": "prettier --check src/",
     "test:chrome": "npx playwright test --config=playwright.config.ts --project=Chromium",
     "test:firefox": "npx playwright test --config=playwright.config.ts --project=firefox",
     "test:chrome-headed": "npx playwright test --headed --config=playwright.config.ts --project=Chromium",
