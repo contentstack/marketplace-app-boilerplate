@@ -3,9 +3,9 @@ import { CustomFieldExtensionContext, CustomFieldExtensionContextType } from "..
 
 /**
  * Getter and setter hook for custom field data
- * @return Array of [fieldData, setFieldDataFn, loadingState]
+ * @returns an object { customField, setFieldData, loading }
  *
- * const [data, setData, loading] = useCustomFieldData();
+ * const { customField, setFieldData, loading } = useCustomField();
  */
 export const useCustomField = () => {
   const { customField, setFieldData, loading } = useContext(
