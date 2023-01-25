@@ -6,10 +6,10 @@ import { useContext } from "react";
 
 /**
  * Getter and setter hook for entry data
- * @return Array of [entryData, setEntryDataFn, loadingState]
+ * @returns an Object { entryData, loading };
  *
  * Eg:
- * const [data, setData, loading] = useEntry();
+ * const { entryData, loading } = useEntry();
  */
 export const useEntry = () => {
   const { entryData, loading } = useContext(EntrySidebarExtensionContext) as EntrySidebarExtensionContextType;
