@@ -6,13 +6,7 @@ import { EntrySidebarExtensionContext } from "../contexts/entrySidebarExtensionC
 export const EntrySidebarExtensionProvider = ({ children }: any) => {
   const [entryData, setEntry] = useState<{ [key: string]: any }>({});
   const [loading, setLoading] = useState<boolean>(false);
-  const { location, locationName } = useAppLocation();
-
-  console.log("location", locationName, location);
-
-  if (locationName !== "SidebarWidget") {
-    throw new Error(`useEntry hook cannot be used inside ${locationName}`);
-  }
+  const { location } = useAppLocation();
 
   useEffect(() => {
     (async () => {
