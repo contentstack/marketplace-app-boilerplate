@@ -4,13 +4,9 @@ import { isEmpty } from "lodash";
 import { CustomFieldExtensionContext } from "../contexts/customFieldExtensionContext";
 
 export const CustomFieldExtensionProvider = ({ children }: any) => {
-  const [customField, setCustomField] = useState<any>(null);
+  const [customField, setCustomField] = useState<unknown>(null);
   const [loading, setLoading] = useState<boolean>(false);
-  const { locationName, location } = useAppLocation();
-
-  if (locationName !== "CustomField") {
-    throw new Error(`useCustomField hook cannot be called inside ${locationName} location`);
-  }
+  const { location } = useAppLocation();
 
   useEffect(() => {
     (async () => {
@@ -25,7 +21,7 @@ export const CustomFieldExtensionProvider = ({ children }: any) => {
   }, [setLoading, setCustomField, location, customField]);
 
   const setFieldData = useCallback(
-    async (data: any) => {
+    async (data: unknown) => {
       setLoading(true);
       await location.field.setData(data);
       setCustomField(data);
