@@ -40,7 +40,6 @@
     "dependencies": {
         "@contentstack/app-sdk": "^1.1.1",
         "@contentstack/venus-components": "^1.0.4",
-        "@emotion/core": "^10.0.22",
         "react": "^18.2.0",
         "react-dom": "^18.2.0"
     },

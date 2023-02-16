@@ -1,8 +1,7 @@
 import React from "react";
-import { Provider } from "jotai";
 import { render } from "@testing-library/react";
-import { appSdkRefAtom } from "../hooks/useAppSdk";
-import { appConfigAtom } from "../store";
+import { MarketplaceAppContext } from "../common/contexts/marketplaceContext";
+import { CustomFieldExtensionContext } from "../common/contexts/customFieldExtensionContext";
 
 export const TestProvider = ({
   children,
@@ -13,15 +12,24 @@ export const TestProvider = ({
   children?: React.ReactNode;
   appSdk: any;
 }) => {
+  return <MarketplaceAppContext.Provider value={{ appSdk, appConfig }}>{children}</MarketplaceAppContext.Provider>;
+};
+
+export const CustomFieldTestProvider = ({
+  children,
+  customField,
+  loading = false,
+  setFieldData,
+}: {
+  customField: any;
+  children?: React.ReactNode;
+  loading: boolean;
+  setFieldData: (data: unknown) => void;
+}) => {
   return (
-    <Provider
-      // @ts-ignore
-      initialValues={[
-        [appSdkRefAtom, appSdk],
-        [appConfigAtom, appConfig],
-      ]}>
+    <CustomFieldExtensionContext.Provider value={{ customField, loading, setFieldData }}>
       {children}
-    </Provider>
+    </CustomFieldExtensionContext.Provider>
   );
 };
 
@@ -36,6 +44,7 @@ const AllTheProviders = ({ children, initialProps }: any) => {
 const customRender = (ui: any, options?: object) => render(ui, { wrapper: AllTheProviders, ...options });
 
 // re-export everything
+//@ts-ignore
 export * from "@testing-library/react";
 
 // override render method
