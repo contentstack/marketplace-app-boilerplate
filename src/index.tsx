@@ -1,9 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "@contentstack/venus-components/build/main.css";
 import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
-import App from "./App";
+import App from "./containers/App/App";
 import "./index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
