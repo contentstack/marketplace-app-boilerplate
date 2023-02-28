@@ -57,15 +57,14 @@
     "@cucumber/cucumber": "^8.4.0",
     "@playwright/test": "^1.23.1",
     "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/react-hooks": "^8.0.1",
+    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.2.1",
     "@types/lodash": "^4.14.182",
     "@types/mixpanel-browser": "^2.38.0",
     "autoprefixer": "^10.4.7",
     "playwright": "^1.23.1",
     "prettier": "^2.7.1",
-    "react-test-renderer": "^16.14.0",
+    "react-test-renderer": "^18.2.0",
     "ts-node": "^10.8.2"
   }
 }
