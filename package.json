@@ -7,7 +7,7 @@
   ],
   "dependencies": {
     "@contentstack/app-sdk": "^1.2.0",
-    "@types/jest": "^27.5.2",
+    "@types/jest": "^29.4.0",
     "@types/node": "^16.11.43",
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
