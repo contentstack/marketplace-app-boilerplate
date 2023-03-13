@@ -3,8 +3,9 @@ import { CustomFieldExtensionContext, CustomFieldExtensionContextType } from "..
 
 /**
  * Getter and setter hook for custom field data
- * @returns an object { customField, setFieldData, loading }
+ * @returns an object { customField, setFieldData, loading };
  *
+ * Eg:
  * const { customField, setFieldData, loading } = useCustomField();
  */
 export const useCustomField = () => {
