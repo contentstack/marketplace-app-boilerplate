@@ -41,6 +41,13 @@ const localeTexts = {
       learnMore: "Learn more",
     },
   },
+  FullPage: {
+    title: "Full Page",
+    body: "This is the iframe that contains your Full Page <br /> Build your app now",
+    button: {
+      learnMore: "Learn more",
+    },
+  },
 };
 
 export default localeTexts;
