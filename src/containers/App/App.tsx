@@ -16,6 +16,7 @@ const EntrySidebarExtension = React.lazy(() => import("../SidebarWidget/EntrySid
 const AppConfigurationExtension = React.lazy(() => import("../ConfigScreen/AppConfiguration"));
 const AssetSidebarExtension = React.lazy(() => import("../AssetSidebarWidget/AssetSidebar"));
 const StackDashboardExtension = React.lazy(() => import("../DashboardWidget/StackDashboard"));
+const FullPageExtension = React.lazy(() => import("../FullPage/FullPage"));
 const PageNotFound = React.lazy(() => import("../404/404"));
 const DefaultPage = React.lazy(() => import("../index"));
 
@@ -68,6 +69,14 @@ function App() {
             element={
               <Suspense>
                 <StackDashboardExtension />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/full-page"
+            element={
+              <Suspense>
+                <FullPageExtension />
               </Suspense>
             }
           />

@@ -280,3 +280,23 @@ a {
 .ui-location li {
   text-align: left;
 }
+
+/* fullPage styles */
+
+.full-page {
+  box-sizing: border-box;
+  display: flex;
+  width: 90vw;
+  height: 90vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.full-page-container {
+  padding: 8px 0px 8px 0px;
+}
+
+.full-page-icon {
+  display: flex;
+  justify-content: center;
+}
