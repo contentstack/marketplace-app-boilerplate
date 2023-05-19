@@ -48,6 +48,13 @@ const localeTexts = {
       learnMore: "Learn more",
     },
   },
+  FieldModifier: {
+    title: "Field Modifier App",
+    body: "This is the iframe that contains your Field Modifier App <br /> Build your app now",
+    button: {
+      learnMore: "Learn more",
+    },
+  },
 };
 
 export default localeTexts;

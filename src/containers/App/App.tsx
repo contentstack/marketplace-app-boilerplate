@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import { EntrySidebarExtensionProvider } from "../../common/providers/EntrySidebarExtensionProvider";
 import { AppConfigurationExtensionProvider } from "../../common/providers/AppConfigurationExtensionProvider";
 import { CustomFieldExtensionProvider } from "../../common/providers/CustomFieldExtensionProvider";
+import FieldModifierExtension from "../FieldModifier/FieldModifier";
 
 /**
  * All the routes are Lazy loaded.
@@ -77,6 +78,14 @@ function App() {
             element={
               <Suspense>
                 <FullPageExtension />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/field-modifier"
+            element={
+              <Suspense>
+                <FieldModifierExtension />
               </Suspense>
             }
           />
