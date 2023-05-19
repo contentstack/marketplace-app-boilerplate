@@ -286,17 +286,29 @@ a {
 .full-page {
   box-sizing: border-box;
   display: flex;
-  width: 90vw;
-  height: 90vh;
+  width: 98vw;
+  height: 97vh;
   justify-content: center;
   align-items: center;
 }
 
 .full-page-container {
-  padding: 8px 0px 8px 0px;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
 }
 
-.full-page-icon {
+.full-page-graphics {
   display: flex;
   justify-content: center;
+  height: 65%;
+}
+.full-page-app-component > p{
+    padding: 0px !important;
+}
+.full-page-app-component>h4{
+  line-height: 35% !important;
 }
