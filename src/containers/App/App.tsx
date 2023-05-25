@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import { EntrySidebarExtensionProvider } from "../../common/providers/EntrySidebarExtensionProvider";
 import { AppConfigurationExtensionProvider } from "../../common/providers/AppConfigurationExtensionProvider";
 import { CustomFieldExtensionProvider } from "../../common/providers/CustomFieldExtensionProvider";
+import FieldModifierExtension from "../FieldModifier/FieldModifier";
 
 /**
  * All the routes are Lazy loaded.
@@ -16,6 +17,7 @@ const EntrySidebarExtension = React.lazy(() => import("../SidebarWidget/EntrySid
 const AppConfigurationExtension = React.lazy(() => import("../ConfigScreen/AppConfiguration"));
 const AssetSidebarExtension = React.lazy(() => import("../AssetSidebarWidget/AssetSidebar"));
 const StackDashboardExtension = React.lazy(() => import("../DashboardWidget/StackDashboard"));
+const FullPageExtension = React.lazy(() => import("../FullPage/FullPage"));
 const PageNotFound = React.lazy(() => import("../404/404"));
 const DefaultPage = React.lazy(() => import("../index"));
 
@@ -68,6 +70,22 @@ function App() {
             element={
               <Suspense>
                 <StackDashboardExtension />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/full-page"
+            element={
+              <Suspense>
+                <FullPageExtension />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/field-modifier"
+            element={
+              <Suspense>
+                <FieldModifierExtension />
               </Suspense>
             }
           />

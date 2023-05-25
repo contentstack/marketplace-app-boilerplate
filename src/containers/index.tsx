@@ -20,6 +20,12 @@ const DefaultPage = () => {
             <li>
               <a href="/asset-sidebar">Asset Sidebar</a>
             </li>
+            <li>
+              <a href="/full-page">Full Page</a>
+            </li>
+            <li>
+              <a href="/field-modifier">Field Modifier</a>
+            </li>
           </ul>
         </div>
       </div>
