@@ -280,3 +280,80 @@ a {
 .ui-location li {
   text-align: left;
 }
+
+/* fullPage styles */
+
+.full-page {
+  box-sizing: border-box;
+  display: flex;
+  width: 98vw;
+  height: 97vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.full-page-container {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.full-page-graphics {
+  display: flex;
+  justify-content: center;
+  height: 65%;
+}
+.full-page-app-component > p {
+  padding: 0px !important;
+}
+.full-page-app-component > h4 {
+  line-height: 35% !important;
+}
+
+/* field-modifier styles */
+
+.field-modifier {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px dashed gray;
+  height: 8.3rem;
+  border-radius: 6px;
+}
+
+.field-modifier-component {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.field-modifier-icon {
+  display: flex;
+  justify-content: center;
+  margin: 0.75rem;
+}
+
+.field-modifier-icon > img {
+  height: 1rem;
+}
+.field-modifier-component > h4 {
+  margin-block-start: unset;
+  margin-block-end: 0.25rem;
+  font-size: 12px;
+}
+.field-modifier-component > p {
+  margin-block-start: unset;
+  margin-block-end: 0.25rem;
+  font-size: 10px;
+}
+.field-modifier-component > a {
+  font-size: 10px;
+  line-height: unset;
+}
