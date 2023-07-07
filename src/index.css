@@ -262,6 +262,7 @@ a {
   text-align: center;
   align-items: center;
   border-radius: 0.5rem;
+  cursor: pointer;
 }
 
 .app-learn-more {
