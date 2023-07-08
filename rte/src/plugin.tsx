@@ -30,7 +30,7 @@ export default ContentstackSDK.init().then(async (sdk) => {
           </div>
           <div className="app-component-content">
             <p>{parse(localeTexts.RTE.body)}</p>
-            <a href="/">{localeTexts.RTE.button.learnMore}</a>
+            <a href="/">{localeTexts.RTE.button.text}</a>
           </div>
         </div>
       );
