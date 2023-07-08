@@ -15,8 +15,8 @@ const StackDashboardExtension = () => {
           <a
             target="_blank"
             rel="noreferrer"
-            href="https://www.contentstack.com/docs/developers/developer-hub/dashboard-location/">
-            {localeTexts.DashboardWidget.button.learnMore}
+            href={localeTexts.DashboardWidget.button.url}>
+            {localeTexts.DashboardWidget.button.text}
           </a>
         </div>
       </div>

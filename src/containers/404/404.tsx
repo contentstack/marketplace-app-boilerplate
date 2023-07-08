@@ -11,8 +11,8 @@ const PageNotFound = () => {
           <a
             target="_blank"
             rel="noreferrer"
-            href="https://www.contentstack.com/docs/developers/developer-hub/about-ui-locations/">
-            {localeTexts[404].button.learnMore}
+            href={localeTexts[404].button.url}>
+            {localeTexts[404].button.text}
           </a>
         </div>
       </div>

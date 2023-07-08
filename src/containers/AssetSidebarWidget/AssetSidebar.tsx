@@ -15,8 +15,8 @@ const AssetSidebarExtension = () => {
           <a
             target="_blank"
             rel="noreferrer"
-            href="https://www.contentstack.com/docs/developers/developer-hub/asset-sidebar-location/">
-            {localeTexts.AssetSidebarWidget.button.learnMore}
+            href={localeTexts.AssetSidebarWidget.button.url}>
+            {localeTexts.AssetSidebarWidget.button.text}
           </a>
         </div>
       </div>

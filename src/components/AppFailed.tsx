@@ -6,7 +6,7 @@ import localeTexts from "../common/locales/en-us";
  */
 export const AppFailed = () => {
   const handleLearnMoreClick = () => {
-    window.open("https://www.contentstack.com/docs/developers/developer-hub/marketplace-app-boilerplate/", "_blank");
+    window.open(localeTexts.AppFailed.button.url, "_blank");
   };
   return (
     <div className="app-failed-container">
@@ -33,7 +33,7 @@ export const AppFailed = () => {
                 d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
                 clipRule="evenodd"></path>
             </svg>
-            Learn More
+            {localeTexts.AppFailed.button.text}
           </button>
         </div>
       </div>

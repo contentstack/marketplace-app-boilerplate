@@ -15,8 +15,8 @@ const FieldModifierExtension = () => {
           <a
             target="_blank"
             rel="noreferrer"
-            href="https://www.contentstack.com/docs/developers/developer-hub/field-modifier-location/">
-            {localeTexts.FieldModifier.button.learnMore}
+            href={localeTexts.FieldModifier.button.url}>
+            {localeTexts.FieldModifier.button.text}
           </a>
         </div>
       </div>
