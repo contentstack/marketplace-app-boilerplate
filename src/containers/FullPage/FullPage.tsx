@@ -15,8 +15,8 @@ const FullPageExtension = () => {
           <a
             target="_blank"
             rel="noreferrer"
-            href="https://www.contentstack.com/docs/developers/developer-hub/full-page-location/">
-            {localeTexts.FullPage.button.learnMore}
+            href={localeTexts.FullPage.button.url}>
+            {localeTexts.FullPage.button.text}
           </a>
         </div>
       </div>

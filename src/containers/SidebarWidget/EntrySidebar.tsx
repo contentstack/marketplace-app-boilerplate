@@ -15,8 +15,8 @@ const EntrySidebarExtension = () => {
           <a
             target="_blank"
             rel="noreferrer"
-            href="https://www.contentstack.com/docs/developers/developer-hub/sidebar-location/">
-            {localeTexts.SidebarWidget.button.learnMore}
+            href={localeTexts.SidebarWidget.button.url}>
+            {localeTexts.SidebarWidget.button.text}
           </a>
         </div>
       </div>
