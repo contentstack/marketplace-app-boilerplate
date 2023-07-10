@@ -15,8 +15,8 @@ const CustomFieldExtension = () => {
           <a
             target="_blank"
             rel="noreferrer"
-            href="https://www.contentstack.com/docs/developers/developer-hub/custom-field-location/">
-            {localeTexts.CustomField.button.learnMore}
+            href={localeTexts.CustomField.button.url}>
+            {localeTexts.CustomField.button.text}
           </a>
         </div>
       </div>

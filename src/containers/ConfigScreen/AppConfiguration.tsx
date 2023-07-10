@@ -15,8 +15,8 @@ const AppConfigurationExtension = () => {
           <a
             target="_blank"
             rel="noreferrer"
-            href="https://www.contentstack.com/docs/developers/developer-hub/app-config-location/">
-            {localeTexts.ConfigScreen.button.learnMore}
+            href={localeTexts.ConfigScreen.button.url}>
+            {localeTexts.ConfigScreen.button.text}
           </a>
         </div>
       </div>
