@@ -1,5 +1,3 @@
-//src/containers/ConfigScreen/ConfigScreen.tsx
-
 import React, { useState, useEffect } from "react";
 import ContentstackAppSdk from "@contentstack/app-sdk";
 import { IInstallationData } from "@contentstack/app-sdk/dist/src/types";
@@ -10,18 +8,19 @@ import { merge } from "../../common/utils/functions";
 import "../../index.css";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
-interface appState {
+interface AppState {
   installationData: IInstallationData;
   setInstallationData: (event: any) => any;
   appSdkInitialized: boolean;
 }
 
 const AppConfigurationExtension: React.FC = () => {
-  const [config, setConfig] = useState<appState>({
+  const [username, setUsername] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [config, setConfig] = useState<AppState>({
     installationData: {
       configuration: {
         username: "",
-        // email: "",
       },
       serverConfiguration: {
         email: "",
@@ -54,35 +53,21 @@ const AppConfigurationExtension: React.FC = () => {
     });
   }, []);
 
-  const updateConfig = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
+  const updateConfig = async (elem: any) => {
+    if (elem.target.name === "username") {
+      setUsername(elem.target.value);
+    } else if (elem.target.name === "email") {
+      setEmail(elem.target.value);
+    }
 
-    setConfig((prevConfig) => ({
-      ...prevConfig,
-      installationData: {
-        ...prevConfig.installationData,
-        configuration: {
-          ...prevConfig.installationData.configuration,
-          [name]: value,
-        },
-        serverConfiguration: {
-          ...prevConfig.installationData.serverConfiguration,
-          [name]: value,
-        },
-      },
-    }));
+    const updatedConfig = { ...config.installationData.configuration, username };
+    const updatedServerConfig = { ...config.installationData.serverConfiguration, email };
 
     if (typeof config.setInstallationData !== "undefined") {
       await config.setInstallationData({
         ...config.installationData,
-        configuration: {
-          ...config.installationData.configuration,
-          [name]: value,
-        },
-        serverConfiguration: {
-          ...config.installationData.serverConfiguration,
-          [name]: value,
-        },
+        configuration: updatedConfig,
+        serverConfiguration: updatedServerConfig,
       });
     }
   };
@@ -109,12 +94,11 @@ const AppConfigurationExtension: React.FC = () => {
                         </label>
                         <input
                           required
-                          value={config.installationData.configuration.username}
+                          value={username}
                           placeholder="Enter User Name"
                           name="username"
                           autoComplete="off"
                           className="field-input"
-                          // version={"v2"}
                           onChange={updateConfig}></input>
                       </div>
                       <div className="field">
@@ -123,7 +107,7 @@ const AppConfigurationExtension: React.FC = () => {
                         </label>
                         <input
                           required
-                          value={config.installationData.configuration.email}
+                          value={email}
                           placeholder="Enter Email ID"
                           name="email"
                           autoComplete="off"
