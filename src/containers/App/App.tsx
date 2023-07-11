@@ -14,7 +14,7 @@ import FieldModifierExtension from "../FieldModifier/FieldModifier";
  */
 const CustomFieldExtension = React.lazy(() => import("../CustomField/CustomField"));
 const EntrySidebarExtension = React.lazy(() => import("../SidebarWidget/EntrySidebar"));
-const AppConfigurationExtension = React.lazy(() => import("../ConfigScreen/AppConfiguration"));
+const AppConfigurationExtension = React.lazy(() => import("../ConfigScreen/ConfigScreen"));
 const AssetSidebarExtension = React.lazy(() => import("../AssetSidebarWidget/AssetSidebar"));
 const StackDashboardExtension = React.lazy(() => import("../DashboardWidget/StackDashboard"));
 const FullPageExtension = React.lazy(() => import("../FullPage/FullPage"));

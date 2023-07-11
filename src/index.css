@@ -358,3 +358,35 @@ a {
   font-size: 10px;
   line-height: unset;
 }
+
+
+/* CONFIG SCREEN  */
+.field {
+  display: flex;
+  align-items: center;
+  padding: 2%;
+  margin: 2%;
+}
+
+.field-label {
+  width: 150px;
+}
+
+.config-wrapper {
+  /* width: 80vw; */
+  /* height: 80vh; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.layout-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.app-config {
+  width: 90vw !important;
+}
