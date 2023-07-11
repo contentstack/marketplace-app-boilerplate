@@ -8,7 +8,6 @@ import RawConfigModal from "../../components/ViewRawConfig/RawConfigModal";
 
 const StackDashboardExtension = () => {
   const appConfig = useAppConfig();
-  console.log("appConfig", appConfig);
 
   const [isRawConfigModalOpen, setRawConfigModalOpen] = useState(false);
 
@@ -20,9 +19,6 @@ const StackDashboardExtension = () => {
     setRawConfigModalOpen(false);
   };
 
-  useEffect(() => {
-    console.log("appConfig:", appConfig);
-  }, [appConfig]);
 
   const name = appConfig?.username || "";
 
