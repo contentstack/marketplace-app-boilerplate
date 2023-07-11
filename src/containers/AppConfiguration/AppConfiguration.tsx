@@ -72,7 +72,6 @@ const AppConfigurationExtension: React.FC = () => {
     }
   };
 
-  console.log("config", config);
 
   return (
     <div className="layout-container">
