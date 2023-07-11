@@ -16,14 +16,14 @@ interface AppState {
 
 const AppConfigurationExtension: React.FC = () => {
   const [username, setUsername] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
+  const [secret, setSecret] = useState<string>("");
   const [config, setConfig] = useState<AppState>({
     installationData: {
       configuration: {
         username: "",
       },
       serverConfiguration: {
-        email: "",
+        secret: "",
       },
     },
     setInstallationData: (event): any => {
@@ -56,12 +56,12 @@ const AppConfigurationExtension: React.FC = () => {
   const updateConfig = async (elem: any) => {
     if (elem.target.name === "username") {
       setUsername(elem.target.value);
-    } else if (elem.target.name === "email") {
-      setEmail(elem.target.value);
+    } else if (elem.target.name === "secret") {
+      setSecret(elem.target.value);
     }
 
     const updatedConfig = { ...config.installationData.configuration, username };
-    const updatedServerConfig = { ...config.installationData.serverConfiguration, email };
+    const updatedServerConfig = { ...config.installationData.serverConfiguration, secret };
 
     if (typeof config.setInstallationData !== "undefined") {
       await config.setInstallationData({
@@ -102,14 +102,14 @@ const AppConfigurationExtension: React.FC = () => {
                           onChange={updateConfig}></input>
                       </div>
                       <div className="field">
-                        <label htmlFor="email" className="field-label">
-                          {"Email"}
+                        <label htmlFor="secret" className="field-label">
+                          {"Secret"}
                         </label>
                         <input
                           required
-                          value={email}
-                          placeholder="Enter Email ID"
-                          name="email"
+                          value={secret}
+                          placeholder="Enter Secret ID"
+                          name="secret"
                           autoComplete="off"
                           className="field-input"
                           onChange={updateConfig}></input>
