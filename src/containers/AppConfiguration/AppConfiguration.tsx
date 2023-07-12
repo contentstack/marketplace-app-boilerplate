@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ContentstackAppSdk from "@contentstack/app-sdk";
 import { IInstallationData } from "@contentstack/app-sdk/dist/src/types";
 import Icon from "../../assets/appconfig.svg";
@@ -6,7 +6,6 @@ import localeTexts from "../../common/locales/en-us/index";
 import parse from "html-react-parser";
 import { merge } from "../../common/utils/functions";
 import "../../index.css";
-import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 interface AppState {
   installationData: IInstallationData;
@@ -15,15 +14,15 @@ interface AppState {
 }
 
 const AppConfigurationExtension: React.FC = () => {
-  const [username, setUsername] = useState<string>("");
-  const [secret, setSecret] = useState<string>("");
+  const usernameRef = useRef<any>("");
+  const secretRef = useRef<any>("");
   const [config, setConfig] = useState<AppState>({
     installationData: {
       configuration: {
-        username: "",
+        username: usernameRef,
       },
       serverConfiguration: {
-        secret: "",
+        secret: secretRef,
       },
     },
     setInstallationData: (event): any => {
@@ -31,7 +30,6 @@ const AppConfigurationExtension: React.FC = () => {
     },
     appSdkInitialized: false,
   });
-  const [loader, setLoader] = useState<boolean>();
 
   useEffect(() => {
     ContentstackAppSdk.init().then(async (appSdk) => {
@@ -45,33 +43,18 @@ const AppConfigurationExtension: React.FC = () => {
         setInstallationData: installation.setInstallationData,
         appSdkInitialized: true,
       });
-
-      setLoader(true);
-      setTimeout(() => {
-        setLoader(false);
-      }, 2000);
     });
   }, []);
 
   const updateConfig = async (elem: any) => {
-    if (elem.target.name === "username") {
-      setUsername(elem.target.value);
-    } else if (elem.target.name === "secret") {
-      setSecret(elem.target.value);
-    }
-
-    const updatedConfig = { ...config.installationData.configuration, username };
-    const updatedServerConfig = { ...config.installationData.serverConfiguration, secret };
-
     if (typeof config.setInstallationData !== "undefined") {
       await config.setInstallationData({
         ...config.installationData,
-        configuration: updatedConfig,
-        serverConfiguration: updatedServerConfig,
+        configuration: { username: usernameRef.current.value },
+        serverConfiguration: { secret: secretRef.current.value },
       });
     }
   };
-
 
   return (
     <div className="layout-container">
@@ -85,15 +68,16 @@ const AppConfigurationExtension: React.FC = () => {
             {config.appSdkInitialized && (
               <div className="config-wrapper">
                 <form>
-                  {!loader ? (
+                  {
                     <>
                       <div className="field">
                         <label htmlFor="username" className="field-label">
                           {"User Name"}
                         </label>
                         <input
+                          ref={usernameRef}
                           required
-                          value={username}
+                          value={usernameRef.current.value}
                           placeholder="Enter User Name"
                           name="username"
                           autoComplete="off"
@@ -105,8 +89,9 @@ const AppConfigurationExtension: React.FC = () => {
                           {"Secret"}
                         </label>
                         <input
+                          ref={secretRef}
                           required
-                          value={secret}
+                          value={secretRef.current.value}
                           placeholder="Enter Secret ID"
                           name="secret"
                           autoComplete="off"
@@ -114,11 +99,7 @@ const AppConfigurationExtension: React.FC = () => {
                           onChange={updateConfig}></input>
                       </div>
                     </>
-                  ) : (
-                    <div className="skeleton-field">
-                      <LoadingSpinner />
-                    </div>
-                  )}
+                  }
                 </form>
               </div>
             )}
