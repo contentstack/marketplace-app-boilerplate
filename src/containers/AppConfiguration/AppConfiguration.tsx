@@ -4,8 +4,8 @@ import { IInstallationData } from "@contentstack/app-sdk/dist/src/types";
 import Icon from "../../assets/appconfig.svg";
 import localeTexts from "../../common/locales/en-us/index";
 import parse from "html-react-parser";
-import { merge } from "../../common/utils/functions";
 import "../../index.css";
+import lodash from "lodash";
 
 interface AppState {
   installationData: IInstallationData;
@@ -39,7 +39,7 @@ const AppConfigurationExtension: React.FC = () => {
 
       setConfig({
         ...config,
-        installationData: merge(config.installationData, installationData),
+        installationData: lodash.merge(config.installationData, installationData),
         setInstallationData: installation.setInstallationData,
         appSdkInitialized: true,
       });
