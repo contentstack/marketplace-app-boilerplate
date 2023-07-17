@@ -28,9 +28,10 @@ export const AppConfigurationExtensionProvider = ({ children }: any) => {
   const setInstallationData = useCallback(
     async (data: { [key: string]: any }) => {
       setLoading(true);
+      
       const newInstallationData: InstallationData = {
-        configuration: { ...installationData.configuration, ...data },
-        serverConfiguration: installationData.serverConfiguration,
+        configuration: { ...installationData.configuration, ...data.configuration },
+        serverConfiguration: {...installationData.serverConfiguration, ...data.serverConfiguration},
       };
       await location.installation.setInstallationData(newInstallationData);
       setInstallation(newInstallationData);
