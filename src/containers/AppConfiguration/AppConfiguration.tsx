@@ -5,51 +5,19 @@ import Icon from "../../assets/appconfig.svg";
 import localeTexts from "../../common/locales/en-us/index";
 import parse from "html-react-parser";
 import "../../index.css";
-import lodash from "lodash";
+import { useInstallationData } from "../../common/hooks/useInstallationData";
 
-interface AppState {
-  installationData: IInstallationData;
-  setInstallationData: (event: any) => any;
-  appSdkInitialized: boolean;
-}
 
 const AppConfigurationExtension: React.FC = () => {
+  const { installationData, setInstallationData } = useInstallationData();
+
   const usernameRef = useRef<any>("");
   const secretRef = useRef<any>("");
-  const [config, setConfig] = useState<AppState>({
-    installationData: {
-      configuration: {
-        username: usernameRef,
-      },
-      serverConfiguration: {
-        secret: secretRef,
-      },
-    },
-    setInstallationData: (event): any => {
-      return;
-    },
-    appSdkInitialized: false,
-  });
-
-  useEffect(() => {
-    ContentstackAppSdk.init().then(async (appSdk) => {
-      const location: any = appSdk.location?.AppConfigWidget;
-      const installation = location.installation;
-      const installationData = await installation.getInstallationData();
-
-      setConfig({
-        ...config,
-        installationData: lodash.merge(config.installationData, installationData),
-        setInstallationData: installation.setInstallationData,
-        appSdkInitialized: true,
-      });
-    });
-  }, []);
 
   const updateConfig = async (elem: any) => {
-    if (typeof config.setInstallationData !== "undefined") {
-      await config.setInstallationData({
-        ...config.installationData,
+
+    if (typeof setInstallationData !== "undefined") {
+      await setInstallationData({
         configuration: { username: usernameRef.current.value },
         serverConfiguration: { secret: secretRef.current.value },
       });
@@ -65,7 +33,7 @@ const AppConfigurationExtension: React.FC = () => {
           </div>
           <div className="app-component-content">
             <h4>{localeTexts.ConfigScreen.title}</h4>
-            {config.appSdkInitialized && (
+            {installationData && (
               <div className="config-wrapper">
                 <form>
                   {
@@ -77,7 +45,7 @@ const AppConfigurationExtension: React.FC = () => {
                         <input
                           ref={usernameRef}
                           required
-                          value={usernameRef.current.value}
+                          value={installationData.configuration.username}
                           placeholder="Enter User Name"
                           name="username"
                           autoComplete="off"
@@ -91,7 +59,7 @@ const AppConfigurationExtension: React.FC = () => {
                         <input
                           ref={secretRef}
                           required
-                          value={secretRef.current.value}
+                          value={installationData.serverConfiguration.secret}
                           placeholder="Enter Secret ID"
                           name="secret"
                           autoComplete="off"
