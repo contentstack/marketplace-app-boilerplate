@@ -4,6 +4,7 @@ body,
 html {
   font-family: "Inter", sans-serif;
 }
+
 p {
   font-family: Inter;
   font-size: 14px;
@@ -31,7 +32,7 @@ a {
   text-align: center;
 }
 
-.app-component-content > p {
+.app-component-content>p {
   padding: 20px;
 }
 
@@ -55,12 +56,12 @@ a {
   justify-content: center;
 }
 
-.asset-sidebar-icon > img {
+.asset-sidebar-icon>img {
   width: 52px;
   height: 52px;
 }
 
-.app-component-content > h4 {
+.app-component-content>h4 {
   font-family: "Inter";
   font-style: normal;
   font-weight: 800;
@@ -95,7 +96,7 @@ a {
   justify-content: center;
 }
 
-.app-config-icon > img {
+.app-config-icon>img {
   width: 52px;
   height: 52px;
 }
@@ -126,7 +127,7 @@ a {
   justify-content: center;
 }
 
-.custom-field-icon > img {
+.custom-field-icon>img {
   width: 52px;
   height: 52px;
 }
@@ -137,19 +138,38 @@ a {
   box-sizing: border-box;
   display: flex;
   width: auto;
-  height: 320px;
+  height: 290px;
   justify-content: center;
   align-items: center;
+  border: 1px dashed black;
+  overflow: hidden;
+  border-radius: 5px;
 }
 
-.dashboard-container {
-  padding: 8px 0;
+.dashboard-container * {
+  margin: 0%;
+  padding: 0%;
+}
+
+.dashboard-container .app-component-content>* {
+  margin: 0%;
+  padding: 15px;
+  text-decoration: double;
 }
 
 .dashboard-icon {
   display: flex;
   justify-content: center;
 }
+
+.configValues {
+  border: 1px dashed rgb(188, 187, 187);
+  padding: 5px !important;
+  border-radius: 5px;
+  display: inline-flex;
+  width: fit-content;
+}
+
 
 /* entry sidebar styles */
 
@@ -174,7 +194,7 @@ a {
   justify-content: center;
 }
 
-.entry-sidebar-icon > img {
+.entry-sidebar-icon>img {
   width: 52px;
   height: 52px;
 }
@@ -187,11 +207,11 @@ a {
   line-height: 1.25rem;
 }
 
-.jsonrte-extension > label {
+.jsonrte-extension>label {
   font-weight: 700;
 }
 
-.jsonrte-extension > p {
+.jsonrte-extension>p {
   padding: 0.25rem;
   color: #000000;
   border-bottom-right-radius: 0.375rem;
@@ -209,7 +229,7 @@ a {
   margin-right: auto;
 }
 
-.app-failed-container > .app-component-container {
+.app-failed-container>.app-component-container {
   padding: 1rem;
   margin-bottom: 1rem;
   background-color: #fdf2c7;
@@ -228,7 +248,7 @@ a {
   align-items: center;
 }
 
-.app-content > h3 {
+.app-content>h3 {
   color: #b36b34;
   font-size: 1.125rem;
   line-height: 1.75rem;
@@ -247,7 +267,7 @@ a {
   display: flex;
 }
 
-.secondary-app-container > button {
+.secondary-app-container>button {
   display: inline-flex;
   padding-top: 0.375rem;
   padding-bottom: 0.375rem;
@@ -307,10 +327,12 @@ a {
   justify-content: center;
   height: 65%;
 }
-.full-page-app-component > p {
+
+.full-page-app-component>p {
   padding: 0px !important;
 }
-.full-page-app-component > h4 {
+
+.full-page-app-component>h4 {
   line-height: 35% !important;
 }
 
@@ -341,20 +363,129 @@ a {
   margin: 0.75rem;
 }
 
-.field-modifier-icon > img {
+.field-modifier-icon>img {
   height: 1rem;
 }
-.field-modifier-component > h4 {
+
+.field-modifier-component>h4 {
   margin-block-start: unset;
   margin-block-end: 0.25rem;
   font-size: 12px;
 }
-.field-modifier-component > p {
+
+.field-modifier-component>p {
   margin-block-start: unset;
   margin-block-end: 0.25rem;
   font-size: 10px;
 }
-.field-modifier-component > a {
+
+.field-modifier-component>a {
   font-size: 10px;
   line-height: unset;
+}
+
+
+/* CONFIG SCREEN  */
+.field {
+  display: flex;
+  align-items: center;
+  padding: 2%;
+  margin: 2%;
+}
+
+.field-label {
+  width: 150px;
+}
+
+.config-wrapper {
+  /* width: 80vw; */
+  /* height: 80vh; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.layout-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.app-config {
+  width: 90vw !important;
+}
+
+
+/* view-raw-config-button */
+.view-raw-config-button {
+  background-color: rgb(212, 208, 208);
+  border: none;
+  width: 18px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.view-raw-config-button span {
+  color: black;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+
+/* MODAL OVERLAY  */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.17);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px;
+  max-height: 80%;
+  overflow: auto;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.modal-header h2 {
+  margin: 0;
+}
+
+.modal-header button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #090909;
+}
+
+.json-content {
+  background-color: rgb(18, 18, 18);
+  color: white;
+  padding: 10px;
+  /* border-radius: 4px; */
+  font-family: monospace;
+  display: flex;
+  justify-content: center;
+  align-items: left;
+  white-space: pre;
+  text-align: left;
 }
