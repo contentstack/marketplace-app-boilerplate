@@ -19,8 +19,7 @@ const StackDashboardExtension = () => {
     setRawConfigModalOpen(false);
   };
 
-
-  const name = appConfig?.username || "";
+  const name = appConfig?.appConfigData || "";
 
   return (
     <div className="dashboard">
@@ -31,8 +30,8 @@ const StackDashboardExtension = () => {
         <div className="app-component-content">
           <h4>{localeTexts.DashboardWidget.title}</h4>
           <p className="configValues">
-              <b>Username: </b>
-              {name}
+            <b>appConfigData: </b>
+            {name}
             <RawConfigButton onClick={handleViewRawConfig} />
           </p>
           {isRawConfigModalOpen && <RawConfigModal config={appConfig!} onClose={handleCloseModal} />}
