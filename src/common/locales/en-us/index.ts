@@ -3,7 +3,7 @@ const localeTexts = {
     title: "404: Not Found",
     body: "The link you tried to access doesn't seem to exist. <br />Please verify and enter the correct URL.",
     button: {
-      text: "Learn more",
+      text: "Learn More",
       url: "https://www.contentstack.com/docs/developers/developer-hub/about-ui-locations/",
     },
   },
@@ -11,15 +11,15 @@ const localeTexts = {
     title: "Asset Sidebar Widget",
     body: "This is the location that contains your Asset Sidebar Widget. <br />Create your new app now!",
     button: {
-      text: "Learn more",
+      text: "Learn More",
       url: "https://www.contentstack.com/docs/developers/developer-hub/asset-sidebar-location/",
     },
   },
   ConfigScreen: {
     title: "App Configuration",
-    body: "This is the location that contains your App Configuration. <br />Create your new app now!",
+    body: "This is the location that contains your app configuration. &nbsp;<br>Create your new app now.",
     button: {
-      text: "Learn more",
+      text: "Learn More",
       url: "https://www.contentstack.com/docs/developers/developer-hub/app-config-location/",
     },
   },
@@ -27,7 +27,7 @@ const localeTexts = {
     title: "Custom Field",
     body: "This is the location that contains your Custom Field. <br />Create your new app now!",
     button: {
-      text: "Learn more",
+      text: "Learn More",
       url: "https://www.contentstack.com/docs/developers/developer-hub/custom-field-location/",
     },
   },
@@ -35,7 +35,7 @@ const localeTexts = {
     title: "Dashboard Widget",
     body: "This is the location that contains your Dashboard Widget. <br />Create your new app now!",
     button: {
-      text: "Learn more",
+      text: "Learn More",
       url: "https://www.contentstack.com/docs/developers/developer-hub/dashboard-location/",
     },
   },
@@ -43,7 +43,7 @@ const localeTexts = {
     title: "Sidebar Widget",
     body: "This is the location that contains your Entry Sidebar Widget. <br />Create your new app now!",
     button: {
-      text: "Learn more",
+      text: "Learn More",
       url: "https://www.contentstack.com/docs/developers/developer-hub/sidebar-location/",
     },
   },
@@ -51,7 +51,7 @@ const localeTexts = {
     title: "Full Page App",
     body: "This is the location that contains your Full Page app. <br />Create your new app now!",
     button: {
-      text: "Learn more",
+      text: "Learn More",
       url: "https://www.contentstack.com/docs/developers/developer-hub/full-page-location/",
     },
   },
@@ -59,7 +59,7 @@ const localeTexts = {
     title: "Field Modifier App",
     body: "This is the location that contains your Field Modifier app. <br />Create your new app now!",
     button: {
-      text: "Learn more",
+      text: "Learn More",
       url: "https://www.contentstack.com/docs/developers/developer-hub/field-modifier-location/",
     },
   },
@@ -68,7 +68,7 @@ const localeTexts = {
     Message2: "Please navigate to Your Stack in Contentstack where you just installed the Application ",
     body: "For Assistance, please reach out to us at support@contentstack.com",
     button: {
-      text: "Learn more",
+      text: "Learn More",
       url: "https://www.contentstack.com/docs/developers/developer-hub/marketplace-app-boilerplate/",
     },
   },
