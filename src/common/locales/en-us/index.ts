@@ -49,7 +49,7 @@ const localeTexts = {
   },
   FullPage: {
     title: "Full Page App",
-    body: "This is the location that contains your Full Page app. <br />Create your new app now!",
+    body: "This is the location that contains your Full Page App. <br />Build your app now",
     button: {
       text: "Learn More",
       url: "https://www.contentstack.com/docs/developers/developer-hub/full-page-location/",
