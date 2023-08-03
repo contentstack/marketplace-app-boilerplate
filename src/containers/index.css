@@ -110,7 +110,6 @@ a {
 .info {
   color: var(--text-secondary-text-purple-gray, #6e6b86);
   font-family: Inter;
-  /* font-size: 0.875rem; */
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 1.3125rem */
