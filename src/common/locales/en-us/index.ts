@@ -25,7 +25,7 @@ const localeTexts = {
   },
   CustomField: {
     title: "Custom Field",
-    body: "This is the location that contains your Custom Field. <br />Create your new app now!",
+    body: "This is the iframe that contains your Custom Field. <br />Build your app now",
     button: {
       text: "Learn More",
       url: "https://www.contentstack.com/docs/developers/developer-hub/custom-field-location/",
