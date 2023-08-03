@@ -31,12 +31,10 @@ a {
 }
 
 
-
-
 /* common properties for app component content*/
 
 /* 
-not used in app config field
+not used in app config field , Sidebar
 */
 .app-component-content {
   padding: 20px;
@@ -46,12 +44,6 @@ not used in app config field
 .app-component-content>p {
   padding: 20px;
 }
-
-
-
-
-
-
 
 /* asset sidebar styles */
 
@@ -130,34 +122,6 @@ not used in app config field
   width: fit-content;
 }
 
-
-/* entry sidebar styles */
-
-.entry-sidebar {
-  box-sizing: border-box;
-  display: flex;
-  width: auto;
-  height: 533px;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  border: 1px dashed #a9b6cb;
-  border-radius: 8px;
-}
-
-.entry-sidebar-content {
-  padding: 20px 0;
-}
-
-.entry-sidebar-icon {
-  display: flex;
-  justify-content: center;
-}
-
-.entry-sidebar-icon>img {
-  width: 52px;
-  height: 52px;
-}
 
 /* JSONRte Extension */
 
