@@ -24,6 +24,7 @@ const EntrySidebarExtension = () => {
   };
 
   const sampleAppConfig = appConfig?.appConfigData || "";
+  const trimmedSampleAppConfig = sampleAppConfig.length > 17 ? `${sampleAppConfig.substring(0, 17)}...` : sampleAppConfig;
 
   return (
     <div className="layout-container">
@@ -41,7 +42,7 @@ const EntrySidebarExtension = () => {
               </div>
               <div className="input-wrapper">
                 <div className="input-container">
-                  <p className="config-value">{sampleAppConfig}</p>
+                  <p className="config-value">{trimmedSampleAppConfig}</p>
                   <img src={ReadOnly} alt="ReadOnlyLogo" />
                 </div>
 
