@@ -92,10 +92,6 @@ const AppConfigurationExtension: React.FC = () => {
         </div>
 
         <div className="location-description">
-          {/* <p className="location-description-text">
-            This location contains your app configuration.
-            <br /> Create your new app now..
-          </p> */}
           <p className="location-description-text">{parse(localeTexts.ConfigScreen.body)}</p>
           <a target="_blank" rel="noreferrer" href={localeTexts.ConfigScreen.button.url}>
             <span className="location-description-link">{localeTexts.ConfigScreen.button.text}</span>
