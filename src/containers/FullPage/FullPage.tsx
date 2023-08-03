@@ -30,7 +30,6 @@ const FullPageExtension = () => {
 
   return (
     <div className="layout-container">
-      {/* <div className="ui-location-wrapper"> */}
         <div className="ui-location">
           <div className="ui-container">
             <div className="logo-container">
@@ -60,7 +59,6 @@ const FullPageExtension = () => {
             </div>
           </div>
         </div>
-      {/* </div> */}
     </div>
   );
 };
