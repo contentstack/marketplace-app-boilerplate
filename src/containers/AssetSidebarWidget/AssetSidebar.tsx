@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import localeTexts from "../../common/locales/en-us/index";
 import parse from "html-react-parser";
 import { useAppConfig } from "../../common/hooks/useAppConfig";
@@ -14,15 +14,15 @@ import RawConfigModal from "../../components/ViewRawConfig/RawConfigModal";
 const AssetSidebarExtension = () => {
   const appConfig = useAppConfig();
 
-  const [isRawConfigModalOpen, setRawConfigModalOpen] = useState(false);
+  const [isRawConfigModalOpen, setRawConfigModalOpen] = useState<boolean>(false);
 
-  const handleViewRawConfig = () => {
+  const handleViewRawConfig = useCallback(() => {
     setRawConfigModalOpen(true);
-  };
+  }, []);
 
-  const handleCloseModal = () => {
+  const handleCloseModal = useCallback(() => {
     setRawConfigModalOpen(false);
-  };
+  }, []);
 
   const sampleAppConfig = appConfig?.appConfigData || "";
   const trimmedSampleAppConfig =
