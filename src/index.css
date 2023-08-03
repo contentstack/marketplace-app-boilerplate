@@ -47,43 +47,6 @@ not used in app config field , Sidebar
 
 /* asset sidebar styles */
 
-.asset-sidebar {
-  box-sizing: border-box;
-  display: flex;
-  width: auto;
-  height: 550px;
-  justify-content: center;
-  align-items: center;
-  border: 1px dashed #a9b6cb;
-  text-align: center;
-  margin: 1rem;
-  border-radius: 8px;
-}
-
-.asset-sidebar-icon {
-  display: flex;
-  justify-content: center;
-}
-
-.asset-sidebar-icon>img {
-  width: 52px;
-  height: 52px;
-}
-
-.app-component-content>h4 {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 800;
-  font-size: 22px;
-  line-height: 135%;
-  text-align: center;
-  letter-spacing: -0.00019em;
-  color: #222222;
-  flex: none;
-  order: 1;
-  align-self: stretch;
-  flex-grow: 0;
-}
 /* dashboard styles */
 
 .dashboard {
