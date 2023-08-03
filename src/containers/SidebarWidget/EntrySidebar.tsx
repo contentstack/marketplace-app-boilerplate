@@ -24,7 +24,8 @@ const EntrySidebarExtension = () => {
   };
 
   const sampleAppConfig = appConfig?.appConfigData || "";
-  const trimmedSampleAppConfig = sampleAppConfig.length > 17 ? `${sampleAppConfig.substring(0, 17)}...` : sampleAppConfig;
+  const trimmedSampleAppConfig =
+    sampleAppConfig.length > 15 ? `${sampleAppConfig.substring(0, 15)}...` : sampleAppConfig;
 
   return (
     <div className="layout-container">
@@ -33,7 +34,7 @@ const EntrySidebarExtension = () => {
           <div className="ui-container">
             <div className="logo-container">
               <img src={Icon} alt="Logo" />
-              <p>Sidebar Widget</p>
+              <p>{localeTexts.SidebarWidget.title}</p>
             </div>
             <div className="config-container">
               <div className="label-container">

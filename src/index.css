@@ -84,38 +84,6 @@ not used in app config field , Sidebar
   align-self: stretch;
   flex-grow: 0;
 }
-
-/* custom field styles */
-
-.custom-field {
-  box-sizing: border-box;
-  display: flex;
-  height: 260px;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  border: 1px dashed #a9b6cb;
-  border-radius: 8px;
-}
-
-.custom-field-container {
-  height: 218px;
-}
-
-.custom-field-content {
-  padding: 20px 0;
-}
-
-.custom-field-icon {
-  display: flex;
-  justify-content: center;
-}
-
-.custom-field-icon>img {
-  width: 52px;
-  height: 52px;
-}
-
 /* dashboard styles */
 
 .dashboard {
