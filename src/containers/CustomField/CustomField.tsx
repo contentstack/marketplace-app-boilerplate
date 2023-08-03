@@ -2,6 +2,7 @@ import { useState } from "react";
 import localeTexts from "../../common/locales/en-us/index";
 import parse from "html-react-parser";
 import { useAppConfig } from "../../common/hooks/useAppConfig";
+import "../index.css"
 import "./CustomField.css";
 import Icon from "../../assets/Custom-Field-Logo.svg";
 import ReadOnly from "../../assets/lock.svg";
