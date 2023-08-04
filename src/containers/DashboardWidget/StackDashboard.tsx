@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Icon from "../../assets/Icon.svg";
 import localeTexts from "../../common/locales/en-us/index";
 import parse from "html-react-parser";
@@ -9,15 +9,15 @@ import RawConfigModal from "../../components/ViewRawConfig/RawConfigModal";
 const StackDashboardExtension = () => {
   const appConfig = useAppConfig();
 
-  const [isRawConfigModalOpen, setRawConfigModalOpen] = useState(false);
+  const [isRawConfigModalOpen, setRawConfigModalOpen] = useState<boolean>(false);
 
-  const handleViewRawConfig = () => {
+  const handleViewRawConfig = useCallback(() => {
     setRawConfigModalOpen(true);
-  };
+  }, []);
 
-  const handleCloseModal = () => {
+  const handleCloseModal = useCallback(() => {
     setRawConfigModalOpen(false);
-  };
+  }, []);
 
   const name = appConfig?.appConfigData || "";
 
