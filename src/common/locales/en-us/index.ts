@@ -9,7 +9,7 @@ const localeTexts = {
   },
   AssetSidebarWidget: {
     title: "Asset Sidebar Widget",
-    body: "This is the location that contains your Asset Sidebar Widget. <br />Create your new app now!",
+    body: "This is the iframe that contains your Asset Sidebar Widget.&nbsp;<br />Build your app now",
     button: {
       text: "Learn More",
       url: "https://www.contentstack.com/docs/developers/developer-hub/asset-sidebar-location/",
