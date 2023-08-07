@@ -6,10 +6,8 @@ import "../index.css";
 import "./AssetSidebar.css";
 import Icon from "../../assets/Asset-Sidebar-Logo.svg";
 import ReadOnly from "../../assets/lock.svg";
-//TODO:  need to update the CTA button
-import Copy from "../../assets/Copy.svg";
-//TODO:  need to update the RC modal
-import RawConfigModal from "../../components/ViewRawConfig/RawConfigModal";
+import JsonView from "../../assets/JsonView.svg";
+import ConfigModal from "../../components/ConfigModal/ConfigModal";
 
 const AssetSidebarExtension = () => {
   const appConfig = useAppConfig();
@@ -48,8 +46,8 @@ const AssetSidebarExtension = () => {
                   <img src={ReadOnly} alt="ReadOnlyLogo" />
                 </div>
 
-                <img src={Copy} alt="Show-Json-CTA" className="show-json-cta" onClick={handleViewRawConfig} />
-                {isRawConfigModalOpen && <RawConfigModal config={appConfig!} onClose={handleCloseModal} />}
+                <img src={JsonView} alt="Show-Json-CTA" className="show-json-cta" onClick={handleViewRawConfig} />
+                {isRawConfigModalOpen && <ConfigModal config={appConfig!} onClose={handleCloseModal} />}
               </div>
             </div>
             <div className="location-description">
