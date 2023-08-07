@@ -1,10 +1,10 @@
 import React, { useRef } from "react";
 import Icon from "../../assets/GearSix.svg";
-import HelpIcon from "../../assets/help_icon.svg";
 import localeTexts from "../../common/locales/en-us/index";
 import parse from "html-react-parser";
 import styles from "./AppConfiguration.module.css";
 import { useInstallationData } from "../../common/hooks/useInstallationData";
+import Tooltip from "../Tooltip/Tooltip";
 
 const AppConfigurationExtension: React.FC = () => {
   const { installationData, setInstallationData } = useInstallationData();
@@ -35,7 +35,8 @@ const AppConfigurationExtension: React.FC = () => {
               <div className={`${styles.infoContainer}`}>
                 <div className={`${styles.labelWrapper}`}>
                   <label htmlFor="appConfigData">Sample App Configuration </label>
-                  <img src={HelpIcon} alt="info-icon" />
+                  {/* <img src={HelpIcon} alt="info-icon" /> */}
+                  <Tooltip content="Use this field to store sensitive configurations of your app. It is directly shared withe the backend." />
                 </div>
                 <p>(required)</p>
               </div>
@@ -65,7 +66,8 @@ const AppConfigurationExtension: React.FC = () => {
               <div className={`${styles.infoContainer}`}>
                 <div className={`${styles.labelWrapper}`}>
                   <label htmlFor="serverConfigData">Sample Server Configuration </label>
-                  <img src={HelpIcon} alt="info-icon" />
+                  {/* <img src={HelpIcon} alt="info-icon" /> */}
+                  <Tooltip content="Use this field to share sensitive configurations of your app with other locations." />
                 </div>
                 <p>(required)</p>
               </div>
