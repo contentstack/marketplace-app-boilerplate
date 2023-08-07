@@ -6,10 +6,8 @@ import "../index.css";
 import "./FullPage.css";
 import Icon from "../../assets/Full-Page-Logo.svg";
 import ReadOnly from "../../assets/lock.svg";
-//TODO:  need to update the CTA button
-import Copy from "../../assets/Copy.svg";
-//TODO:  need to update the RC modal
-import RawConfigModal from "../../components/ViewRawConfig/RawConfigModal";
+import JsonView from "../../assets/JsonView.svg";
+import ConfigModal from "../../components/ConfigModal/ConfigModal";
 
 const FullPageExtension = () => {
   const appConfig = useAppConfig();
@@ -30,35 +28,35 @@ const FullPageExtension = () => {
 
   return (
     <div className="layout-container">
-        <div className="ui-location">
-          <div className="ui-container">
-            <div className="logo-container">
-              <img src={Icon} alt="Logo" />
-              <p>{localeTexts.FullPage.title}</p>
+      <div className="ui-location">
+        <div className="ui-container">
+          <div className="logo-container">
+            <img src={Icon} alt="Logo" />
+            <p>{localeTexts.FullPage.title}</p>
+          </div>
+          <div className="config-container">
+            <div className="label-container">
+              <p className="label">Sample App Configuration</p>
+              <p className="info">(read only)</p>
             </div>
-            <div className="config-container">
-              <div className="label-container">
-                <p className="label">Sample App Configuration</p>
-                <p className="info">(read only)</p>
+            <div className="input-wrapper">
+              <div className="input-container">
+                <p className="config-value">{trimmedSampleAppConfig}</p>
+                <img src={ReadOnly} alt="ReadOnlyLogo" />
               </div>
-              <div className="input-wrapper">
-                <div className="input-container">
-                  <p className="config-value">{trimmedSampleAppConfig}</p>
-                  <img src={ReadOnly} alt="ReadOnlyLogo" />
-                </div>
 
-                <img src={Copy} alt="Show-Json-CTA" className="show-json-cta" onClick={handleViewRawConfig} />
-                {isRawConfigModalOpen && <RawConfigModal config={appConfig!} onClose={handleCloseModal} />}
-              </div>
-            </div>
-            <div className="location-description">
-              <p className="location-description-text">{parse(localeTexts.FullPage.body)}</p>
-              <a target="_blank" rel="noreferrer" href={localeTexts.FullPage.button.url}>
-                <span className="location-description-link">{localeTexts.FullPage.button.text}</span>
-              </a>
+              <img src={JsonView} alt="Show-Json-CTA" className="show-json-cta" onClick={handleViewRawConfig} />
+              {isRawConfigModalOpen && <ConfigModal config={appConfig!} onClose={handleCloseModal} />}
             </div>
           </div>
+          <div className="location-description">
+            <p className="location-description-text">{parse(localeTexts.FullPage.body)}</p>
+            <a target="_blank" rel="noreferrer" href={localeTexts.FullPage.button.url}>
+              <span className="location-description-link">{localeTexts.FullPage.button.text}</span>
+            </a>
+          </div>
         </div>
+      </div>
     </div>
   );
 };
