@@ -41,14 +41,14 @@
             "path": "/asset-sidebar",
             "signed": false,
             "enabled": true,
-            "width": 500          }
+            "width": 500
+          }
         ]
       },
       {
         "type": "cs.cm.stack.sidebar",
         "meta": [
           {
-
             "path": "/entry-sidebar",
             "signed": false,
             "enabled": true
