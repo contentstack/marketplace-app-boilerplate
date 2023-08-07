@@ -35,7 +35,6 @@ const AppConfigurationExtension: React.FC = () => {
               <div className={`${styles.infoContainer}`}>
                 <div className={`${styles.labelWrapper}`}>
                   <label htmlFor="appConfigData">Sample App Configuration </label>
-                  {/* <img src={HelpIcon} alt="info-icon" /> */}
                   <Tooltip content="Use this field to share non-sensitive configurations of your app with other locations." />
                 </div>
                 <p>(required)</p>
@@ -66,7 +65,6 @@ const AppConfigurationExtension: React.FC = () => {
               <div className={`${styles.infoContainer}`}>
                 <div className={`${styles.labelWrapper}`}>
                   <label htmlFor="serverConfigData">Sample Server Configuration </label>
-                  {/* <img src={HelpIcon} alt="info-icon" /> */}
                   <Tooltip content="Use this field to store sensitive configurations of your app. It is directly shared with the backend." />
                 </div>
                 <p>(required)</p>

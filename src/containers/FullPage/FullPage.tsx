@@ -6,9 +6,7 @@ import "../index.css";
 import "./FullPage.css";
 import Icon from "../../assets/Full-Page-Logo.svg";
 import ReadOnly from "../../assets/lock.svg";
-//TODO:  need to update the CTA button
 import JsonView from "../../assets/JsonView.svg";
-//TODO:  need to update the RC modal
 import ConfigModal from "../../components/ConfigModal/ConfigModal";
 
 const FullPageExtension = () => {

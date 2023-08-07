@@ -4,12 +4,9 @@ import parse from "html-react-parser";
 import { useAppConfig } from "../../common/hooks/useAppConfig";
 import "../index.css";
 import "./StackDashboard.css";
-// import styles from "./StackDashboard.module.css";
 import Icon from "../../assets/Custom-Field-Logo.svg";
 import ReadOnly from "../../assets/lock.svg";
-//TODO:  need to update the CTA button
 import JsonView from "../../assets/JsonView.svg";
-//TODO:  need to update the RC modal
 import ConfigModal from "../../components/ConfigModal/ConfigModal";
 
 const StackDashboardExtension = () => {
