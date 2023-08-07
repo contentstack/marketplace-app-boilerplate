@@ -3,8 +3,7 @@ import Icon from "../../assets/GearSix.svg";
 import HelpIcon from "../../assets/help_icon.svg";
 import localeTexts from "../../common/locales/en-us/index";
 import parse from "html-react-parser";
-import "../../index.css";
-import "./AppConfiguration.css";
+import styles from "./AppConfiguration.module.css";
 import { useInstallationData } from "../../common/hooks/useInstallationData";
 
 const AppConfigurationExtension: React.FC = () => {
@@ -23,24 +22,24 @@ const AppConfigurationExtension: React.FC = () => {
   };
 
   return (
-    <div className="layout-container">
-      <div className="app-config">
-        <div className="app-config-logo-container">
+    <div className={`${styles.layoutContainer}`}>
+      <div className={`${styles.appConfig}`}>
+        <div className={`${styles.appConfigLogoContainer}`}>
           <img src={Icon} alt="icon" />
           <p>{localeTexts.ConfigScreen.title}</p>
         </div>
 
-        <div className="config-wrapper">
-          <div className="config-container">
-            <div className="info-container-wrapper">
-              <div className="info-container">
-                <div className="label-wrapper">
+        <div className={`${styles.configWrapper}`}>
+          <div className={`${styles.configContainer}`}>
+            <div className={`${styles.infoContainerWrapper}`}>
+              <div className={`${styles.infoContainer}`}>
+                <div className={`${styles.labelWrapper}`}>
                   <label htmlFor="appConfigData">Sample App Configuration </label>
                   <img src={HelpIcon} alt="info-icon" />
                 </div>
                 <p>(required)</p>
               </div>
-              <div className="input-container">
+              <div className={`${styles.inputContainer}`}>
                 <input
                   type="text"
                   ref={appConfigDataRef}
@@ -49,11 +48,11 @@ const AppConfigurationExtension: React.FC = () => {
                   placeholder="Enter Field Value"
                   name="appConfigData"
                   autoComplete="off"
-                  className="field-input"
+                  className={`${styles.fieldInput}`}
                   onChange={updateConfig}></input>
               </div>
             </div>
-            <div className="description-container">
+            <div className={`${styles.descriptionContainer}`}>
               <p>
                 Use this field to share non-sensitive configurations of your app with other locations.
                 <span> Learn More</span>
@@ -61,16 +60,16 @@ const AppConfigurationExtension: React.FC = () => {
             </div>
           </div>
 
-          <div className="config-container">
-            <div className="info-container-wrapper">
-              <div className="info-container">
-                <div className="label-wrapper">
+          <div className={`${styles.configContainer}`}>
+            <div className={`${styles.infoContainerWrapper}`}>
+              <div className={`${styles.infoContainer}`}>
+                <div className={`${styles.labelWrapper}`}>
                   <label htmlFor="serverConfigData">Sample Server Configuration </label>
                   <img src={HelpIcon} alt="info-icon" />
                 </div>
                 <p>(required)</p>
               </div>
-              <div className="input-container">
+              <div className={`${styles.inputContainer}`}>
                 <input
                   type="text"
                   ref={serverConfigDataRef}
@@ -82,7 +81,7 @@ const AppConfigurationExtension: React.FC = () => {
                   onChange={updateConfig}></input>
               </div>
             </div>
-            <div className="description-container">
+            <div className={`${styles.descriptionContainer}`}>
               <p>
                 Use this field to store sensitive configurations of your app. It is directly shared withe the backend
                 via webhooks. <span> Learn More</span>
@@ -91,10 +90,10 @@ const AppConfigurationExtension: React.FC = () => {
           </div>
         </div>
 
-        <div className="location-description">
-          <p className="location-description-text">{parse(localeTexts.ConfigScreen.body)}</p>
+        <div className={`${styles.locationDescription}`}>
+          <p className={`${styles.locationDescriptionText}`}>{parse(localeTexts.ConfigScreen.body)}</p>
           <a target="_blank" rel="noreferrer" href={localeTexts.ConfigScreen.button.url}>
-            <span className="location-description-link">{localeTexts.ConfigScreen.button.text}</span>
+            <span className={`${styles.locationDescriptionLink}`}>{localeTexts.ConfigScreen.button.text}</span>
           </a>
         </div>
       </div>

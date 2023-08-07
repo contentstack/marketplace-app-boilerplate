@@ -1,10 +1,16 @@
-import { useCallback, useEffect, useState } from "react";
-import Icon from "../../assets/Icon.svg";
+import { useCallback, useState } from "react";
 import localeTexts from "../../common/locales/en-us/index";
 import parse from "html-react-parser";
 import { useAppConfig } from "../../common/hooks/useAppConfig";
-import RawConfigButton from "../../components/ViewRawConfig/RawConfigButton";
-import RawConfigModal from "../../components/ViewRawConfig/RawConfigModal";
+import "../index.css";
+import "./StackDashboard.css";
+// import styles from "./StackDashboard.module.css";
+import Icon from "../../assets/Custom-Field-Logo.svg";
+import ReadOnly from "../../assets/lock.svg";
+//TODO:  need to update the CTA button
+import JsonView from "../../assets/JsonView.svg";
+//TODO:  need to update the RC modal
+import ConfigModal from "../../components/ConfigModal/ConfigModal";
 
 const StackDashboardExtension = () => {
   const appConfig = useAppConfig();
@@ -19,26 +25,39 @@ const StackDashboardExtension = () => {
     setRawConfigModalOpen(false);
   }, []);
 
-  const name = appConfig?.appConfigData || "";
+  const sampleAppConfig = appConfig?.appConfigData || "";
+  const trimmedSampleAppConfig =
+    sampleAppConfig.length > 17 ? `${sampleAppConfig.substring(0, 17)}...` : sampleAppConfig;
 
   return (
-    <div className="dashboard">
-      <div className="dashboard-container">
-        <div className="dashboard-icon">
-          <img src={Icon} alt="icon" />
-        </div>
-        <div className="app-component-content">
-          <h4>{localeTexts.DashboardWidget.title}</h4>
-          <p className="configValues">
-            <b>appConfigData: </b>
-            {name}
-            <RawConfigButton onClick={handleViewRawConfig} />
-          </p>
-          {isRawConfigModalOpen && <RawConfigModal config={appConfig!} onClose={handleCloseModal} />}
-          <p>{parse(localeTexts.DashboardWidget.body)}</p>
-          <a target="_blank" rel="noreferrer" href={localeTexts.DashboardWidget.button.url}>
-            {localeTexts.DashboardWidget.button.text}
-          </a>
+    <div className="layout-container">
+      <div className="ui-location">
+        <div className="ui-container">
+          <div className="logo-container">
+            <img src={Icon} alt="Logo" />
+            <p>{localeTexts.DashboardWidget.title}</p>
+          </div>
+          <div className="config-container">
+            <div className="label-container">
+              <p className="label">Sample App Configuration</p>
+              <p className="info">(read only)</p>
+            </div>
+            <div className="input-wrapper">
+              <div className="input-container">
+                <p className="config-value">{trimmedSampleAppConfig}</p>
+                <img src={ReadOnly} alt="ReadOnlyLogo" />
+              </div>
+
+              <img src={JsonView} alt="Show-Json-CTA" className="show-json-cta" onClick={handleViewRawConfig} />
+              {isRawConfigModalOpen && <ConfigModal config={appConfig!} onClose={handleCloseModal} />}
+            </div>
+          </div>
+          <div className="location-description">
+            <p className="location-description-text">{parse(localeTexts.DashboardWidget.body)}</p>
+            <a target="_blank" rel="noreferrer" href={localeTexts.DashboardWidget.button.url}>
+              <span className="location-description-link">{localeTexts.DashboardWidget.button.text}</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
