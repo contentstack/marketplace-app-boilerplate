@@ -4,12 +4,9 @@ import parse from "html-react-parser";
 import { useAppConfig } from "../../common/hooks/useAppConfig";
 import "../index.css";
 import "./AssetSidebar.css";
-import styles from "./AssetSidebarModal.module.css";
 import Icon from "../../assets/Asset-Sidebar-Logo.svg";
 import ReadOnly from "../../assets/lock.svg";
-//TODO:  need to update the CTA button
 import JsonView from "../../assets/JsonView.svg";
-//TODO:  need to update the RC modal
 import ConfigModal from "../../components/ConfigModal/ConfigModal";
 
 const AssetSidebarExtension = () => {

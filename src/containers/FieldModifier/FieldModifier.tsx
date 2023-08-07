@@ -6,9 +6,7 @@ import "../index.css";
 import styles from "./FieldModifier.module.css";
 import Icon from "../../assets/Field-Modifier-Icon.svg";
 import ReadOnly from "../../assets/lock.svg";
-//TODO:  need to update the CTA button
 import JsonView from "../../assets/JsonView.svg";
-//TODO:  need to update the RC modal
 import RawConfigModal from "../../components/ConfigModal/ConfigModal";
 
 const FieldModifierExtension = () => {

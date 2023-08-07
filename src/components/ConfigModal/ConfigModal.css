@@ -49,7 +49,7 @@
   font-size: 1.25rem;
   font-style: normal;
   font-weight: 600;
-  line-height: 150%; /* 1.875rem */
+  line-height: 150%;
   text-transform: capitalize;
 }
 
@@ -91,7 +91,7 @@
   font-size: 0.8125rem;
   font-style: normal;
   font-weight: 500;
-  line-height: 110%; /* 0.89375rem */
+  line-height: 110%; 
   margin: 0px;
   padding: 0.9375rem;
 }
@@ -130,7 +130,7 @@
   font-size: 1rem;
   font-style: normal;
   font-weight: 600;
-  line-height: 150%; /* 1.5rem */
+  line-height: 150%; 
   letter-spacing: 0.01rem;
   text-transform: capitalize;
 }

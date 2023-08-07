@@ -6,9 +6,7 @@ import "../index.css";
 import "./EntrySidebar.css";
 import Icon from "../../assets/Entry-Sidebar-Logo.svg";
 import ReadOnly from "../../assets/lock.svg";
-//TODO:  need to update the CTA button
 import JsonView from "../../assets/JsonView.svg";
-//TODO:  need to update the RC modal
 import ConfigModal from "../../components/ConfigModal/ConfigModal";
 
 const EntrySidebarExtension = () => {
