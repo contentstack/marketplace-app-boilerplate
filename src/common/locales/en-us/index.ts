@@ -9,7 +9,7 @@ const localeTexts = {
   },
   AssetSidebarWidget: {
     title: "Asset Sidebar Widget",
-    body: "This is the iframe that contains your Asset Sidebar Widget.&nbsp;<br />Build your app now",
+    body: "This is the iframe that contains your Asset Sidebar Widget.",
     button: {
       text: "Learn More",
       url: "https://www.contentstack.com/docs/developers/developer-hub/asset-sidebar-location/",
@@ -17,7 +17,7 @@ const localeTexts = {
   },
   ConfigScreen: {
     title: "App Configuration",
-    body: "This is the location that contains your app configuration. &nbsp;<br>Build your app now",
+    body: "This is the location that contains your app configuration.",
     button: {
       text: "Learn More",
       url: "https://www.contentstack.com/docs/developers/developer-hub/app-config-location/",
@@ -25,7 +25,7 @@ const localeTexts = {
   },
   CustomField: {
     title: "Custom Field",
-    body: "This is the iframe that contains your Custom Field. <br />Build your app now",
+    body: "This is the iframe that contains your Custom Field.",
     button: {
       text: "Learn More",
       url: "https://www.contentstack.com/docs/developers/developer-hub/custom-field-location/",
@@ -33,7 +33,7 @@ const localeTexts = {
   },
   DashboardWidget: {
     title: "Dashboard Widget",
-    body: "This is the location that contains your Dashboard Widget. <br />Build your app now",
+    body: "This is the location that contains your Dashboard Widget.",
     button: {
       text: "Learn More",
       url: "https://www.contentstack.com/docs/developers/developer-hub/dashboard-location/",
@@ -41,7 +41,7 @@ const localeTexts = {
   },
   SidebarWidget: {
     title: "Sidebar Widget",
-    body: "This is the iframe that contains your Sidebar Widget. <br />Build your app now",
+    body: "This is the iframe that contains your Sidebar Widget.",
     button: {
       text: "Learn More",
       url: "https://www.contentstack.com/docs/developers/developer-hub/sidebar-location/",
@@ -49,7 +49,7 @@ const localeTexts = {
   },
   FullPage: {
     title: "Full Page App",
-    body: "This is the location that contains your Full Page App. <br />Build your app now",
+    body: "This is the location that contains your Full Page App.",
     button: {
       text: "Learn More",
       url: "https://www.contentstack.com/docs/developers/developer-hub/full-page-location/",
@@ -57,7 +57,7 @@ const localeTexts = {
   },
   FieldModifier: {
     title: "Field Modifier App",
-    body: "This is the location that contains your Field Modifier app. <br />Build your app now",
+    body: "This is the location that contains your Field Modifier app.",
     button: {
       text: "Learn More",
       url: "https://www.contentstack.com/docs/developers/developer-hub/field-modifier-location/",
