@@ -17,7 +17,7 @@ const localeTexts = {
   },
   ConfigScreen: {
     title: "App Configuration",
-    body: "This is the location that contains your app configuration. &nbsp;<br>Create your new app now.",
+    body: "This is the location that contains your app configuration. &nbsp;<br>Build your app now",
     button: {
       text: "Learn More",
       url: "https://www.contentstack.com/docs/developers/developer-hub/app-config-location/",
@@ -33,7 +33,7 @@ const localeTexts = {
   },
   DashboardWidget: {
     title: "Dashboard Widget",
-    body: "This is the location that contains your Dashboard Widget. <br />Create your new app now!",
+    body: "This is the location that contains your Dashboard Widget. <br />Build your app now",
     button: {
       text: "Learn More",
       url: "https://www.contentstack.com/docs/developers/developer-hub/dashboard-location/",
@@ -57,7 +57,7 @@ const localeTexts = {
   },
   FieldModifier: {
     title: "Field Modifier App",
-    body: "This is the location that contains your Field Modifier app. <br />Create your new app now!",
+    body: "This is the location that contains your Field Modifier app. <br />Build your app now",
     button: {
       text: "Learn More",
       url: "https://www.contentstack.com/docs/developers/developer-hub/field-modifier-location/",
