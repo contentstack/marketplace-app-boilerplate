@@ -25,12 +25,14 @@ export const MarketplaceAppProvider: React.FC<ProviderProps> = ({ children }) =>
       .then(async (appSdk) => {
         setAppSdk(appSdk);
         //updated Height of the Custom Field Iframe.
-        appSdk.location.CustomField?.frame?.updateHeight?.(450);
+        appSdk.location.DashboardWidget?.frame?.disableAutoResizing();
+        await appSdk.location.CustomField?.frame?.updateHeight?.(450);
         //updated Height and Width of the Field Modifier Iframe.
-        appSdk.location.FieldModifierLocation?.frame?.updateDimension({ height: 380, width: 520 });
+        appSdk.location.FieldModifierLocation?.frame?.disableAutoResizing();
+        await appSdk.location.FieldModifierLocation?.frame?.updateDimension({ height: 380, width: 520 });
         // //updated Height of the Stack Dashboard Iframe.
-        appSdk.location.DashboardWidget?.frame?.updateHeight?.(722);
-        appSdk.location.DashboardWidget?.frame?.enableAutoResizing();
+        appSdk.location.DashboardWidget?.frame?.disableAutoResizing();
+        await appSdk.location.DashboardWidget?.frame?.updateHeight?.(722);
         const appConfig = await appSdk.getConfig();
         setConfig(appConfig);
       })
