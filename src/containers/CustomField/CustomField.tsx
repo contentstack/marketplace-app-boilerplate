@@ -22,7 +22,7 @@ const CustomFieldExtension = () => {
     setRawConfigModalOpen(false);
   }, []);
 
-  const sampleAppConfig = appConfig?.appConfigData || "";
+  const sampleAppConfig = appConfig?.["Sample App Configuration"] || "";
   const trimmedSampleAppConfig =
     sampleAppConfig.length > 17 ? `${sampleAppConfig.substring(0, 17)}...` : sampleAppConfig;
 
