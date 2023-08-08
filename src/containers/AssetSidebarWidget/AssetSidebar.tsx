@@ -22,7 +22,7 @@ const AssetSidebarExtension = () => {
     setRawConfigModalOpen(false);
   }, []);
 
-  const sampleAppConfig = appConfig?.appConfigData || "";
+  const sampleAppConfig = appConfig?.["Sample App Configuration"] || "";
   const trimmedSampleAppConfig =
     sampleAppConfig.length > 13 ? `${sampleAppConfig.substring(0, 13)}...` : sampleAppConfig;
 

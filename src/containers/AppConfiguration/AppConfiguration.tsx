@@ -15,8 +15,8 @@ const AppConfigurationExtension: React.FC = () => {
   const updateConfig = async (elem: any) => {
     if (typeof setInstallationData !== "undefined") {
       await setInstallationData({
-        configuration: { appConfigData: appConfigDataRef.current.value },
-        serverConfiguration: { serverConfigData: serverConfigDataRef.current.value },
+        configuration: { "Sample App Configuration": appConfigDataRef.current.value },
+        serverConfiguration: { "Sample Server Configuration": serverConfigDataRef.current.value },
       });
     }
   };
@@ -34,10 +34,9 @@ const AppConfigurationExtension: React.FC = () => {
             <div className={`${styles.infoContainerWrapper}`}>
               <div className={`${styles.infoContainer}`}>
                 <div className={`${styles.labelWrapper}`}>
-                  <label htmlFor="appConfigData">Sample App Configuration </label>
-                  <Tooltip content="Use this field to share non-sensitive configurations of your app with other locations." />
+                  <label htmlFor="appConfigData">Sample App Configuration Field </label>
+                  <Tooltip content="You can save this field for information such as User Name, Email, Number, Date, etc." />
                 </div>
-                <p>(required)</p>
               </div>
               <div className={`${styles.inputContainer}`}>
                 <input
@@ -55,7 +54,6 @@ const AppConfigurationExtension: React.FC = () => {
             <div className={`${styles.descriptionContainer}`}>
               <p>
                 Use this field to share non-sensitive configurations of your app with other locations.
-                <span> Learn More</span>
               </p>
             </div>
           </div>
@@ -64,10 +62,9 @@ const AppConfigurationExtension: React.FC = () => {
             <div className={`${styles.infoContainerWrapper}`}>
               <div className={`${styles.infoContainer}`}>
                 <div className={`${styles.labelWrapper}`}>
-                  <label htmlFor="serverConfigData">Sample Server Configuration </label>
-                  <Tooltip content="Use this field to store sensitive configurations of your app. It is directly shared with the backend." />
+                  <label htmlFor="serverConfigData">Sample Server Configuration Field </label>
+                  <Tooltip content="You can use this field for information such as Passwords, API Key, Client Secret, Client ID, etc." />
                 </div>
-                <p>(required)</p>
               </div>
               <div className={`${styles.inputContainer}`}>
                 <input
@@ -84,7 +81,7 @@ const AppConfigurationExtension: React.FC = () => {
             <div className={`${styles.descriptionContainer}`}>
               <p>
                 Use this field to store sensitive configurations of your app. It is directly shared with the backend via
-                webhooks. <span> Learn More</span>
+                webhooks.
               </p>
             </div>
           </div>
