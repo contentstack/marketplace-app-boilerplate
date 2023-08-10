@@ -1,0 +1,217 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
+
+.layoutContainer {
+  display: flex;
+  padding: 1.875rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.625rem;
+  flex-shrink: 0;
+  background: #fff;
+}
+
+.appConfig {
+  display: flex;
+  padding: 2.5rem 0rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  align-self: stretch;
+  border-radius: 0.5rem;
+  border: 1px solid var(--bg-colors-dolphin-grey-n-200, #dde3ee);
+  background: var(--bg-colors-pure-white, #fff);
+}
+
+.appConfigLogoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.appConfigLogoContainer > img {
+  width: 3.375rem;
+  height: 3.375rem;
+}
+
+.appConfigLogoContainer > p {
+  color: var(--text-secondary-text-tarmac-grey-n-700, #475161);
+  text-align: center;
+  /* Heading/H2 */
+  font-family: Inter;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  /* 1.875rem */
+  text-transform: capitalize;
+}
+
+.configWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.configContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  display: flex;
+  width: 31.9375rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+.infoContainerWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  align-self: stretch;
+}
+
+.infoContainer {
+  display: flex;
+  padding: 0rem 0.5rem;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: stretch;
+}
+
+.infoContainer > label {
+  color: var(--text-primary-text-gray-900-body-black, #212121);
+  font-family: Inter;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  /* 1.3125rem */
+  letter-spacing: 0.00875rem;
+  text-transform: capitalize;
+}
+
+.labelWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+}
+
+.infoContainer > img {
+  width: 1rem;
+  height: 1rem;
+}
+
+.infoContainer > p {
+  color: var(--text-secondary-text-purple-gray, #6e6b86);
+  font-family: Inter;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+.inputContainer {
+  display: flex;
+  padding: 0.5rem 1rem;
+  align-items: center;
+  gap: 0.25rem;
+  flex: 1 0 0;
+  border-radius: 0.25rem;
+  width: 29.9375rem;
+  border: 1px solid var(--bg-colors-dolphin-grey-n-200, #dde3ee);
+}
+
+.inputContainer > input {
+  color: var(--text-secondary-text-purple-gray, #6e6b86);
+  font-family: Inter;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1 0 0;
+  padding: 0%;
+}
+
+.inputContainer > input:focus {
+  outline: none;
+}
+
+.descriptionContainer {
+  display: flex;
+  padding: 0rem 0.5rem;
+  align-items: flex-start;
+  gap: 0.25rem !important;
+  align-self: stretch;
+}
+
+.descriptionContainer > p {
+  color: var(--text-secondary-text-tarmac-grey-n-700, #475161);
+  font-family: Inter;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  text-align: left;
+}
+
+.descriptionContainer > p > span {
+  color: var(--brand-colors-orchid-purple-p-400-primary, #6c5ce7);
+  font-family: Inter;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+.locationDescription {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  align-self: stretch;
+}
+
+.locationDescription-text {
+  align-self: stretch;
+  color: var(--text-secondary-text-tarmac-grey-n-700, #475161);
+  text-align: center;
+  font-family: Inter;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  /* 1.5rem */
+  letter-spacing: 0.01rem;
+}
+
+.locationDescription > a {
+  align-self: stretch;
+  text-align: center;
+  letter-spacing: 0.01rem;
+}
+
+.locationDescriptionLink {
+  color: var(--brand-colors-orchid-purple-p-400-primary, #6c5ce7);
+  text-align: center;
+  font-family: Inter;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: 0.01rem;
+  display: inline-block;
+}
+
+.locationDescriptionLink:hover {
+  cursor: pointer;
+}

@@ -1,0 +1,38 @@
+
+.tooltipWrapper {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tooltipContent {
+  position: absolute;
+  z-index: 1;
+  top: -256%;
+  left: 50%;
+  transform: translateX(-8%);
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 330px;
+  text-align: center;
+  opacity: 0.8;
+  display: none;
+}
+
+.tooltipContent::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  right: 90%;
+  margin-left: -8px;
+  border-width: 8px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
+
+.tooltipWrapper:hover .tooltipContent {
+  display: block;
+}

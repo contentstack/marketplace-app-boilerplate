@@ -1,0 +1,193 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
+/* User Agent Styles Overwritten */
+
+body,
+html {
+  font-family: "Inter", sans-serif;
+}
+
+p {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: 0em;
+  text-align: center;
+  line-height: 185%;
+  display: initial;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
+
+a {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #6c5ce7;
+  text-decoration: none;
+}
+
+/* Common Styles to all UI Locations */
+
+.layout-container {
+  display: flex;
+  height: 96vh;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  align-self: stretch;
+}
+
+.ui-location-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.ui-location {
+  display: flex;
+  border-radius: 0.5rem;
+  border: 1px solid var(--bg-colors-dolphin-grey-n-200, #dde3ee);
+}
+
+.ui-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  flex: 1 0 0;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-container > img {
+  width: 3.375rem;
+  height: 3.375rem;
+}
+
+.logo-container > p {
+  color: var(--text-secondary-text-tarmac-grey-n-700, #475161);
+  text-align: center;
+  font-family: Inter;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; 
+  text-transform: capitalize;
+}
+
+.config-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.label-container {
+  display: flex;
+  padding: 0rem 0.5rem;
+  align-items: center;
+  gap: 0.4rem;
+  align-self: stretch;
+}
+
+.label {
+  color: var(--text-primary-text-gray-900-body-black, #212121);
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; 
+  letter-spacing: 0.00875rem;
+  text-transform: capitalize;
+}
+
+.info {
+  color: var(--text-secondary-text-purple-gray, #6e6b86);
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+  align-self: stretch;
+}
+
+.input-container {
+  display: flex;
+  padding: 0.5rem 1rem;
+  align-items: center;
+  gap: 0.25rem;
+  flex: 1 0 0;
+  border-radius: 0.25rem;
+  border: 1px solid var(--bg-colors-dolphin-grey-n-200, #dde3ee);
+  border-radius: 0.25rem;
+  background: var(--bg-colors-tulip-purple-p-5, #f9f8ff);
+}
+
+.config-value {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1 0 0;
+  color: var(--text-primary-text-gray-900-body-black, #212121);
+  font-family: Inter;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: 0.01rem;
+}
+
+.show-json-cta {
+  display: flex;
+  padding: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.25rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  cursor: pointer;
+}
+
+.location-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  align-self: stretch;
+}
+
+.location-description-text {
+  color: var(--text-secondary-text-tarmac-grey-n-700, #475161);
+  text-align: center;
+  font-family: Inter;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: 0.01rem;
+}
+
+.location-description-link {
+  color: var(--brand-colors-orchid-purple-p-400-primary, #6c5ce7);
+  text-align: center;
+  font-family: Inter;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: 0.01rem;
+}

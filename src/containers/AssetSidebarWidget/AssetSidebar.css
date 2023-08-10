@@ -1,0 +1,38 @@
+body {
+  margin-left: 0px;
+}
+.layout-container {
+  margin: none;
+}
+
+.ui-location-wrapper {
+  align-items: center;
+  padding: 6.375rem 0rem 6.375rem 1.5rem;
+  gap: 1.9375rem;
+  flex: 1 0 0;
+}
+
+.ui-location {
+  margin: auto;
+  padding: 1rem 1rem;
+  align-items: flex-start;
+  gap: 0.625rem;
+  flex: 1 0 0;
+}
+
+.logo-container {
+  display: flex;
+}
+
+.config-container {
+  gap: 0.5rem;
+  align-self: stretch;
+}
+
+.label {
+  font-size: 0.75rem;
+}
+
+.info {
+  font-size: 0.75rem;
+}

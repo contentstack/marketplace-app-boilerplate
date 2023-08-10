@@ -6,8 +6,6 @@ import { isNull } from "lodash";
 import { AppFailed } from "../../components/AppFailed";
 import { MarketplaceAppContext } from "../contexts/marketplaceContext";
 
-const MARKETPLACE_APP_NAME: string = process.env.REACT_APP_MARKETPLACE_APP_NAME as string;
-
 type ProviderProps = {
   children?: React.ReactNode;
 };
@@ -26,6 +24,15 @@ export const MarketplaceAppProvider: React.FC<ProviderProps> = ({ children }) =>
     ContentstackAppSDK.init()
       .then(async (appSdk) => {
         setAppSdk(appSdk);
+        //updated Height of the Custom Field Iframe.
+        appSdk.location.DashboardWidget?.frame?.disableAutoResizing();
+        await appSdk.location.CustomField?.frame?.updateHeight?.(450);
+        //updated Height and Width of the Field Modifier Iframe.
+        appSdk.location.FieldModifierLocation?.frame?.disableAutoResizing();
+        await appSdk.location.FieldModifierLocation?.frame?.updateDimension({ height: 380, width: 520 });
+        // //updated Height of the Stack Dashboard Iframe.
+        appSdk.location.DashboardWidget?.frame?.disableAutoResizing();
+        await appSdk.location.DashboardWidget?.frame?.updateHeight?.(722);
         const appConfig = await appSdk.getConfig();
         setConfig(appConfig);
       })

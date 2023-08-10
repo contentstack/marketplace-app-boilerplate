@@ -1,0 +1,136 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;200;300;400;500&display=swap");
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #212121;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  display: flex;
+  width: 90%;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 0.5rem;
+  border: 1px solid var(--bg-colors-dolphin-grey-n-200, #dde3ee);
+  background: #fff;
+  box-shadow: 0px 11px 15px 0px rgba(0, 0, 0, 0.2), 0px 9px 46px 8px rgba(0, 0, 0, 0.12),
+    0px 24px 38px 3px rgba(0, 0, 0, 0.14);
+  max-width: 31.25rem;
+}
+
+.header-container {
+  display: flex;
+  padding: 0.5rem 1rem;
+  align-items: center;
+  flex: 1 0 0;
+  align-self: stretch;
+  border-bottom: 1px solid var(--bg-colors-dolphin-grey-n-200, #dde3ee);
+}
+
+.header-text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1 0 0;
+}
+
+.header-text > p {
+  color: var(--text-primary-text-gray-900-body-black, #212121);
+  font-family: Inter;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  text-transform: capitalize;
+}
+
+.header-container > img {
+  display: flex;
+  width: 2.5rem;
+  height: 2.5rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  cursor: pointer;
+}
+
+.body-container {
+  display: flex;
+  padding: 1.5rem 1rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  align-self: stretch;
+  background: var(--bg-colors-pure-white, #fff);
+}
+
+.json-window {
+  display: flex;
+  align-items: flex-start;
+  flex: 1 0 0;
+  align-self: stretch;
+  border-radius: 0.625rem;
+  background: var(--neutral-tarmac-grey-n-700, #475161);
+  overflow-x: scroll;
+}
+
+.json-window > pre {
+  flex: 1 0 0;
+  align-self: stretch;
+  color: #f1f4fe;
+  font-family: IBM Plex Mono;
+  font-size: 0.8125rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 110%; 
+  margin: 0px;
+  padding: 0.9375rem;
+}
+
+.footer-container {
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.625rem;
+  align-self: stretch;
+  border-radius: 0rem 0rem 0.5rem 0.5rem;
+  border-top: 1px solid var(--bg-colors-dolphin-grey-n-200, #dde3ee);
+  background: var(--bg-colors-pure-white, #fff);
+}
+
+.button {
+  display: flex;
+  padding: 0.5rem 1rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.25rem;
+  background: var(--brand-colors-orchid-purple-p-400-primary, #6c5ce7);
+  cursor: pointer;
+}
+
+.button-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.button-text {
+  color: var(--bg-colors-pure-white, #fff);
+  font-family: Inter;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; 
+  letter-spacing: 0.01rem;
+  text-transform: capitalize;
+}

@@ -1,0 +1,48 @@
+
+.layout-container {
+  margin: 0px;
+}
+
+.ui-location-wrapper {
+  padding: 1.5rem 1.5rem;
+  align-items: flex-start;
+  gap: 1.25rem;
+  align-self: stretch;
+}
+
+.ui-location {
+  padding: 1.5rem 0rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.9375rem;
+  align-self: stretch;
+  width: 96vw;
+}
+
+.ui-container {
+  padding: 1.5rem 0rem;
+}
+
+.config-container {
+  width: 17.5625rem;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.label {
+  font-size: 0.875rem;
+}
+
+.info {
+  font-size: 0.875rem;
+}
+
+.location-description {
+  width: 25.5625rem;
+}
+
+.location-description-text {
+  white-space: nowrap; 
+  word-wrap: break-word; 
+}
