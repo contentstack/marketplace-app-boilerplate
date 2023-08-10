@@ -1,0 +1,52 @@
+body {
+  overflow: hidden;
+}
+
+.layout-container {
+  padding: 0rem;
+  flex-direction: column;
+  flex-shrink: 0;
+  margin: auto;
+  height: 95vh;
+}
+
+.ui-location {
+  padding: 0rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  flex: 1 0 0;
+  height: 80vh;
+  width: 95vw;
+  max-height: 89vh;
+  margin: auto;
+}
+
+.ui-container {
+  padding: 1rem 0rem;
+  justify-content: center;
+}
+
+.config-container {
+  width: 17.5625rem;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.label {
+  font-size: 0.875rem;
+}
+
+.info {
+  font-size: 0.875rem;
+}
+
+.location-description {
+  width: 25.5625rem;
+}
+
+.location-description-text {
+  white-space: nowrap;
+  word-wrap: break-word;
+}
