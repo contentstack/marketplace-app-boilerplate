@@ -22,7 +22,7 @@ const FieldModifierExtension = () => {
     setRawConfigModalOpen(false);
   }, []);
 
-  const sampleAppConfig = appConfig?.["appConfigData"] || "";
+  const sampleAppConfig = appConfig?.["sample_app_configuration"] || "";
   const trimmedSampleAppConfig =
     sampleAppConfig.length > 10 ? `${sampleAppConfig.substring(0, 10)}...` : sampleAppConfig;
 
@@ -37,7 +37,7 @@ const FieldModifierExtension = () => {
             </div>
             <div className={`config-container ${styles.configContainer}`}>
               <div className="label-container">
-                <p className={`label ${styles.label}`}>Sample App Configuration</p>
+                <p className={`label ${styles.label}`}>Sample App Configuration Field</p>
                 <p className={`info ${styles.info}`}>(read only)</p>
               </div>
               <div className="input-wrapper">
