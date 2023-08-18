@@ -22,7 +22,7 @@ const StackDashboardExtension = () => {
     setRawConfigModalOpen(false);
   }, []);
 
-  const sampleAppConfig = appConfig?.["Sample App Configuration"] || "";
+  const sampleAppConfig = appConfig?.["sample_app_configuration"] || "";
   const trimmedSampleAppConfig =
     sampleAppConfig.length > 17 ? `${sampleAppConfig.substring(0, 17)}...` : sampleAppConfig;
 
@@ -36,7 +36,7 @@ const StackDashboardExtension = () => {
           </div>
           <div className="config-container">
             <div className="label-container">
-              <p className="label">Sample App Configuration</p>
+              <p className="label">Sample App Configuration Field</p>
               <p className="info">(read only)</p>
             </div>
             <div className="input-wrapper">
