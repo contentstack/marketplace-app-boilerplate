@@ -36,14 +36,8 @@ export const AppConfigurationExtensionProvider = ({ children }: ChildProp) => {
       setLoading(true);
 
       const newInstallationData: InstallationData = {
-        configuration: {
-          ...installationData.configuration,
-          ...data.configuration,
-        },
-        serverConfiguration: {
-          ...installationData.serverConfiguration,
-          ...data.serverConfiguration,
-        },
+        configuration: { ...installationData.configuration, ...data.configuration },
+        serverConfiguration: { ...installationData.serverConfiguration, ...data.serverConfiguration },
       };
       if (location && !("installation" in location)) return;
       await location?.installation.setInstallationData(newInstallationData);
