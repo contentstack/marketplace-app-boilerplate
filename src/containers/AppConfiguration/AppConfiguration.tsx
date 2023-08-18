@@ -14,8 +14,8 @@ const AppConfigurationExtension: React.FC = () => {
   const updateConfig = async () => {
     if (typeof setInstallationData !== "undefined") {
       setInstallationData({
-        configuration: { "appConfigData": appConfigDataRef?.current?.value },
-        serverConfiguration: { "serverConfigData": serverConfigDataRef?.current?.value },
+        configuration: { sample_app_configuration: appConfigDataRef.current?.value },
+        serverConfiguration: { sampl_server_configuration: serverConfigDataRef.current?.value },
       });
     }
   };
@@ -51,9 +51,7 @@ const AppConfigurationExtension: React.FC = () => {
               </div>
             </div>
             <div className={`${styles.descriptionContainer}`}>
-              <p>
-                Use this field to share non-sensitive configurations of your app with other locations.
-              </p>
+              <p>Use this field to share non-sensitive configurations of your app with other locations.</p>
             </div>
           </div>
 
