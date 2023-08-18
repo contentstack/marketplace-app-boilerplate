@@ -22,7 +22,7 @@ const AssetSidebarExtension = () => {
     setRawConfigModalOpen(false);
   }, []);
 
-  const sampleAppConfig = appConfig?.["Sample App Configuration"] || "";
+  const sampleAppConfig = appConfig?.["sample_app_configuration"] || "";
   const trimmedSampleAppConfig =
     sampleAppConfig.length > 13 ? `${sampleAppConfig.substring(0, 13)}...` : sampleAppConfig;
 
@@ -37,7 +37,7 @@ const AssetSidebarExtension = () => {
             </div>
             <div className="config-container">
               <div className="label-container">
-                <p className="label">Sample App Configuration</p>
+                <p className="label">Sample App Configuration Field</p>
                 <p className="info">(read only)</p>
               </div>
               <div className="input-wrapper">
