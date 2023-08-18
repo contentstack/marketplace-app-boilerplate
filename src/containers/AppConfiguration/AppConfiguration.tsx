@@ -13,7 +13,7 @@ const AppConfigurationExtension: React.FC = () => {
 
   const updateConfig = async () => {
     if (typeof setInstallationData !== "undefined") {
-      await setInstallationData({
+      setInstallationData({
         configuration: { "appConfigData": appConfigDataRef?.current?.value },
         serverConfiguration: { "serverConfigData": serverConfigDataRef?.current?.value },
       });
