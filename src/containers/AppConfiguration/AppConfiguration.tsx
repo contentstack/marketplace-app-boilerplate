@@ -8,15 +8,14 @@ import Tooltip from "../Tooltip/Tooltip";
 
 const AppConfigurationExtension: React.FC = () => {
   const { installationData, setInstallationData } = useInstallationData();
+  const appConfigDataRef = useRef<HTMLInputElement>(null);
+  const serverConfigDataRef = useRef<HTMLInputElement>(null);
 
-  const appConfigDataRef = useRef<any>("");
-  const serverConfigDataRef = useRef<any>("");
-
-  const updateConfig = async (elem: any) => {
+  const updateConfig = async () => {
     if (typeof setInstallationData !== "undefined") {
       await setInstallationData({
-        configuration: { "Sample App Configuration": appConfigDataRef.current.value },
-        serverConfiguration: { "Sample Server Configuration": serverConfigDataRef.current.value },
+        configuration: { "appConfigData": appConfigDataRef?.current?.value },
+        serverConfiguration: { "serverConfigData": serverConfigDataRef?.current?.value },
       });
     }
   };
@@ -39,16 +38,16 @@ const AppConfigurationExtension: React.FC = () => {
                 </div>
               </div>
               <div className={`${styles.inputContainer}`}>
-                <input
+                {<input
                   type="text"
                   ref={appConfigDataRef}
                   required
-                  value={installationData.configuration.appConfigData}
+                  value={installationData.configuration.appConfigData as string}
                   placeholder="Enter Field Value"
                   name="appConfigData"
                   autoComplete="off"
                   className={`${styles.fieldInput}`}
-                  onChange={updateConfig}></input>
+                  onChange={updateConfig}></input>}
               </div>
             </div>
             <div className={`${styles.descriptionContainer}`}>
@@ -71,7 +70,7 @@ const AppConfigurationExtension: React.FC = () => {
                   type="text"
                   ref={serverConfigDataRef}
                   required
-                  value={installationData.serverConfiguration.serverConfigData}
+                  value={installationData.serverConfiguration.serverConfigData as string}
                   placeholder="Enter Field Value"
                   name="serverConfigData"
                   autoComplete="off"
