@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import ContentstackAppSDK from "@contentstack/app-sdk";
-import Extension from "@contentstack/app-sdk/dist/src/extension";
-import { KeyValueObj } from "../types/types";
+import UiLocation from "@contentstack/app-sdk/dist/src/uiLocation";
 import { isNull } from "lodash";
+
+import { KeyValueObj } from "../types/types";
 import { AppFailed } from "../../components/AppFailed";
 import { MarketplaceAppContext } from "../contexts/marketplaceContext";
 
@@ -16,7 +17,7 @@ type ProviderProps = {
  */
 export const MarketplaceAppProvider: React.FC<ProviderProps> = ({ children }) => {
   const [failed, setFailed] = useState<boolean>(false);
-  const [appSdk, setAppSdk] = useState<Extension | null>(null);
+  const [appSdk, setAppSdk] = useState<UiLocation | null>(null);
   const [appConfig, setConfig] = useState<KeyValueObj | null>(null);
 
   // Initialize the SDK and track analytics event
