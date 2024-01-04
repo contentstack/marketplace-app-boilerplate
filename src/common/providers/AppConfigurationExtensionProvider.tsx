@@ -33,8 +33,6 @@ export const AppConfigurationExtensionProvider = ({ children }: ChildProp) => {
       configuration: { [key: string]: unknown };
       serverConfiguration: { [key: string]: unknown };
     }) => {
-      setLoading(true);
-
       const newInstallationData: InstallationData = {
         configuration: { ...installationData.configuration, ...data.configuration },
         serverConfiguration: { ...installationData.serverConfiguration, ...data.serverConfiguration },
