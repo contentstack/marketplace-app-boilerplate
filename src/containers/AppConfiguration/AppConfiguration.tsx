@@ -38,16 +38,16 @@ const AppConfigurationExtension: React.FC = () => {
                 </div>
               </div>
               <div className={`${styles.inputContainer}`}>
-                {<input
+                <input
                   type="text"
                   ref={appConfigDataRef}
                   required
-                  value={installationData.configuration.appConfigData as string}
+                  value={installationData.configuration.sample_app_configuration as string}
                   placeholder="Enter Field Value"
                   name="appConfigData"
                   autoComplete="off"
                   className={`${styles.fieldInput}`}
-                  onChange={updateConfig}></input>}
+                  onChange={updateConfig} />
               </div>
             </div>
             <div className={`${styles.descriptionContainer}`}>
@@ -68,11 +68,11 @@ const AppConfigurationExtension: React.FC = () => {
                   type="text"
                   ref={serverConfigDataRef}
                   required
-                  value={installationData.serverConfiguration.serverConfigData as string}
+                  value={installationData.serverConfiguration.sample_app_configuration as string}
                   placeholder="Enter Field Value"
                   name="serverConfigData"
                   autoComplete="off"
-                  onChange={updateConfig}></input>
+                  onChange={updateConfig} />
               </div>
             </div>
             <div className={`${styles.descriptionContainer}`}>
