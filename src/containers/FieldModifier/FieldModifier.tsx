@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import React, { useCallback, useState } from "react";
 import localeTexts from "../../common/locales/en-us/index";
 import parse from "html-react-parser";
 import { useAppConfig } from "../../common/hooks/useAppConfig";
@@ -47,7 +47,7 @@ const FieldModifierExtension = () => {
                 </div>
 
                 <img src={JsonView} alt="Show-Json-CTA" className="show-json-cta" onClick={handleViewRawConfig} />
-                {isRawConfigModalOpen && <RawConfigModal config={appConfig!} onClose={handleCloseModal} />}
+                {isRawConfigModalOpen && appConfig && <RawConfigModal config={appConfig} onClose={handleCloseModal} />}
               </div>
             </div>
             <div className={`location-description ${styles.locationDescription}`}>

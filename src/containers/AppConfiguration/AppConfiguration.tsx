@@ -8,15 +8,14 @@ import Tooltip from "../Tooltip/Tooltip";
 
 const AppConfigurationExtension: React.FC = () => {
   const { installationData, setInstallationData } = useInstallationData();
+  const appConfigDataRef = useRef<HTMLInputElement>(null);
+  const serverConfigDataRef = useRef<HTMLInputElement>(null);
 
-  const appConfigDataRef = useRef<any>("");
-  const serverConfigDataRef = useRef<any>("");
-
-  const updateConfig = async (elem: any) => {
+  const updateConfig = async () => {
     if (typeof setInstallationData !== "undefined") {
-      await setInstallationData({
-        configuration: { sample_app_configuration: appConfigDataRef.current.value },
-        serverConfiguration: { sample_server_configuration: serverConfigDataRef.current.value },
+      setInstallationData({
+        configuration: { sample_app_configuration: appConfigDataRef.current?.value },
+        serverConfiguration: { sampl_server_configuration: serverConfigDataRef.current?.value },
       });
     }
   };
@@ -43,12 +42,12 @@ const AppConfigurationExtension: React.FC = () => {
                   type="text"
                   ref={appConfigDataRef}
                   required
-                  value={installationData.configuration.appConfigData}
+                  value={installationData.configuration.sample_app_configuration as string}
                   placeholder="Enter Field Value"
                   name="appConfigData"
                   autoComplete="off"
                   className={`${styles.fieldInput}`}
-                  onChange={updateConfig}></input>
+                  onChange={updateConfig} />
               </div>
             </div>
             <div className={`${styles.descriptionContainer}`}>
@@ -69,11 +68,11 @@ const AppConfigurationExtension: React.FC = () => {
                   type="text"
                   ref={serverConfigDataRef}
                   required
-                  value={installationData.serverConfiguration.serverConfigData}
+                  value={installationData.serverConfiguration.sample_app_configuration as string}
                   placeholder="Enter Field Value"
                   name="serverConfigData"
                   autoComplete="off"
-                  onChange={updateConfig}></input>
+                  onChange={updateConfig} />
               </div>
             </div>
             <div className={`${styles.descriptionContainer}`}>

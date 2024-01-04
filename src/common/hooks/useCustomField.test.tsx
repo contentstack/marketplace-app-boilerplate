@@ -1,3 +1,4 @@
+import React from "react";
 import { renderHook, waitFor } from "@testing-library/react";
 import { CustomFieldTestProvider } from "../../test-utils/test-utils";
 import { useCustomField } from "./useCustomField";
@@ -11,8 +12,10 @@ describe("useCustomField", () => {
 
   it("should return the value from app SDK", async function () {
     const { result } = renderHook(() => useCustomField(), {
-      wrapper: ({ children }: any) => (
+      wrapper: ({ children }) => (
         <CustomFieldTestProvider
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          //@ts-ignore
           customField={customField.customField}
           setFieldData={customField.setFieldData}
           loading={customField.loading}>
