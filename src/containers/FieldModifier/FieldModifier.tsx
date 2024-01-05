@@ -37,7 +37,7 @@ const FieldModifierExtension = () => {
             </div>
             <div className={`config-container ${styles.configContainer}`}>
               <div className="label-container">
-                <p className={`label ${styles.label}`}>Sample App Configuration Field</p>
+                <p className={`label ${styles.label}`}>Sample App Configuration</p>
                 <p className={`info ${styles.info}`}>(read only)</p>
               </div>
               <div className="input-wrapper">
