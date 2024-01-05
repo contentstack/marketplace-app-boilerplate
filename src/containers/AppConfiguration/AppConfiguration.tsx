@@ -33,7 +33,7 @@ const AppConfigurationExtension: React.FC = () => {
             <div className={`${styles.infoContainerWrapper}`}>
               <div className={`${styles.infoContainer}`}>
                 <div className={`${styles.labelWrapper}`}>
-                  <label htmlFor="appConfigData">Sample App Configuration Field </label>
+                  <label htmlFor="appConfigData">Sample App Configuration</label>
                   <Tooltip content="You can save this field for information such as Username, Email, Number, Date, etc." />
                 </div>
               </div>
