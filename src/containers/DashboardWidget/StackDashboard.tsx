@@ -35,7 +35,7 @@ const StackDashboardExtension = () => {
           </div>
           <div className="config-container">
             <div className="label-container">
-              <p className="label">Sample App Configuration Field</p>
+              <p className="label">Sample App Configuration</p>
               <p className="info">(read only)</p>
             </div>
             <div className="input-wrapper">
