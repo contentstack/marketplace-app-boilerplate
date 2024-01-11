@@ -1,8 +1,8 @@
 import React from "react";
 
 export type InstallationData = {
-  configuration: { [key: string]: any };
-  serverConfiguration: { [key: string]: any };
+  configuration: { [key: string]: unknown };
+  serverConfiguration: { [key: string]: unknown };
 };
 
 export type AppConfigurationExtensionContextType = {
@@ -11,11 +11,12 @@ export type AppConfigurationExtensionContextType = {
   loading: boolean;
 };
 
-export const AppConfigurationExtensionContext = React.createContext<AppConfigurationExtensionContextType>({
-  installationData: {
-    configuration: {},
-    serverConfiguration: {},
-  },
-  setInstallationData: () => {},
-  loading: false,
-});
+export const AppConfigurationExtensionContext =
+  React.createContext<AppConfigurationExtensionContextType>({
+    installationData: {
+      configuration: {},
+      serverConfiguration: {},
+    },
+    setInstallationData: () => ({}),
+    loading: false,
+  });

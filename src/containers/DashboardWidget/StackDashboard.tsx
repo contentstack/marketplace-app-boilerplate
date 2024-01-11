@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import React, { useCallback, useState } from "react";
 import localeTexts from "../../common/locales/en-us/index";
 import parse from "html-react-parser";
 import { useAppConfig } from "../../common/hooks/useAppConfig";
@@ -11,7 +11,6 @@ import ConfigModal from "../../components/ConfigModal/ConfigModal";
 
 const StackDashboardExtension = () => {
   const appConfig = useAppConfig();
-
   const [isRawConfigModalOpen, setRawConfigModalOpen] = useState<boolean>(false);
 
   const handleViewRawConfig = useCallback(() => {
@@ -22,7 +21,7 @@ const StackDashboardExtension = () => {
     setRawConfigModalOpen(false);
   }, []);
 
-  const sampleAppConfig = appConfig?.["Sample App Configuration"] || "";
+  const sampleAppConfig = appConfig?.["sample_app_configuration"] || "";
   const trimmedSampleAppConfig =
     sampleAppConfig.length > 17 ? `${sampleAppConfig.substring(0, 17)}...` : sampleAppConfig;
 
@@ -46,7 +45,7 @@ const StackDashboardExtension = () => {
               </div>
 
               <img src={JsonView} alt="Show-Json-CTA" className="show-json-cta" onClick={handleViewRawConfig} />
-              {isRawConfigModalOpen && <ConfigModal config={appConfig!} onClose={handleCloseModal} />}
+              {isRawConfigModalOpen && appConfig && <ConfigModal config={appConfig} onClose={handleCloseModal} />}
             </div>
           </div>
           <div className="location-description">

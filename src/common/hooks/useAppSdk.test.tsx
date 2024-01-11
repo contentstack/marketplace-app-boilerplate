@@ -1,3 +1,4 @@
+import React from "react";
 import { renderHook } from "@testing-library/react";
 import { TestProvider } from "../../test-utils/test-utils";
 import { useAppSdk } from "./useAppSdk";
@@ -14,7 +15,7 @@ test("useAppSdk", async () => {
     },
   };
   const { result } = renderHook(() => useAppSdk(), {
-    wrapper: ({ children }: any) => (
+    wrapper: ({ children }) => (
       <TestProvider appConfig={{}} appSdk={appSdkMock}>
         {children}
       </TestProvider>

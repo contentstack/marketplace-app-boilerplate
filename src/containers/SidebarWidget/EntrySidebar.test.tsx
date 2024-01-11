@@ -1,3 +1,4 @@
+import React from "react";
 import { render, screen } from "@testing-library/react";
 import { TestProvider } from "../../test-utils/test-utils";
 import EntrySidebarExtension from "./EntrySidebar";
@@ -11,7 +12,7 @@ test("EntrySidebar component", async () => {
   };
 
   render(<EntrySidebarExtension />, {
-    wrapper: ({ children }: any) => (
+    wrapper: ({ children }) => (
       <TestProvider appConfig={{}} appSdk={appSdkMock}>
         <EntrySidebarExtensionProvider>{children}</EntrySidebarExtensionProvider>
       </TestProvider>

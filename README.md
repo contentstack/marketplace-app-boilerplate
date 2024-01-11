@@ -11,7 +11,7 @@ This provider is responsible for the following actions
 - Set global properties for Analytics and Error tracking
 - Send "App Initialized / Failed" event
 
-## Hooks
+## Available Hooks
 
 - useAppConfig
 - useAppLocation
@@ -26,15 +26,15 @@ This provider is responsible for the following actions
 ## Routes
 
 Each route represents one location. It is recommended to lazy load the route components to reduce the bundle
-size. 
+size.
 
 #### Adding new route
 
 - Create a new Route component inside route. Use default export
-  - Inside `App.tsx`, lazy load the route component.  
+  - Inside `App.tsx`, lazy load the route component.
     - eg: `const CustomFieldExtension = React.lazy(() => import("./routes/CustomField"))`
-  - Add the route wrapped inside `Suspense`. 
-    - Eg: ``` <Route path="/new" element={<Suspense><CustomFieldExtension /></Suspense>} />```
+  - Add the route wrapped inside `Suspense`.
+    - Eg: ` <Route path="/new" element={<Suspense><CustomFieldExtension /></Suspense>} />`
 
 ## Testing
 
@@ -47,12 +47,11 @@ size.
     "test:chrome": "npx playwright test --config=playwright.config.ts --project=Chromium",
     "test:firefox": "npx playwright test --config=playwright.config.ts --project=firefox",
     "test:chrome-headed": "npx playwright test --headed --config=playwright.config.ts --project=Chromium",
-    "test:firefox-headed": "npx playwright test --headed --config=playwright.config.ts --project=firefox" 
+    "test:firefox-headed": "npx playwright test --headed --config=playwright.config.ts --project=firefox"
   ```
 
 - Unit & integration tests are stored in `src/__tests__` folder
 - run `npm run test` to run unit and integration tests
-
 
 ## Styling
 

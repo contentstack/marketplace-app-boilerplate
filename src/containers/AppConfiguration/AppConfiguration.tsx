@@ -8,15 +8,14 @@ import Tooltip from "../Tooltip/Tooltip";
 
 const AppConfigurationExtension: React.FC = () => {
   const { installationData, setInstallationData } = useInstallationData();
+  const appConfigDataRef = useRef<HTMLInputElement>(null);
+  const serverConfigDataRef = useRef<HTMLInputElement>(null);
 
-  const appConfigDataRef = useRef<any>("");
-  const serverConfigDataRef = useRef<any>("");
-
-  const updateConfig = async (elem: any) => {
+  const updateConfig = async () => {
     if (typeof setInstallationData !== "undefined") {
-      await setInstallationData({
-        configuration: { "Sample App Configuration": appConfigDataRef.current.value },
-        serverConfiguration: { "Sample Server Configuration": serverConfigDataRef.current.value },
+      setInstallationData({
+        configuration: { sample_app_configuration: appConfigDataRef.current?.value },
+        serverConfiguration: { sampl_server_configuration: serverConfigDataRef.current?.value },
       });
     }
   };
@@ -34,7 +33,7 @@ const AppConfigurationExtension: React.FC = () => {
             <div className={`${styles.infoContainerWrapper}`}>
               <div className={`${styles.infoContainer}`}>
                 <div className={`${styles.labelWrapper}`}>
-                  <label htmlFor="appConfigData">Sample App Configuration Field </label>
+                  <label htmlFor="appConfigData">Sample App Configuration</label>
                   <Tooltip content="You can save this field for information such as Username, Email, Number, Date, etc." />
                 </div>
               </div>
@@ -43,18 +42,16 @@ const AppConfigurationExtension: React.FC = () => {
                   type="text"
                   ref={appConfigDataRef}
                   required
-                  value={installationData.configuration.appConfigData}
+                  value={installationData.configuration.sample_app_configuration as string}
                   placeholder="Enter Field Value"
                   name="appConfigData"
                   autoComplete="off"
                   className={`${styles.fieldInput}`}
-                  onChange={updateConfig}></input>
+                  onChange={updateConfig} />
               </div>
             </div>
             <div className={`${styles.descriptionContainer}`}>
-              <p>
-                Use this field to share non-sensitive configurations of your app with other locations.
-              </p>
+              <p>Use this field to share non-sensitive configurations of your app with other locations.</p>
             </div>
           </div>
 
@@ -71,11 +68,11 @@ const AppConfigurationExtension: React.FC = () => {
                   type="text"
                   ref={serverConfigDataRef}
                   required
-                  value={installationData.serverConfiguration.serverConfigData}
+                  value={installationData.serverConfiguration.sample_app_configuration as string}
                   placeholder="Enter Field Value"
                   name="serverConfigData"
                   autoComplete="off"
-                  onChange={updateConfig}></input>
+                  onChange={updateConfig} />
               </div>
             </div>
             <div className={`${styles.descriptionContainer}`}>
