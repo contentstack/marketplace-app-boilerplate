@@ -1,20 +1,23 @@
-import { useCallback, useEffect, useState } from "react";
-import { useAppLocation } from "../hooks/useAppLocation";
-import { isEmpty } from "lodash";
-import { AppConfigurationExtensionContext, InstallationData } from "../contexts/appConfigurationExtensionContext";
+import React, { useCallback, useEffect, useState } from "react";
 
-export const AppConfigurationExtensionProvider = ({ children }: any) => {
+import { useAppLocation } from "../hooks/useAppLocation";
+import {
+  AppConfigurationExtensionContext,
+  InstallationData,
+} from "../contexts/appConfigurationExtensionContext";
+import { ChildProp } from "../types/types";
+
+export const AppConfigurationExtensionProvider = ({ children }: ChildProp) => {
   const [installationData, setInstallation] = useState<InstallationData>({
     configuration: {},
     serverConfiguration: {},
   });
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   const { location } = useAppLocation();
 
   useEffect(() => {
-    if (!isEmpty(installationData)) return;
-    setLoading(true);
-    location.installation
+    if (location && !("installation" in location)) return;
+    location?.installation
       .getInstallationData()
       .then((data: InstallationData) => {
         setInstallation(data);
@@ -26,14 +29,16 @@ export const AppConfigurationExtensionProvider = ({ children }: any) => {
   }, [installationData, location, setLoading, setInstallation]);
 
   const setInstallationData = useCallback(
-    async (data: { [key: string]: any }) => {
-      setLoading(true);
-      
+    async (data: {
+      configuration: { [key: string]: unknown };
+      serverConfiguration: { [key: string]: unknown };
+    }) => {
       const newInstallationData: InstallationData = {
         configuration: { ...installationData.configuration, ...data.configuration },
-        serverConfiguration: {...installationData.serverConfiguration, ...data.serverConfiguration},
+        serverConfiguration: { ...installationData.serverConfiguration, ...data.serverConfiguration },
       };
-      await location.installation.setInstallationData(newInstallationData);
+      if (location && !("installation" in location)) return;
+      await location?.installation.setInstallationData(newInstallationData);
       setInstallation(newInstallationData);
       setLoading(false);
     },
@@ -41,7 +46,8 @@ export const AppConfigurationExtensionProvider = ({ children }: any) => {
   );
 
   return (
-    <AppConfigurationExtensionContext.Provider value={{ installationData, setInstallationData, loading }}>
+    <AppConfigurationExtensionContext.Provider
+      value={{ installationData, setInstallationData, loading }}>
       {children}
     </AppConfigurationExtensionContext.Provider>
   );

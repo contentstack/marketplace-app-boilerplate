@@ -1,8 +1,8 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import styles from "./Tooltip.module.css";
 import HelpIcon from "../../assets/help_icon.svg";
 
-const Tooltip = ({ content }: any) => {
+const Tooltip = ({ content }: { content: string }) => {
   const [showTooltip, setShowTooltip] = useState(false);
 
   const handleMouseEnter = () => {
