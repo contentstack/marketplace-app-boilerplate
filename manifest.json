@@ -7,8 +7,6 @@
   "visibility": "private",
   "uid": "",
   "ui_location": {
-    "signed": false,
-    "base_url": "http://localhost:3000",
     "locations": [
       {
         "type": "cs.cm.stack.custom_field",
@@ -97,5 +95,9 @@
         ]
       }
     ]
+  },
+  "hosting": {
+    "provider": "external",
+    "deployment_url": "http://localhost:3000"
   }
 }
