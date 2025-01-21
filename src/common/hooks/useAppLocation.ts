@@ -1,4 +1,4 @@
-import Extension from "@contentstack/app-sdk/dist/src/extension";
+import Extension from "@contentstack/app-sdk/dist/src/uiLocation";
 import { useAppSdk } from "./useAppSdk";
 import { get, isEmpty, keys } from "lodash";
 import { useMemo } from "react";

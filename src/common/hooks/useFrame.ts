@@ -11,8 +11,8 @@ export const useFrame = (): null | object | unknown => {
   const availableFrameLocations: string[] = ["CustomField", "DashboardWidget"];
 
   if (!includes(availableFrameLocations, locationName)) {
-    throw new Error(`useFrame hook cannot be used at ${locationName} location`);
+    throw new Error(`useFrame hook cannot be used at ${String(locationName)} location`);
   }
-  const frame = useSdkDataByPath(`location.${locationName}`, null);
+  const frame = useSdkDataByPath(`location.${String(locationName)}`, null);
   return frame;
 };
