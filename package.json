@@ -7,6 +7,7 @@
   ],
   "dependencies": {
     "@contentstack/app-sdk": "^2.0.0",
+    "@portabletext/editor": "^1.26.3",
     "@types/jest": "^29.5.11",
     "@types/node": "^18.19.4",
     "@types/react": "^18.2.46",
@@ -19,7 +20,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.1",
     "react-scripts": "5.0.1",
-    "typescript": "^4.9.3",
+    "typescript": "^5.7.3",
     "web-vitals": "^3.5.1"
   },
   "scripts": {
@@ -64,5 +65,8 @@
     "playwright": "^1.23.1",
     "prettier": "^2.7.1",
     "ts-node": "^10.9.2"
+  },
+  "overrides": {
+    "typescript": "^5.7.3"
   }
 }

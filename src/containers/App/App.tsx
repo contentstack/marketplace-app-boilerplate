@@ -22,19 +22,33 @@ const PageNotFound = React.lazy(() => import("../404/404"));
 const DefaultPage = React.lazy(() => import("../index"));
 
 function App() {
+  // Log the current route
+  console.log("APP RENDER", window.location.pathname);
   return (
     <ErrorBoundary>
       <MarketplaceAppProvider>
         <Routes>
-          <Route path="/" element={<DefaultPage />} />
           <Route
-            path="/custom-field"
+            path="/"
             element={
               <Suspense>
                 <CustomFieldExtensionProvider>
                   <CustomFieldExtension />
                 </CustomFieldExtensionProvider>
               </Suspense>
+            }
+          />
+          <Route
+            path="/custom-field"
+            element={
+              <>
+                HELLO WORLD
+                {/* <Suspense>
+                  <CustomFieldExtensionProvider>
+                    <CustomFieldExtension />
+                  </CustomFieldExtensionProvider>
+                </Suspense> */}
+              </>
             }
           />
           <Route
