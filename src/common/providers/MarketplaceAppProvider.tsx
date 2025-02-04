@@ -45,13 +45,6 @@ export const MarketplaceAppProvider: React.FC<ProviderProps> = ({ children }) =>
         await appSdk.location.DashboardWidget?.frame?.updateHeight?.(722);
         const appConfig = await appSdk.getConfig();
 
-        // Handle onSave for ContentTypeSidebarWidget
-        appSdk?.location?.ContentTypeSidebarWidget?.onSave((updatedContentType: ContentType) => {
-          setSdkState((prev) => ({
-            ...prev,
-            contentType: updatedContentType,
-          }));
-        });
 
         setConfig(appConfig);
       })
