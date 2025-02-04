@@ -46,7 +46,7 @@
         ]
       },
       {
-        "type": "cs.cm.stack.sidebar",
+        "type": "cs.cm.stack.content_type_sidebar",
         "meta": [
           {
             "path": "/#/content-type-sidebar",

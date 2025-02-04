@@ -1,8 +1,8 @@
-import Extension from "@contentstack/app-sdk/dist/src/uiLocation";
+import UILocation from "@contentstack/app-sdk/dist/src/uiLocation";
 
 import { get, isEmpty, keys } from "lodash";
 
-export function getAppLocation(sdk: Extension): string {
+export function getAppLocation(sdk: UILocation): string {
   const locations = keys(sdk?.location);
   let locationName = "";
   for (let i = 0; i <= locations.length; i++) {

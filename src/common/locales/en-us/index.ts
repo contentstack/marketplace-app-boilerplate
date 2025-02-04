@@ -52,7 +52,7 @@ const localeTexts = {
     body: "This is the iframe that contains your Content Type Sidebar Widget.",
     button: {
       text: "Learn More",
-      url: "https://www.contentstack.com/docs/developers/developer-hub/sidebar-location/",
+      url: "https://www.contentstack.com/docs/developers/developer-hub/content-type-sidebar-location",
     },
   },
   FullPage: {
