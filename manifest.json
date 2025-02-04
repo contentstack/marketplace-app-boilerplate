@@ -49,6 +49,16 @@
         "type": "cs.cm.stack.sidebar",
         "meta": [
           {
+            "path": "/#/content-type-sidebar",
+            "signed": false,
+            "enabled": true
+          }
+        ]
+      },
+      {
+        "type": "cs.cm.stack.sidebar",
+        "meta": [
+          {
             "path": "/#/entry-sidebar",
             "signed": false,
             "enabled": true
