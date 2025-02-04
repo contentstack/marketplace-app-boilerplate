@@ -16,7 +16,9 @@ export const EntrySidebarExtensionProvider = ({ children }: ChildProp) => {
       setLoading(true);
       if ('entry' in location) {
         const entry: { [key: string]: unknown } | undefined = location?.entry?.getData();
-        setEntry(entry);
+        if (entry) {
+          setEntry(entry);
+        }
       }
       setLoading(false);
     })();
