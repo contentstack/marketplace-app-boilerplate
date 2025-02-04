@@ -4,10 +4,11 @@ import parse from "html-react-parser";
 import { useAppConfig } from "../../common/hooks/useAppConfig";
 import "../index.css";
 import "./ContentTypeSidebar.css";
-import Icon from "../../assets/Entry-Sidebar-Logo.svg";
+import Icon from "../../assets/Content-Type-Sidebar-Logo.svg";
 import ReadOnly from "../../assets/lock.svg";
 import JsonView from "../../assets/JsonView.svg";
 import ConfigModal from "../../components/ConfigModal/ConfigModal";
+
 
 const ContentTypeSidebarExtension = () => {
   const appConfig = useAppConfig();
