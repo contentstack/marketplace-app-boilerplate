@@ -20,6 +20,7 @@ const StackDashboardExtension = React.lazy(() => import("../DashboardWidget/Stac
 const FullPageExtension = React.lazy(() => import("../FullPage/FullPage"));
 const PageNotFound = React.lazy(() => import("../404/404"));
 const DefaultPage = React.lazy(() => import("../index"));
+const ContentTypeSidebarExtension = React.lazy(() => import("../ContentTypeSidebar/ContentTypeSidebar"));
 
 function App() {
   return (
@@ -86,6 +87,14 @@ function App() {
             element={
               <Suspense>
                 <FieldModifierExtension />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/content-type-sidebar"
+            element={
+              <Suspense>
+                <ContentTypeSidebarExtension />
               </Suspense>
             }
           />

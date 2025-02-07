@@ -1,0 +1,10 @@
+
+
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="location-icon Icon--v2 Icon--small" name="Stacks" data-test-id="uilocation-content-type-sidebar-icon">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M3.352 21.622a.75.75 0 011.026-.27L16 28.132l11.622-6.78a.75.75 0 01.756 1.296l-12 7a.75.75 0 01-.756 0l-12-7a.75.75 0 01-.27-1.026z" fill="#475161">
+</path>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M3.352 15.622a.75.75 0 011.026-.27L16 22.132l11.622-6.78a.75.75 0 01.756 1.296l-12 7a.75.75 0 01-.756 0l-12-7a.75.75 0 01-.27-1.026z" fill="#475161">
+</path>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M15.622 2.352a.75.75 0 01.756 0l12 7a.75.75 0 010 1.296l-12 7a.75.75 0 01-.756 0l-12-7a.75.75 0 010-1.296l12-7zM5.49 10L16 16.132 26.512 10 16 3.868 5.49 10z" fill="#475161">
+</path>
+</svg>

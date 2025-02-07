@@ -1,9 +1,9 @@
-import Extension from "@contentstack/app-sdk/dist/src/extension";
+import UILocation from "@contentstack/app-sdk/dist/src/uiLocation";
 import { useAppSdk } from "./useAppSdk";
 import { get, isEmpty, keys } from "lodash";
 import { useMemo } from "react";
 
-type LocationType = Extension["location"];
+type LocationType = UILocation["location"];
 
 /**
  * Returns the location name (eg: CustomField) and the location instance from the SDK
