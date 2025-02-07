@@ -46,6 +46,16 @@
         ]
       },
       {
+        "type": "cs.cm.stack.content_type_sidebar",
+        "meta": [
+          {
+            "path": "/#/content-type-sidebar",
+            "signed": false,
+            "enabled": true
+          }
+        ]
+      },
+      {
         "type": "cs.cm.stack.sidebar",
         "meta": [
           {

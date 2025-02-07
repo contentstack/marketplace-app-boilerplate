@@ -47,6 +47,14 @@ const localeTexts = {
       url: "https://www.contentstack.com/docs/developers/developer-hub/sidebar-location/",
     },
   },
+  ContentTypeSidebarWidget: {
+    title: "Content Type Sidebar Widget",
+    body: "This is the iframe that contains your Content Type Sidebar Widget.",
+    button: {
+      text: "Learn More",
+      url: "https://www.contentstack.com/docs/developers/developer-hub/content-type-sidebar-location",
+    },
+  },
   FullPage: {
     title: "Full Page App",
     body: "This is the location that contains your Full Page App.",
