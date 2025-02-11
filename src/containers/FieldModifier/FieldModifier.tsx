@@ -15,7 +15,7 @@ const FieldModifierExtension = () => {
   const appSdk = useAppSdk();
   useEffect(() => {
     (async()=>{
-      let appConfigWidget = await appSdk?.location.FieldModifierLocation?.field;
+      const appConfigWidget = await appSdk?.location.FieldModifierLocation?.field;
       console.log("appConfig data --->", appConfigWidget);
     })()
   }, []);
