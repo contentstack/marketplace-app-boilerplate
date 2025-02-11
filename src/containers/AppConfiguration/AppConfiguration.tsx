@@ -5,6 +5,7 @@ import parse from "html-react-parser";
 import styles from "./AppConfiguration.module.css";
 import { useInstallationData } from "../../common/hooks/useInstallationData";
 import Tooltip from "../Tooltip/Tooltip";
+import { useAppSdk } from "../../common/hooks/useAppSdk";
 
 const AppConfigurationExtension: React.FC = () => {
   const { installationData, setInstallationData } = useInstallationData();

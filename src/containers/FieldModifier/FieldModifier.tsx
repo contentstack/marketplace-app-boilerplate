@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import localeTexts from "../../common/locales/en-us/index";
 import parse from "html-react-parser";
 import { useAppConfig } from "../../common/hooks/useAppConfig";
@@ -8,9 +8,17 @@ import Icon from "../../assets/Field-Modifier-Icon.svg";
 import ReadOnly from "../../assets/lock.svg";
 import JsonView from "../../assets/JsonView.svg";
 import RawConfigModal from "../../components/ConfigModal/ConfigModal";
+import { useAppSdk } from "../../common/hooks/useAppSdk";
 
 const FieldModifierExtension = () => {
   const appConfig = useAppConfig();
+  const appSdk = useAppSdk();
+  useEffect(() => {
+    (async()=>{
+      let appConfigWidget = await appSdk?.location.FieldModifierLocation?.field;
+      console.log("appConfig data --->", appConfigWidget);
+    })()
+  }, []);
 
   const [isRawConfigModalOpen, setRawConfigModalOpen] = useState<boolean>(false);
 

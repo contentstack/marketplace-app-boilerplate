@@ -33,6 +33,7 @@ export const MarketplaceAppProvider: React.FC<ProviderProps> = ({ children }) =>
   useEffect(() => {
     ContentstackAppSDK.init()
       .then(async (appSdk) => {
+        console.log("App loaded successfully", appSdk);
         setAppSdk(appSdk);
         //updated Height of the Custom Field Iframe.
         appSdk.location.DashboardWidget?.frame?.disableAutoResizing();
@@ -48,7 +49,8 @@ export const MarketplaceAppProvider: React.FC<ProviderProps> = ({ children }) =>
 
         setConfig(appConfig);
       })
-      .catch(() => {
+      .catch((error) => {
+        console.log("App failed to load", error);
         setFailed(true);
       });
   }, []);

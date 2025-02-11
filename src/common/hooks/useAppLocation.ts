@@ -17,6 +17,7 @@ export const useAppLocation = () => {
   /**
    * memoized locationName and location instance
    */
+  console.log("locations", locations);
   const { locationName, location } = useMemo(() => {
     let location: LocationType[keyof LocationType] = null;
     let locationName: keyof LocationType | string = "";

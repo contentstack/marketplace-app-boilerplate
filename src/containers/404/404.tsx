@@ -3,6 +3,7 @@ import localeTexts from "../../common/locales/en-us/index";
 import parse from "html-react-parser";
 
 const PageNotFound = () => {
+  console.log("404 page---->", localeTexts);
   return (
     <div className="dashboard">
       <div className="dashboard-container">

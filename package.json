@@ -6,12 +6,12 @@
     "dist"
   ],
   "dependencies": {
-    "@contentstack/app-sdk": "^2.2.0",
-    "@types/jest": "^29.5.11",
-    "@types/node": "^18.19.4",
-    "@types/react": "^18.2.46",
-    "@types/react-dom": "^18.2.18",
-    "axios": "^1.6.5",
+    "@contentstack/app-sdk": "2.1.1",
+    "@types/jest": "^29.4.0",
+    "@types/node": "^18.13.0",
+    "@types/react": "^18.0.14",
+    "@types/react-dom": "^18.0.5",
+    "axios": "^1.3.4",
     "form-data": "^4.0.0",
     "html-react-parser": "^3.0.8",
     "jsonfile": "^6.1.0",
@@ -24,6 +24,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "build:dev": "npm run build && cp -r dist/ ../marketplace-app-boilerplate/node_modules/@contentstack/contentstack/app-sdk/",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom --verbose",
     "eject": "react-scripts eject",
