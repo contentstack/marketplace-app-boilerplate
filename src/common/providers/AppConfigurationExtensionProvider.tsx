@@ -26,7 +26,7 @@ export const AppConfigurationExtensionProvider = ({ children }: ChildProp) => {
       .catch((err: Error) => {
         console.error(err);
       });
-  }, [installationData, location, setLoading, setInstallation]);
+  }, [location]);
 
   const setInstallationData = useCallback(
     async (data: {
