@@ -1,0 +1,44 @@
+name: Create Jira Issue & Notify Slack
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  create-jira-issue:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Login to Jira
+        uses: atlassian/gajira-login@master
+        env:
+          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+          JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+
+      - name: Create Jira Issue
+        id: create_jira
+        uses: atlassian/gajira-create@master
+        with:
+          project: ${{ secrets.JIRA_PROJECT }}
+          issuetype: ${{ secrets.JIRA_ISSUE_TYPE }}
+          summary: "OPEN-ISSUE: ${{ github.event.issue.title }}"
+          description: |
+            **GitHub Issue:** ${{ github.event.issue.html_url }}
+            
+            **Description:**
+            ${{ github.event.issue.body }}
+
+          fields: "${{ secrets.JIRA_FIELDS }}"
+
+      - name: Send Slack Notification via Bot
+        uses: slackapi/slack-github-action@v1
+        with:
+          channel-id: "#mkt-incoming-requests"
+          slack-message: |
+            :warning: *New GitHub Issue Created* :warning:
+            *Title:* ${{ github.event.issue.title }}
+            *Repository:* ${{ github.repository }}
+            *Issue Link:* ${{ github.event.issue.html_url }}
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
