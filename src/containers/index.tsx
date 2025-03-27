@@ -29,7 +29,7 @@ const DefaultPage = () => {
               <a href="/field-modifier">Field Modifier</a>
             </li>
             <li>
-              <a href="/org-full-page">Field Modifier</a>
+              <a href="/org-full-page">Org Full Page</a>
             </li>
           </ul>
         </div>
