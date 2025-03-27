@@ -63,6 +63,14 @@ const localeTexts = {
       url: "https://www.contentstack.com/docs/developers/developer-hub/full-page-location/",
     },
   },
+  OrgFullPage: {
+    title: "Org Full Page App",
+    body: "This is the location that contains your Org Full Page App.",
+    button: {
+      text: "Learn More",
+      url: "https://www.contentstack.com/docs/developers/developer-hub",
+    },
+  },
   FieldModifier: {
     title: "Field Modifier App",
     body: "This is the location that contains your Field Modifier app.",
