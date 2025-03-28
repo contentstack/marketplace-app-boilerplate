@@ -11,7 +11,7 @@
     "@types/node": "^18.19.4",
     "@types/react": "^18.2.46",
     "@types/react-dom": "^18.2.18",
-    "axios": "^1.6.5",
+    "axios": "^1.8.3",
     "form-data": "^4.0.0",
     "html-react-parser": "^3.0.8",
     "jsonfile": "^6.1.0",
