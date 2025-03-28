@@ -35,15 +35,7 @@ const config: PlaywrightTestConfig = {
     video: "off",
     viewport: { width: 1920, height: 720 },
     trace: "on-first-retry",
-    baseURL: process.env.VITE_BASE_URL || "http://localhost:3000",
-    launchOptions: {
-      logger: {
-        isEnabled: () => false,
-        log: (name, severity, message) => {
-          console.log(`${name}: ${message}`);
-        },
-      },
-    },
+    baseURL: process.env.BASE_URL || "http://localhost:3000",
   },
 
   projects: [
