@@ -1,61 +1,66 @@
-import type { PlaywrightTestConfig } from '@playwright/test';
-import { devices } from '@playwright/test';
-require('dotenv').config();
+import type { PlaywrightTestConfig } from "@playwright/test";
+import { devices } from "@playwright/test";
+import dotenv from "dotenv";
+
+dotenv.config(); // Load variables from .env before using them
 
 const config: PlaywrightTestConfig = {
   /**
-   * globalSetup & teardown of test data
+   * Global setup & teardown of test data
    */
-  globalSetup: require.resolve('./global-setup'),
-  globalTeardown: require.resolve('./global-teardown'),
-  testDir: './e2e/tests',
+  globalSetup: require.resolve("./global-setup"),
+  globalTeardown: require.resolve("./global-teardown"),
+
+  testDir: "./e2e/tests",
   timeout: 30 * 10000,
   expect: {
     timeout: 5000,
   },
-  /* Fail the build on CI if you accidentally left test.only in the source code. */
+
+  // Fail build on test.only in CI
   forbidOnly: !!process.env.CI,
-  /* Retry on CI only */
-  retries: 0,
-  /* Opt out of parallel tests on CI. */
+
+  // Retry on CI only
+  retries: process.env.CI ? 1 : 0,
+
+  // Run serially on CI
   workers: process.env.CI ? 1 : undefined,
-  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['html', { open: 'never' }]],
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+
+  reporter: [["html", { open: "never" }]],
+
   use: {
-    storageState: 'storageState.json',
+    storageState: "storageState.json",
     actionTimeout: 0,
-    screenshot: 'off',
-    video: 'off',
+    screenshot: "off",
+    video: "off",
     viewport: { width: 1920, height: 720 },
-    trace: 'on-first-retry',
-    baseURL: process.env.ENV_URL,
+    trace: "on-first-retry",
+    baseURL: process.env.VITE_BASE_URL || "http://localhost:3000",
     launchOptions: {
       logger: {
-        isEnabled: () => {
-          return false;
+        isEnabled: () => false,
+        log: (name, severity, message) => {
+          console.log(`${name}: ${message}`);
         },
-        log: (name, severity, message, args) => console.log(`${name}: ${message}`),
       },
     },
   },
 
-  /* Configure projects for major browsers */
   projects: [
     {
-      name: 'Chromium',
+      name: "Chromium",
       use: {
-        browserName: 'chromium',
+        browserName: "chromium",
       },
     },
     {
-      name: 'safari',
-      use: { ...devices['Desktop Safari'] },
+      name: "Safari",
+      use: { ...devices["Desktop Safari"] },
     },
     {
-      name: 'firefox',
+      name: "Firefox",
       use: {
-        browserName: 'firefox',
+        browserName: "firefox",
       },
     },
   ],
