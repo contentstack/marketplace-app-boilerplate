@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import localeTexts from "../../common/locales/en-us/index";
 import parse from "html-react-parser";
 import { useAppConfig } from "../../common/hooks/useAppConfig";
@@ -8,7 +8,6 @@ import Icon from "../../assets/Content-Type-Sidebar-Logo.svg";
 import ReadOnly from "../../assets/lock.svg";
 import JsonView from "../../assets/JsonView.svg";
 import ConfigModal from "../../components/ConfigModal/ConfigModal";
-
 
 const ContentTypeSidebarExtension = () => {
   const appConfig = useAppConfig();

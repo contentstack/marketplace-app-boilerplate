@@ -1,4 +1,3 @@
-import React from "react";
 import { renderHook, waitFor } from "@testing-library/react";
 import { CustomFieldTestProvider } from "../../test-utils/test-utils";
 import { useCustomField } from "./useCustomField";
