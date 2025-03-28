@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { isEmpty, isNull } from "lodash";
 
 import { useAppLocation } from "../hooks/useAppLocation";
