@@ -1,4 +1,3 @@
-import React from "react";
 import { renderHook } from "@testing-library/react";
 import { TestProvider } from "../../test-utils/test-utils";
 import { useAppSdk } from "./useAppSdk";

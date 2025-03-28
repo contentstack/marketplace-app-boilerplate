@@ -1,4 +1,3 @@
-import React from "react";
 import { render, screen } from "@testing-library/react";
 import { TestProvider } from "../../test-utils/test-utils";
 import EntrySidebarExtension from "./EntrySidebar";
