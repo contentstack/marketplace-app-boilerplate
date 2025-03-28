@@ -18,22 +18,13 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.1",
-    "react-scripts": "5.0.1",
     "typescript": "^4.9.3",
     "web-vitals": "^3.5.1"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom --verbose",
-    "eject": "react-scripts eject",
-    "show-report": "npx playwright show-report",
-    "lint": "eslint src/**/*.ts src/**/*.tsx",
-    "prettier": "prettier --check src/",
-    "test:chrome": "npx playwright test --config=playwright.config.ts --project=Chromium",
-    "test:firefox": "npx playwright test --config=playwright.config.ts --project=firefox",
-    "test:chrome-headed": "npx playwright test --headed --config=playwright.config.ts --project=Chromium",
-    "test:firefox-headed": "npx playwright test --headed --config=playwright.config.ts --project=firefox"
+ "scripts": {
+  "dev": "vite",
+  "build": "vite build",
+  "preview": "vite preview"
   },
   "eslintConfig": {
     "extends": [
@@ -59,10 +50,12 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.4.0",
     "@types/lodash": "^4.14.202",
+    "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^8.56.0",
     "eslint-plugin-react": "^7.33.2",
     "playwright": "^1.23.1",
     "prettier": "^2.7.1",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "vite": "^6.2.3"
   }
 }
