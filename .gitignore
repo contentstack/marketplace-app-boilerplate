@@ -2,3 +2,5 @@
 node_modules
 playwright-report
 .env
+dist/
+
