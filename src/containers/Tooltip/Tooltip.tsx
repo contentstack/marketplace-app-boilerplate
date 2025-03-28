@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./Tooltip.module.css";
 import HelpIcon from "../../assets/help_icon.svg";
 

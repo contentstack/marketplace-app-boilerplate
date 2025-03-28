@@ -15,7 +15,7 @@
         "meta": [
           {
             "multiple": false,
-            "path": "/#/custom-field",
+            "path": "/custom-field",
             "signed": false,
             "enabled": true,
             "data_type": "json"
@@ -26,7 +26,7 @@
         "type": "cs.cm.stack.dashboard",
         "meta": [
           {
-            "path": "/#/stack-dashboard",
+            "path": "/stack-dashboard",
             "signed": false,
             "enabled": true,
             "default_width": "half"
@@ -38,7 +38,7 @@
         "meta": [
           {
             "blur": false,
-            "path": "/#/asset-sidebar",
+            "path": "/asset-sidebar",
             "signed": false,
             "enabled": true,
             "width": 500
@@ -49,7 +49,7 @@
         "type": "cs.cm.stack.content_type_sidebar",
         "meta": [
           {
-            "path": "/#/content-type-sidebar",
+            "path": "/content-type-sidebar",
             "signed": false,
             "enabled": true
           }
@@ -59,7 +59,7 @@
         "type": "cs.cm.stack.sidebar",
         "meta": [
           {
-            "path": "/#/entry-sidebar",
+            "path": "/entry-sidebar",
             "signed": false,
             "enabled": true
           }
@@ -69,7 +69,7 @@
         "type": "cs.cm.stack.full_page",
         "meta": [
           {
-            "path": "/#/full-page",
+            "path": "/full-page",
             "signed": false,
             "enabled": true
           }
@@ -79,7 +79,7 @@
         "type": "cs.cm.stack.field_modifier",
         "meta": [
           {
-            "path": "/#/field-modifier",
+            "path": "/field-modifier",
             "signed": false,
             "enabled": true,
             "allowed_types": ["$all"]
@@ -90,7 +90,7 @@
         "type": "cs.cm.stack.config",
         "meta": [
           {
-            "path": "/#/app-configuration",
+            "path": "/app-configuration",
             "signed": false,
             "enabled": true
           }
