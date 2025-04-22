@@ -64,11 +64,11 @@ const localeTexts = {
     },
   },
   OrgFullPage: {
-    title: "Org Full Page App",
-    body: "This is the location that contains your Org Full Page App.",
+    title: "Global Full Page App",
+    body: "This is the location that contains your Global Full Page App.",
     button: {
       text: "Learn More",
-      url: "https://www.contentstack.com/docs/developers/developer-hub",
+      url: "https://www.contentstack.com/docs/developers/developer-hub/global-full-page/",
     },
   },
   FieldModifier: {

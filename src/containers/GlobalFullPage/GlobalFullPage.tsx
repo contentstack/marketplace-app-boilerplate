@@ -8,9 +8,9 @@ import JsonView from "../../assets/JsonView.svg";
 import ConfigModal from "../../components/ConfigModal/ConfigModal";
 
 import "../index.css";
-import "./OrgFullPage.css";
+import "./GlobalFullPage.css";
 
-const OrgFullPageExtension = () => {
+const GlobalFullPageExtension = () => {
   const appConfig = useAppConfig();
   const [isRawConfigModalOpen, setRawConfigModalOpen] = useState<boolean>(false);
 
@@ -60,4 +60,4 @@ const OrgFullPageExtension = () => {
     </div>
   );
 };
-export default OrgFullPageExtension;
+export default GlobalFullPageExtension;

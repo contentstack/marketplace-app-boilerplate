@@ -18,7 +18,7 @@ const AppConfigurationExtension = React.lazy(() => import("../AppConfiguration/A
 const AssetSidebarExtension = React.lazy(() => import("../AssetSidebarWidget/AssetSidebar"));
 const StackDashboardExtension = React.lazy(() => import("../DashboardWidget/StackDashboard"));
 const FullPageExtension = React.lazy(() => import("../FullPage/FullPage"));
-const OrgFullPageExtension = React.lazy(() => import("../OrgFullPage/OrgFullPage"));
+const GlobalFullPageExtension = React.lazy(() => import("../GlobalFullPage/GlobalFullPage"));
 const PageNotFound = React.lazy(() => import("../404/404"));
 const DefaultPage = React.lazy(() => import("../index"));
 const ContentTypeSidebarExtension = React.lazy(() => import("../ContentTypeSidebar/ContentTypeSidebar"));
@@ -84,10 +84,10 @@ function App() {
             }
           />
           <Route
-            path="org-full-page"
+            path="/global-full-page"
             element={
               <Suspense>
-                <OrgFullPageExtension />
+                <GlobalFullPageExtension />
               </Suspense>
             }
           />
