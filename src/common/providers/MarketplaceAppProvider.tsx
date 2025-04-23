@@ -23,7 +23,7 @@ export const MarketplaceAppProvider: React.FC<ProviderProps> = ({ children }) =>
   const [appSdk, setAppSdk] = useState<UiLocation | null>(null);
   const [appConfig, setConfig] = useState<KeyValueObj | null>(null);
   const token = getTokenFromUrl();
-  const { isValid } = useVerifyAppToken(token);
+  const { isValidAppToken } = useVerifyAppToken(token);
 
   const [sdkState, setSdkState] = useState<{
     contentType: ContentType | null;
@@ -63,17 +63,8 @@ export const MarketplaceAppProvider: React.FC<ProviderProps> = ({ children }) =>
     return <div>Loading...</div>;
   }
 
-  // Token validation in progress
-  if (isValid === null) {
-    return <div>Validating token...</div>;
-  }
-
   // Token validation failed
-  if (isValid === false || failed) {
-    return <AppFailed />;
-  }
-
-  if (failed) {
+  if (isValidAppToken === false || failed) {
     return <AppFailed />;
   }
 
