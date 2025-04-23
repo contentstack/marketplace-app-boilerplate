@@ -9,10 +9,7 @@ export const useVerifyAppToken = (token: string | null) => {
 
   useEffect(() => {
     const verify = async () => {
-      if (!token) {
-        setIsValidAppToken(true); // Skip verification if no token is present
-        return;
-      }
+      if (!token) return; // skip verification if no token
 
       try {
         const res = await fetch(`${publicKeyUrl}/.well-known/public-keys.json`);
