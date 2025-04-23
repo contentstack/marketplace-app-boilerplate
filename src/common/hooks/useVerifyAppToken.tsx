@@ -2,18 +2,20 @@ import { useEffect, useState } from "react";
 import { KJUR } from "jsrsasign";
 import forge from "node-forge";
 
+const publicKeyUrl = import.meta.env.VITE_PUBLIC_KEY_BASE_URL || "https://app.contentstack.com";
+
 export const useVerifyAppToken = (token: string | null) => {
-  const [isValid, setIsValid] = useState<boolean | null>(null);
+  const [isValidAppToken, setIsValidAppToken] = useState<boolean | null>(null);
 
   useEffect(() => {
     const verify = async () => {
       if (!token) {
-        setIsValid(true); // Skip verification if no token is present
+        setIsValidAppToken(true); // Skip verification if no token is present
         return;
       }
 
       try {
-        const res = await fetch("https://app.contentstack.com/.well-known/public-keys.json");
+        const res = await fetch(`${publicKeyUrl}/.well-known/public-keys.json`);
         const data = await res.json();
         const pkcs1 = data["signing-key"];
 
@@ -27,18 +29,18 @@ export const useVerifyAppToken = (token: string | null) => {
         const pkcs8Pem = forge.pki.publicKeyToPem(publicKey);
 
         // Verify the token using jsrsasign with the converted PKCS#8 key
-        const isValidToken = KJUR.jws.JWS.verifyJWT(token, pkcs8Pem, {
+        const isValidAppTokenToken = KJUR.jws.JWS.verifyJWT(token, pkcs8Pem, {
           alg: ["RS256"], // specify the algorithm
         });
 
-        isValidToken ? setIsValid(true) : setIsValid(false);
+        isValidAppTokenToken ? setIsValidAppToken(true) : setIsValidAppToken(false);
       } catch (err) {
-        setIsValid(false);
+        setIsValidAppToken(false);
       }
     };
 
     verify();
   }, [token]);
 
-  return { isValid };
+  return { isValidAppToken };
 };
