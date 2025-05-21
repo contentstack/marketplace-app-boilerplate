@@ -78,3 +78,36 @@ test('#3 Validate Asset Sidebar', async ({ page, context }) => {
   const assetPage = new AssetPage(page);
   await assetPage.validateAssetSideBar(assetId);
 });
+
+test("should load custom-field for valid AppToken", async ({ page, context }) => {
+  const entryPage = await initializeEntry(page);
+  await entryPageFlow(savedCredentials, entryPage);
+  await mockFetchPublicKey(context, true);
+
+  // Mocking a valid token
+  await page.evaluate(() => {
+    window.localStorage.setItem("app_token", "VALID_JWT_TOKEN");
+  });
+
+  await page.reload();
+
+  // Expect the validateCustomField function to be called
+  await entryPage.validateCustomField();
+});
+
+test("should display AppFailed component for Invalid AppToken", async ({ page, context }) => {
+  const entryPage = await initializeEntry(page);
+  await entryPageFlow(savedCredentials, entryPage);
+  await mockFetchPublicKey(context, false);
+
+  // Mocking an invalid token
+  await page.evaluate(() => {
+    window.localStorage.setItem("app_token", "INVALID_JWT_TOKEN");
+  });
+
+  await page.reload();
+
+  // Expect the AppFailed component to be visible
+  await expect(page.locator(".app-failed-container")).toBeVisible();
+  await expect(page.locator("text=Learn More")).toBeVisible();
+});
