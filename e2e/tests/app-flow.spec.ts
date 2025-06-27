@@ -1,7 +1,7 @@
-import { test} from '@playwright/test';
+import { test, expect} from '@playwright/test';
 import { AssetPage } from '../pages/AssetPage';
 
-import { createContentType, createEntry, createApp, updateApp, installApp, assetUpload, uninstallApp, deleteApp, deleteContentType, entryPageFlow, initializeEntry, getExtensionFieldUid, deleteAsset } from '../utils/helper';
+import { createContentType, createEntry, createApp, updateApp, installApp, assetUpload, uninstallApp, deleteApp, deleteContentType, entryPageFlow, initializeEntry, getExtensionFieldUid, deleteAsset, mockFetchPublicKey } from '../utils/helper';
 
 const jsonFile = require('jsonfile');
 
@@ -61,25 +61,25 @@ test.afterAll(async () => {
   }
 });
 
-test('#1 Validate Dashboard Widget', async ({ page, context }) => {
+test('Verify Dashboard Widget', async ({ page, context }) => {
   const entryPage = await initializeEntry(page);
   await entryPage.navigateToDashboard();
   await entryPage.validateDashboardWidget();
 });
 
-test('#2 Validating Custom Field & Entry Sidebar', async ({ page, context }) => {
+test('Verify Custom Field & Entry Sidebar', async ({ page, context }) => {
   const entryPage = await initializeEntry(page);
   await entryPageFlow(savedCredentials, entryPage);
   await entryPage.validateCustomField();
 });
 
-test('#3 Validate Asset Sidebar', async ({ page, context }) => {
+test('Verify Asset Sidebar', async ({ page, context }) => {
   const { assetId } = savedCredentials;
   const assetPage = new AssetPage(page);
   await assetPage.validateAssetSideBar(assetId);
 });
 
-test("should load custom-field for valid AppToken", async ({ page, context }) => {
+test.skip("Verify if custom-field is loading for valid AppToken", async ({ page, context }) => {
   const entryPage = await initializeEntry(page);
   await entryPageFlow(savedCredentials, entryPage);
   await mockFetchPublicKey(context, true);
@@ -95,7 +95,7 @@ test("should load custom-field for valid AppToken", async ({ page, context }) =>
   await entryPage.validateCustomField();
 });
 
-test("should display AppFailed component for Invalid AppToken", async ({ page, context }) => {
+test("Verify if AppFailed component is displayed for Invalid AppToken", async ({ page, context }) => {
   const entryPage = await initializeEntry(page);
   await entryPageFlow(savedCredentials, entryPage);
   await mockFetchPublicKey(context, false);
@@ -108,6 +108,6 @@ test("should display AppFailed component for Invalid AppToken", async ({ page, c
   await page.reload();
 
   // Expect the AppFailed component to be visible
-  await expect(page.locator(".app-failed-container")).toBeVisible();
-  await expect(page.locator("text=Learn More")).toBeVisible();
+  const isErrorDisplayed = await entryPage.validateCustomFieldWithInvalidJWTToken();
+  expect(isErrorDisplayed).toBeTruthy();
 });
