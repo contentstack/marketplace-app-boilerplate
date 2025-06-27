@@ -195,7 +195,7 @@ export const updateApp = async (authToken: string, appId: string) => {
               {
                 name: `App Boilerplate _${Math.floor(Math.random() * 1000)}`,
                 path: '/custom-field',
-                signed: false,
+                signed: true,
                 enabled: true,
                 data_type: 'text',
               },
