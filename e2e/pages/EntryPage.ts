@@ -45,7 +45,7 @@ export class EntryPage {
   // Check for dashboard widget
   async validateDashboardWidget() {
     const frame = await this.accessFrame();
-    await frame?.waitForSelector('.app-component-content');
+    await frame?.waitForSelector('.ui-container');
     const locateText: any = await frame?.locator('text="Dashboard Widget"');
     const matchText = await locateText?.innerText();
     expect(matchText).toBe('Dashboard Widget');
@@ -54,12 +54,19 @@ export class EntryPage {
   // Check for entry custom field & entry side bar
   async validateCustomField() {
     const frame = await this.accessFrame();
-    await frame?.waitForSelector('.custom-field-container');
+    await frame?.waitForSelector('.ui-container');
     const locateText = await frame?.locator("text='Custom Field'");
     const matchText = await locateText?.innerText();
     expect(matchText).toBe('Custom Field');
     await this.widgetSelector();
     const sideBarWidget = await frame?.locator('.entry-sidebar-container >> text=Sidebar Widget');
     expect(sideBarWidget).toBeTruthy();
+  }
+
+  async validateCustomFieldWithInvalidJWTToken() {
+    const frame = await this.accessFrame();
+    await frame?.waitForSelector('.app-failed-container');
+    const locateText = await frame?.locator("text='The App was loaded outside Contentstack Dashboard.'");
+    return locateText?.isVisible();
   }
 }
