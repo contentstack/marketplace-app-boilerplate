@@ -7,6 +7,8 @@ import { KeyValueObj } from "../types/types";
 import { AppFailed } from "../../components/AppFailed";
 import { MarketplaceAppContext } from "../contexts/marketplaceContext";
 import { ContentType } from "@contentstack/app-sdk/dist/src/types/stack.types";
+import { useVerifyAppToken } from "../hooks/useVerifyAppToken";
+import { getTokenFromUrl } from "../utils/functions";
 
 type ProviderProps = {
   children?: React.ReactNode;
@@ -20,6 +22,9 @@ export const MarketplaceAppProvider: React.FC<ProviderProps> = ({ children }) =>
   const [failed, setFailed] = useState<boolean>(false);
   const [appSdk, setAppSdk] = useState<UiLocation | null>(null);
   const [appConfig, setConfig] = useState<KeyValueObj | null>(null);
+  const token = getTokenFromUrl();
+  const { isValidAppToken } = useVerifyAppToken(token);
+
   const [sdkState, setSdkState] = useState<{
     contentType: ContentType | null;
     globalFields: unknown[];
@@ -45,7 +50,6 @@ export const MarketplaceAppProvider: React.FC<ProviderProps> = ({ children }) =>
         await appSdk.location.DashboardWidget?.frame?.updateHeight?.(722);
         const appConfig = await appSdk.getConfig();
 
-
         setConfig(appConfig);
       })
       .catch(() => {
@@ -59,7 +63,8 @@ export const MarketplaceAppProvider: React.FC<ProviderProps> = ({ children }) =>
     return <div>Loading...</div>;
   }
 
-  if (failed) {
+  // Token validation failed
+  if (isValidAppToken === false || failed) {
     return <AppFailed />;
   }
 

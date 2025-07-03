@@ -1,4 +1,3 @@
-import React from 'react';
 import localeTexts from "../common/locales/en-us";
 
 /**

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { useAppLocation } from "../hooks/useAppLocation";
 import {
@@ -26,7 +26,7 @@ export const AppConfigurationExtensionProvider = ({ children }: ChildProp) => {
       .catch((err: Error) => {
         console.error(err);
       });
-  }, [installationData, location, setLoading, setInstallation]);
+  }, [location]);
 
   const setInstallationData = useCallback(
     async (data: {

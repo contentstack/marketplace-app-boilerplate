@@ -195,7 +195,7 @@ export const updateApp = async (authToken: string, appId: string) => {
               {
                 name: `App Boilerplate _${Math.floor(Math.random() * 1000)}`,
                 path: '/custom-field',
-                signed: false,
+                signed: true,
                 enabled: true,
                 data_type: 'text',
               },
@@ -423,4 +423,14 @@ export const getExtensionFieldUid = async (authToken: string) => {
   } catch (error) {
     console.error(error);
   }
+};
+
+// Utility function to mock valid and invalid app-tokens for signed requests
+export const mockFetchPublicKey = async (context, isValid = true) => {
+  await context.route("**/.well-known/public-keys.json", (route) => {
+    route.fulfill({
+      status: 200,
+      body: JSON.stringify({ "signing-key": isValid ? "VALID_PUBLIC_KEY_PEM" : "" }),
+    });
+  });
 };
