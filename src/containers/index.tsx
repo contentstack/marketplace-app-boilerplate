@@ -26,6 +26,9 @@ const DefaultPage = () => {
             <li>
               <a href="/field-modifier">Field Modifier</a>
             </li>
+            <li>
+              <a href="/global-full-page">Global Full Page</a>
+            </li>
           </ul>
         </div>
       </div>
