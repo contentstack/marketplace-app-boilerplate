@@ -22,7 +22,7 @@ const GlobalFullPageExtension = () => {
     setRawConfigModalOpen(false);
   }, []);
 
-  const sampleAppConfig = appConfig?.["Sample App Configuration"] || "";
+  const sampleAppConfig = appConfig?.["sample_app_configuration"] || "";
   const trimmedSampleAppConfig =
     sampleAppConfig.length > 19 ? `${sampleAppConfig.substring(0, 19)}...` : sampleAppConfig;
 
