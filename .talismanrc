@@ -1,6 +1,8 @@
 fileignoreconfig:
   - filename: .github/workflows/secrets-scan.yml
+    ignore_detectors:
+      - filecontent
   - filename: package-lock.json
     ignore_detectors:
-      - base64content
+      - filecontent
 version: "1.0"
