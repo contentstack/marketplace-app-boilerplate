@@ -6,7 +6,8 @@
     "dist"
   ],
   "dependencies": {
-    "@contentstack/app-sdk": "^2.2.0",
+    "@contentstack/app-sdk": "^2.3.2",
+    "@contentstack/management": "^1.25.0",
     "@types/jest": "^29.5.11",
     "@types/node": "^18.19.4",
     "@types/react": "^18.2.46",
