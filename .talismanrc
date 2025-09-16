@@ -5,4 +5,6 @@ fileignoreconfig:
   - filename: package-lock.json
     ignore_detectors:
       - filecontent
+  - filename: src/common/hooks/useManagementClient.ts
+    checksum: 2fb4d3c95fce6818bc191387560e29fd100194af950130dd4f1e22315ff4615d
 version: "1.0"
