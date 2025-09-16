@@ -7,4 +7,6 @@ fileignoreconfig:
       - filecontent
   - filename: src/common/hooks/useManagementClient.ts
     checksum: 2fb4d3c95fce6818bc191387560e29fd100194af950130dd4f1e22315ff4615d
+  - filename: README.md
+    checksum: e8710e9e88bba345cffaef154b08c8c217ead9408866134dbfc6b4c1055e2a9
 version: "1.0"
