@@ -36,7 +36,7 @@ export const useAppSdkApi = () => {
       throw new Error('Contentstack App SDK is not ready');
     }
     
-    const fullCmaUrl = `${appSdk.endpoints.CMA}${cmaEndpoint}`;
+    const cmaUrl = `${appSdk.endpoints.CMA}${cmaEndpoint}`;
     const requestOptions: RequestInit = {
       headers: { 
         'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ export const useAppSdkApi = () => {
       ...options,
     };
 
-    const apiResponse = await appSdk.api(fullCmaUrl, requestOptions);
+    const apiResponse = await appSdk.api(cmaUrl, requestOptions);
     
     if (!apiResponse.ok) {
       throw new Error(`Contentstack CMA API Error: ${apiResponse.status} ${apiResponse.statusText}`);
