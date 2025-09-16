@@ -15,7 +15,7 @@ const AppConfigurationExtension: React.FC = () => {
     if (typeof setInstallationData !== "undefined") {
       setInstallationData({
         configuration: { sample_app_configuration: appConfigDataRef.current?.value },
-        serverConfiguration: { sampl_server_configuration: serverConfigDataRef.current?.value },
+        serverConfiguration: { sample_server_configuration: serverConfigDataRef.current?.value },
       });
     }
   };
@@ -68,7 +68,7 @@ const AppConfigurationExtension: React.FC = () => {
                   type="text"
                   ref={serverConfigDataRef}
                   required
-                  value={installationData.serverConfiguration.sample_app_configuration as string}
+                  value={installationData.serverConfiguration.sample_server_configuration as string}
                   placeholder="Enter Field Value"
                   name="serverConfigData"
                   autoComplete="off"
