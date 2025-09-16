@@ -28,24 +28,24 @@ export const useAppSdkApi = () => {
    * Automatically builds the full CMA URL and handles common patterns
    * 
    * @param cmaEndpoint - CMA endpoint (e.g., '/v3/content_types')
-   * @param requestOptions - Standard RequestInit options
+   * @param options - Standard RequestInit options
    * @returns Promise<Response>
    */
-  const callCmaApi = useCallback(async (cmaEndpoint: string, requestOptions?: RequestInit): Promise<Response> => {
+  const callCmaApi = useCallback(async (cmaEndpoint: string, options?: RequestInit): Promise<Response> => {
     if (!appSdk) {
       throw new Error('Contentstack App SDK is not ready');
     }
     
     const fullCmaUrl = `${appSdk.endpoints.CMA}${cmaEndpoint}`;
-    const finalRequestOptions: RequestInit = {
+    const requestOptions: RequestInit = {
       headers: { 
         'Content-Type': 'application/json',
-        ...requestOptions?.headers 
+        ...options?.headers 
       },
-      ...requestOptions,
+      ...options,
     };
 
-    const apiResponse = await appSdk.api(fullCmaUrl, finalRequestOptions);
+    const apiResponse = await appSdk.api(fullCmaUrl, requestOptions);
     
     if (!apiResponse.ok) {
       throw new Error(`Contentstack CMA API Error: ${apiResponse.status} ${apiResponse.statusText}`);
@@ -59,23 +59,23 @@ export const useAppSdkApi = () => {
    * Provides direct access to appSdk.api for custom use cases
    * 
    * @param apiUrl - Full URL or endpoint path
-   * @param requestOptions - Standard RequestInit options
+   * @param options - Standard RequestInit options
    * @returns Promise<Response>
    */
-  const callDirectApi = useCallback(async (apiUrl: string, requestOptions?: RequestInit): Promise<Response> => {
+  const callDirectApi = useCallback(async (apiUrl: string, options?: RequestInit): Promise<Response> => {
     if (!appSdk) {
       throw new Error('Contentstack App SDK is not ready');
     }
     
-    const finalRequestOptions: RequestInit = {
+    const requestOptions: RequestInit = {
       headers: { 
         'Content-Type': 'application/json',
-        ...requestOptions?.headers 
+        ...options?.headers 
       },
-      ...requestOptions,
+      ...options,
     };
 
-    const apiResponse = await appSdk.api(apiUrl, finalRequestOptions);
+    const apiResponse = await appSdk.api(apiUrl, requestOptions);
     
     if (!apiResponse.ok) {
       throw new Error(`Direct API Error: ${apiResponse.status} ${apiResponse.statusText}`);
