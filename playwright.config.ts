@@ -31,10 +31,10 @@ const config: PlaywrightTestConfig = {
   use: {
     storageState: "storageState.json",
     actionTimeout: 0,
-    screenshot: "off",
-    video: "off",
+    screenshot: "only-on-failure",
+    video: "retain-on-failure",
     viewport: { width: 1920, height: 720 },
-    trace: "on-first-retry",
+    trace: "retain-on-failure",
     baseURL: process.env.ENV_URL || "http://localhost:3000",
   },
 

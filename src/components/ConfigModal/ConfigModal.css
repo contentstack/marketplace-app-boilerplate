@@ -76,7 +76,6 @@
 .json-window {
   display: flex;
   align-items: flex-start;
-  flex: 1 0 0;
   align-self: stretch;
   border-radius: 0.625rem;
   background: var(--neutral-tarmac-grey-n-700, #475161);
@@ -91,7 +90,7 @@
   font-size: 0.8125rem;
   font-style: normal;
   font-weight: 500;
-  line-height: 110%; 
+  line-height: 110%;
   margin: 0px;
   padding: 0.9375rem;
 }
@@ -130,7 +129,7 @@
   font-size: 1rem;
   font-style: normal;
   font-weight: 600;
-  line-height: 150%; 
+  line-height: 150%;
   letter-spacing: 0.01rem;
   text-transform: capitalize;
 }
