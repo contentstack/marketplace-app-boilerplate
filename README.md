@@ -13,6 +13,7 @@ This provider is responsible for the following actions
 
 ## Available Hooks
 
+- useApi
 - useAppConfig
 - useAppLocation
 - useAppSdk
@@ -21,7 +22,48 @@ This provider is responsible for the following actions
 - useFrame
 - useHostUrl
 - useInstallationData
+- useManagementClient
 - useSdkDataByPath
+
+### Hook Details
+
+#### `useApi`
+Context-aware API hook that provides structured access to Contentstack App SDK API with clear separation between Contentstack CMA operations and direct API access.
+
+**Returns:**
+- `callCmaApi(endpoint, options)` - Call Contentstack CMA API endpoints
+- `callDirectApi(url, options)` - Direct API access for custom use cases
+- `isApiReady` - Boolean indicating if the API is ready to use
+
+**Example:**
+```typescript
+const { callCmaApi, callDirectApi, isApiReady } = useApi();
+
+// Contentstack CMA operations
+const response = await callCmaApi('/v3/content_types');
+const contentTypes = await response.json();
+
+// Direct API access
+const response = await callDirectApi('/custom-endpoint');
+const data = await response.json();
+```
+
+#### `useManagementClient`
+Hook to get Contentstack Management SDK client instance. Returns the initialized management client for direct SDK operations.
+
+**Returns:**
+- `managementClient` - The initialized Management SDK client or null
+
+**Example:**
+```typescript
+const managementClient = useManagementClient();
+const { apiKey } = useAppIds();
+
+if (managementClient && apiKey) {
+  const stack = await managementClient.stack({ api_key: apiKey });
+  const entries = await stack.contentType('blog').entry().query().find();
+}
+```
 
 ## Routes
 
