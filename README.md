@@ -6,7 +6,7 @@
 
 This provider is responsible for the following actions
 
-- Initialize the contentstack SDK
+- Initialize the ContentStack SDK
 - Make the SDK instance available via hooks to avoid props drilling
 - Set global properties for Analytics and Error tracking
 - Send "App Initialized / Failed" event
