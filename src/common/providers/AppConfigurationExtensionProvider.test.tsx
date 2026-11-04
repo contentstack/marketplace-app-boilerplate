@@ -27,17 +27,6 @@ describe("AppConfigurationExtensionProvider", () => {
     expect(hook.result.current.installationData).toEqual(saved);
   });
 
-  // MKT-22163: the merge uses the current data, not the first render's.
-  it("keeps saved keys when saving other keys", async () => {
-    const { hook, installation } = setup();
-    await waitFor(() => expect(hook.result.current.loading).toBe(false));
-    await act(() => hook.result.current.setInstallationData({ configuration: { new_key: "c" }, serverConfiguration: {} }));
-    expect(installation.setInstallationData).toHaveBeenCalledWith({
-      configuration: { saved_key: "a", new_key: "c" },
-      serverConfiguration: { saved_secret: "b" },
-    });
-  });
-
   it("two quick saves before a re-render keep each other's keys", async () => {
     const { hook, installation } = setup();
     await waitFor(() => expect(hook.result.current.loading).toBe(false));
@@ -54,4 +43,16 @@ describe("AppConfigurationExtensionProvider", () => {
     });
     expect(hook.result.current.installationData.configuration).toEqual({ saved_key: "a", first: "1", second: "2" });
   });
+
+  // MKT-22163: the merge uses the current data, not the first render's.
+  it("keeps saved keys when saving other keys", async () => {
+    const { hook, installation } = setup();
+    await waitFor(() => expect(hook.result.current.loading).toBe(false));
+    await act(() => hook.result.current.setInstallationData({ configuration: { new_key: "c" }, serverConfiguration: {} }));
+    expect(installation.setInstallationData).toHaveBeenCalledWith({
+      configuration: { saved_key: "a", new_key: "c" },
+      serverConfiguration: { saved_secret: "b" },
+    });
+  });
+
 });
