@@ -21,7 +21,7 @@ test("CustomFieldExtension component", async () => {
   };
 
   render(<CustomFieldExtension />, {
-    wrapper: ({ children }: any) => (
+    wrapper: ({ children }: { children?: React.ReactNode }) => (
       <TestProvider appConfig={{}} appSdk={appSdkMock}>
         <CustomFieldTestProvider
           customField={customField.customField}

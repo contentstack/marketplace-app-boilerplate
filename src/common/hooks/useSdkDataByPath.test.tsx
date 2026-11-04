@@ -8,7 +8,7 @@ describe("useSdkDataByPath", () => {
   };
   it("should return the default value passed if not present", async function () {
     const { result } = renderHook(() => useSdkDataByPath("no.path", "default"), {
-      wrapper: ({ children }: any) => (
+      wrapper: ({ children }: { children?: React.ReactNode }) => (
         <TestProvider appConfig={{}} appSdk={appSdk}>
           {children}
         </TestProvider>
@@ -19,7 +19,7 @@ describe("useSdkDataByPath", () => {
 
   it("should return the correct value if present", async function () {
     const { result } = renderHook(() => useSdkDataByPath("Stack._data.api_key", "default"), {
-      wrapper: ({ children }: any) => (
+      wrapper: ({ children }: { children?: React.ReactNode }) => (
         <TestProvider appConfig={{}} appSdk={appSdk}>
           {children}
         </TestProvider>
