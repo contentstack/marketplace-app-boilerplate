@@ -1,6 +1,8 @@
 # CLAUDE.md
 
-Guide for coding agents and developers. This repo is the **Contentstack Marketplace App Boilerplate**: a React + Vite front end that runs inside Contentstack UI locations through the App SDK. Developers copy it to start an app. Everything below, except the last section, applies to an app built from it.
+Guide for coding agents and developers working on the **Contentstack Marketplace App Boilerplate**: a React + Vite front end that runs inside Contentstack UI locations through the App SDK.
+
+**Built an app from this template?** This file describes the boilerplate; keep what fits your app and delete or adapt the rest (the review rules below are this repository's).
 
 ## Commands
 
@@ -32,6 +34,8 @@ Guide for coding agents and developers. This repo is the **Contentstack Marketpl
 
 ## Review rules
 
+These are this repository's rules (GitHub ruleset "Default branch protection rules for releases branch", active on the default branch: `gh api repos/contentstack/marketplace-app-boilerplate/rulesets`).
+
 - Work on a branch and open a pull request to `main`; never push to `main`.
 - `main` needs one approving review from a code owner (`CODEOWNERS`), with the last push approved, stale approvals dismissed and every review thread resolved.
 - Required checks: GitGuardian, Snyk (security, code, licence), `security-sca`, `security-policy`, `security-license`. All green before merge.
@@ -45,17 +49,6 @@ Guide for coding agents and developers. This repo is the **Contentstack Marketpl
 - `manifest.json`, routes and README describe the same locations.
 - The pull request says what changed and why, and links its ticket.
 
-## For maintainers of this template (Contentstack)
+## Changing the template itself
 
-### Developer Ecosystem workflow (read first)
-
-This repo belongs to a Developer Ecosystem pod (DevEx: MCP, CLI, SDK, Starters including the SAP connector; Marketplace; Mkt Apps; Developer Hub).
-New features and changes go through the deveco workflow before any code is written here:
-
-1. Find the work's DSCDX idea and where it is in the flow. No idea yet: write one with the `brief` skill in `contentstack/product-wiki`.
-2. The PRD, TRD, test cases, tickets and code come from your own routines (PM, Architect, QA agent, Dev), gate by gate. Do not plan, draft or build them in this session. No routine for a step yet: set it up with the `deveco-aisdlc-onboarding` skill in `contentstack/agent-skills`.
-3. The order, gates and intake: https://github.com/contentstack/agent-skills/blob/main/skills/deveco-aisdlc-onboarding/references/run-protocol.md
-
-Bug fixes and support cases keep this repo's usual path. Not sure which applies? Ask before building.
-
-Every change here is copied into each new app: keep it minimal and working, and say in the pull request why it makes sense for an app built from the template. Remove this section in an app built from the template.
+Every change here is copied into each new app: keep it minimal and working, and say in the pull request why it makes sense for an app built from the template.
