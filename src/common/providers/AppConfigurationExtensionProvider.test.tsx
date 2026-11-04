@@ -54,5 +54,4 @@ describe("AppConfigurationExtensionProvider", () => {
       serverConfiguration: { saved_secret: "b" },
     });
   });
-
 });
