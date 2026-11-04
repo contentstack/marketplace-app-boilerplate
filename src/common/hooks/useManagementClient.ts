@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { client } from '@contentstack/management';
 import { useAppSdk } from './useAppSdk';
+import { safeError } from '../utils/safeError';
 
 /**
  * useManagementClient Hook
@@ -38,7 +39,7 @@ export const useManagementClient = () => {
       
       setManagementClient(managementClient);
     } catch (error) {
-      console.error('Failed to initialize Management Client:', error);
+      console.error('Failed to initialize Management Client:', safeError(error));
       setManagementClient(null);
     }
   }, [appSdk]);
