@@ -34,12 +34,12 @@ Guide for coding agents and developers. This repo is the **Contentstack Marketpl
 
 - Work on a branch and open a pull request to `main`; never push to `main`.
 - `main` needs one approving review from a code owner (`CODEOWNERS`), with the last push approved, stale approvals dismissed and every review thread resolved.
-- Required checks: GitGuardian, Snyk (security, code, licence), `security-sca`, `security-policy`, `security-license`; CI (lint, typecheck, tests with coverage, build) must also pass. All green before merge.
+- Required checks: GitGuardian, Snyk (security, code, licence), `security-sca`, `security-policy`, `security-license`. All green before merge.
 - Never bypass a hook (`--no-verify`) or weaken a check to get green.
 
 ## Definition of Done
 
-- Lint, typecheck and `npm run test:coverage` pass; `npm run build` succeeds.
+- CI is green: lint, typecheck and `npm run test:coverage` pass; `npm run build` succeeds.
 - Changed behaviour has a unit test written from the spec (manifest, docs), not from the code's output; the e2e suite still passes where it applies.
 - No secrets or whole error objects in code, logs or fixtures; Snyk shows no new High/Critical issue.
 - `manifest.json`, routes and README describe the same locations.
