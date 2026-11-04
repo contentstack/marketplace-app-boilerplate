@@ -92,8 +92,8 @@ size.
     "test:firefox-headed": "npx playwright test --headed --config=playwright.config.ts --project=firefox"
   ```
 
-- Unit & integration tests are stored in `src/__tests__` folder
-- run `npm run test` to run unit and integration tests
+- Unit tests sit next to the code they test (`*.test.tsx`) and run with Vitest
+- run `npm test` to run them once, `npm run test:coverage` for coverage (thresholds in `vite.config.ts`)
 
 ## Styling
 
