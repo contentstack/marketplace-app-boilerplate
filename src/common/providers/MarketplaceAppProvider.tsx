@@ -7,7 +7,7 @@ import { KeyValueObj } from "../types/types";
 import { AppFailed } from "../../components/AppFailed";
 import { MarketplaceAppContext } from "../contexts/marketplaceContext";
 import { useVerifyAppToken } from "../hooks/useVerifyAppToken";
-import { getTokenFromUrl } from "../utils/functions";
+import { getTokenFromUrl, isSignedLocation } from "../utils/functions";
 
 type ProviderProps = {
   children?: React.ReactNode;
@@ -22,6 +22,8 @@ export const MarketplaceAppProvider: React.FC<ProviderProps> = ({ children }) =>
   const [appSdk, setAppSdk] = useState<UiLocation | null>(null);
   const [appConfig, setConfig] = useState<KeyValueObj | null>(null);
   const token = getTokenFromUrl();
+  // A signed location without a token is never verified, so it must not run.
+  const missingToken = !token && isSignedLocation(window.location.pathname);
   const { isValidAppToken } = useVerifyAppToken(token);
 
   // Initialize the SDK and track analytics event
@@ -47,8 +49,8 @@ export const MarketplaceAppProvider: React.FC<ProviderProps> = ({ children }) =>
       });
   }, []);
 
-  // Token validation failed
-  if (isValidAppToken === false || failed) {
+  // Token validation failed, or a signed location came without a token
+  if (isValidAppToken === false || failed || missingToken) {
     return <AppFailed />;
   }
 
