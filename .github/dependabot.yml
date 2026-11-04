@@ -1,0 +1,13 @@
+version: 2
+# @contentstack/app-sdk and @contentstack/management are on the public npm registry,
+# so no private registry is needed.
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
