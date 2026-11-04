@@ -38,11 +38,11 @@ export const useAppSdkApi = () => {
     
     const cmaUrl = `${appSdk.endpoints.CMA}${cmaEndpoint}`;
     const requestOptions: RequestInit = {
-      headers: { 
-        'Content-Type': 'application/json',
-        ...options?.headers 
-      },
       ...options,
+      headers: {
+        'Content-Type': 'application/json',
+        ...options?.headers,
+      },
     };
 
     const apiResponse = await appSdk.api(cmaUrl, requestOptions);
@@ -68,11 +68,11 @@ export const useAppSdkApi = () => {
     }
     
     const requestOptions: RequestInit = {
-      headers: { 
-        'Content-Type': 'application/json',
-        ...options?.headers 
-      },
       ...options,
+      headers: {
+        'Content-Type': 'application/json',
+        ...options?.headers,
+      },
     };
 
     const apiResponse = await appSdk.api(apiUrl, requestOptions);
