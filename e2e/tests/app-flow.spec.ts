@@ -3,6 +3,7 @@ import jsonFile from 'jsonfile';
 import { AssetPage } from '../pages/AssetPage';
 
 import { createContentType, createEntry, createApp, updateApp, installApp, assetUpload, uninstallApp, deleteApp, deleteContentType, entryPageFlow, initializeEntry, getExtensionFieldUid, deleteAsset, mockFetchPublicKey } from '../utils/helper';
+import { safeError } from '../../src/common/utils/safeError';
 
 
 const savedCredentials = {} as TestData;
@@ -44,7 +45,7 @@ test.beforeAll(async () => {
       }
     }
   } catch (error) {
-    console.log(error);
+    console.log(safeError(error));
     return error;
   }
 });
