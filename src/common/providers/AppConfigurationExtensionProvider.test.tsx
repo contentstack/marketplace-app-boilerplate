@@ -37,4 +37,21 @@ describe("AppConfigurationExtensionProvider", () => {
       serverConfiguration: { saved_secret: "b" },
     });
   });
+
+  it("two quick saves before a re-render keep each other's keys", async () => {
+    const { hook, installation } = setup();
+    await waitFor(() => expect(hook.result.current.loading).toBe(false));
+    const save = hook.result.current.setInstallationData;
+    await act(() =>
+      Promise.all([
+        save({ configuration: { first: "1" }, serverConfiguration: {} }),
+        save({ configuration: { second: "2" }, serverConfiguration: {} }),
+      ])
+    );
+    expect(installation.setInstallationData).toHaveBeenLastCalledWith({
+      configuration: { saved_key: "a", first: "1", second: "2" },
+      serverConfiguration: { saved_secret: "b" },
+    });
+    expect(hook.result.current.installationData.configuration).toEqual({ saved_key: "a", first: "1", second: "2" });
+  });
 });
