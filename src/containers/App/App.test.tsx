@@ -39,7 +39,7 @@ const manifestPaths = manifest.ui_location.locations.flatMap((l) => l.meta.map((
 afterEach(() => vi.restoreAllMocks());
 
 describe("App routes every manifest UI location", () => {
-  it.each(manifestPaths.filter((p) => p.type !== "cs.cm.stack.rte"))("$type at $path", async ({ path }) => {
+  it.each(manifestPaths)("$type at $path", async ({ path }) => {
     vi.spyOn(ContentstackAppSDK, "init").mockResolvedValue(fakeSdk() as never);
     render(
       <MemoryRouter initialEntries={[path]}>
@@ -49,8 +49,8 @@ describe("App routes every manifest UI location", () => {
     expect(await screen.findByText(titleByPath[path])).toBeInTheDocument();
   });
 
-  // BUG: MKT-22161 the manifest declares an RTE location at /json-rte.js, but the RTE plugin was removed (bc7133e).
-  it.skip("cs.cm.stack.rte has no location in the manifest unless the template ships the plugin", () => {
+  // MKT-22161: the RTE plugin was removed in bc7133e, so the manifest must not declare it.
+  it("cs.cm.stack.rte has no location in the manifest unless the template ships the plugin", () => {
     expect(manifestPaths.map((p) => p.type)).not.toContain("cs.cm.stack.rte");
   });
 
