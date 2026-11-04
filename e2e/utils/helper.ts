@@ -169,16 +169,6 @@ export const updateApp = async (authToken: string, appId: string) => {
             ],
           },
           {
-            type: 'cs.cm.stack.rte',
-            meta: [
-              {
-                name: `JsonRte Boilerplate _${Math.floor(Math.random() * 1000)}`,
-                enabled: true,
-                path: '/json-rte.js',
-              },
-            ],
-          },
-          {
             type: 'cs.cm.stack.config',
             meta: [
               {
