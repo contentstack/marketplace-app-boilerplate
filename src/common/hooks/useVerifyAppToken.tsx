@@ -30,8 +30,8 @@ export const useVerifyAppToken = (token: string | null) => {
           alg: ["RS256"], // specify the algorithm
         });
 
-        isValidAppTokenToken ? setIsValidAppToken(true) : setIsValidAppToken(false);
-      } catch (err) {
+        setIsValidAppToken(Boolean(isValidAppTokenToken));
+      } catch {
         setIsValidAppToken(false);
       }
     };

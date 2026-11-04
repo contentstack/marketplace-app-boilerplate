@@ -1,21 +1,22 @@
 import { test, expect} from '@playwright/test';
+import jsonFile from 'jsonfile';
 import { AssetPage } from '../pages/AssetPage';
 
 import { createContentType, createEntry, createApp, updateApp, installApp, assetUpload, uninstallApp, deleteApp, deleteContentType, entryPageFlow, initializeEntry, getExtensionFieldUid, deleteAsset, mockFetchPublicKey } from '../utils/helper';
 
-const jsonFile = require('jsonfile');
 
-let savedCredentials: any = {};
+const savedCredentials = {} as TestData;
 let authToken: string;
 
 interface TestData {
   appId: string;
-  contentTypeId: Object | any;
+  contentTypeId: string;
   installationId: string;
   authToken: string;
+  entryUid: string;
   entryTitle: string;
   environment: string;
-  stackDetails: any;
+  stackDetails: unknown;
   assetId: string;
 }
 
@@ -61,19 +62,19 @@ test.afterAll(async () => {
   }
 });
 
-test('Verify Dashboard Widget', async ({ page, context }) => {
+test('Verify Dashboard Widget', async ({ page }) => {
   const entryPage = await initializeEntry(page);
   await entryPage.navigateToDashboard();
   await entryPage.validateDashboardWidget();
 });
 
-test('Verify Custom Field & Entry Sidebar', async ({ page, context }) => {
+test('Verify Custom Field & Entry Sidebar', async ({ page }) => {
   const entryPage = await initializeEntry(page);
   await entryPageFlow(savedCredentials, entryPage);
   await entryPage.validateCustomField();
 });
 
-test('Verify Asset Sidebar', async ({ page, context }) => {
+test('Verify Asset Sidebar', async ({ page }) => {
   const { assetId } = savedCredentials;
   const assetPage = new AssetPage(page);
   await assetPage.validateAssetSideBar(assetId);

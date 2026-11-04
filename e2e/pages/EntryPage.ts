@@ -46,7 +46,7 @@ export class EntryPage {
   async validateDashboardWidget() {
     const frame = await this.accessFrame();
     await frame?.waitForSelector('.ui-container');
-    const locateText: any = await frame?.locator('text="Dashboard Widget"');
+    const locateText = frame?.locator('text="Dashboard Widget"');
     const matchText = await locateText?.innerText();
     expect(matchText).toBe('Dashboard Widget');
   }
