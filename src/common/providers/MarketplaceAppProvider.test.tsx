@@ -66,8 +66,8 @@ describe("MarketplaceAppProvider app-token check", () => {
     expect(await screen.findByText("app content")).toBeInTheDocument();
   });
 
-  // BUG: MKT-22162 the app renders (and runs) while the token is still being verified.
-  it.skip("does not render the app while a token is being verified", async () => {
+  // MKT-22162: nothing of the app runs on an unverified token.
+  it("does not render the app while a token is being verified", async () => {
     renderWithToken(otherKeyToken, new Promise<Response>(() => undefined));
     await new Promise((r) => setTimeout(r, 50));
     expect(screen.queryByText("app content")).not.toBeInTheDocument();
