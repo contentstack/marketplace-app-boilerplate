@@ -20,7 +20,7 @@ describe("useAppSdkApi", () => {
     const { result } = withSdk({ endpoints: { CMA: "https://api.example.test" }, api });
     await result.current.callCmaApi("/v3/content_types");
     expect(api).toHaveBeenCalledWith("https://api.example.test/v3/content_types", {
-      headers: { "Content-Type": "application/json" },
+      headers: { "content-type": "application/json" },
     });
   });
 
@@ -30,7 +30,31 @@ describe("useAppSdkApi", () => {
     const { result } = withSdk({ endpoints: { CMA: "https://api.example.test" }, api });
     await result.current.callCmaApi("/v3/content_types", { headers: { branch: "main" } });
     expect(api).toHaveBeenCalledWith("https://api.example.test/v3/content_types", {
-      headers: { "Content-Type": "application/json", branch: "main" },
+      headers: { "content-type": "application/json", branch: "main" },
+    });
+  });
+
+  it("merges headers passed as a Headers instance", async () => {
+    const api = vi.fn(async () => new Response("{}", { status: 200 }));
+    const { result } = withSdk({ endpoints: { CMA: "https://api.example.test" }, api });
+    await result.current.callCmaApi("/v3/content_types", { headers: new Headers({ branch: "main" }) });
+    expect(api).toHaveBeenCalledWith("https://api.example.test/v3/content_types", {
+      headers: { "content-type": "application/json", branch: "main" },
+    });
+  });
+
+  it("keeps a caller's lower-case content-type instead of adding a second one", async () => {
+    const api = vi.fn(async () => new Response("{}", { status: 200 }));
+    const { result } = withSdk({ endpoints: { CMA: "https://api.example.test" }, api });
+    await result.current.callDirectApi("https://service.example.test/x", {
+      method: "POST",
+      headers: { "content-type": "text/plain" },
+      body: "hello",
+    });
+    expect(api).toHaveBeenCalledWith("https://service.example.test/x", {
+      method: "POST",
+      headers: { "content-type": "text/plain" },
+      body: "hello",
     });
   });
 

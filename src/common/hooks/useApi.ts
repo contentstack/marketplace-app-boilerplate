@@ -20,6 +20,16 @@ import { useAppSdk } from './useAppSdk';
  * const response = await callDirectApi('/custom-endpoint');
  * const data = await response.json();
  */
+/**
+ * Caller headers (object, array or Headers) plus a JSON Content-Type unless the caller set one.
+ * Returned as a plain object: the App SDK sends the options to the host as plain data.
+ */
+const withJsonContentType = (options?: RequestInit): RequestInit => {
+  const headers = new Headers(options?.headers);
+  if (!headers.has('content-type')) headers.set('content-type', 'application/json');
+  return { ...options, headers: Object.fromEntries(headers.entries()) };
+};
+
 export const useAppSdkApi = () => {
   const appSdk = useAppSdk();
 
@@ -37,13 +47,7 @@ export const useAppSdkApi = () => {
     }
     
     const cmaUrl = `${appSdk.endpoints.CMA}${cmaEndpoint}`;
-    const requestOptions: RequestInit = {
-      ...options,
-      headers: {
-        'Content-Type': 'application/json',
-        ...options?.headers,
-      },
-    };
+    const requestOptions = withJsonContentType(options);
 
     const apiResponse = await appSdk.api(cmaUrl, requestOptions);
     
@@ -67,13 +71,7 @@ export const useAppSdkApi = () => {
       throw new Error('Contentstack App SDK is not ready');
     }
     
-    const requestOptions: RequestInit = {
-      ...options,
-      headers: {
-        'Content-Type': 'application/json',
-        ...options?.headers,
-      },
-    };
+    const requestOptions = withJsonContentType(options);
 
     const apiResponse = await appSdk.api(apiUrl, requestOptions);
     
