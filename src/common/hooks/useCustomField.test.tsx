@@ -1,3 +1,4 @@
+import { describe, expect, it, vi } from "vitest";
 import { renderHook, waitFor } from "@testing-library/react";
 import { CustomFieldTestProvider } from "../../test-utils/test-utils";
 import { useCustomField } from "./useCustomField";
@@ -5,7 +6,7 @@ import { useCustomField } from "./useCustomField";
 describe("useCustomField", () => {
   const customField = {
     customField: "Hello",
-    setFieldData: jest.fn(),
+    setFieldData: vi.fn(),
     loading: false,
   };
 

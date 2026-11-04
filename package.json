@@ -31,6 +31,8 @@
     "typecheck": "tsc --noEmit",
     "preview": "vite preview --host",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "test:chrome": "npx playwright test --config=playwright.config.ts --project=Chromium",
     "test:firefox": "npx playwright test --config=playwright.config.ts --project=firefox",
     "test:chrome-headed": "npx playwright test --headed --config=playwright.config.ts --project=Chromium",
@@ -61,9 +63,8 @@
   "devDependencies": {
     "@cucumber/cucumber": "^11.3.0",
     "@playwright/test": "^1.23.1",
-    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^13.4.0",
-    "@types/jest": "^30.0.0",
     "@types/jsonwebtoken": "^9.0.9",
     "@types/jsrsasign": "^10.5.15",
     "@types/lodash": "^4.14.202",
@@ -71,12 +72,15 @@
     "@typescript-eslint/eslint-plugin": "^8.72.1",
     "@typescript-eslint/parser": "^8.72.1",
     "@vitejs/plugin-react": "^4.3.4",
+    "@vitest/coverage-v8": "^3.2.7",
     "dotenv": "^16.4.7",
     "eslint": "^8.56.0",
     "eslint-plugin-react": "^7.33.2",
+    "jsdom": "^26.1.0",
     "playwright": "^1.23.1",
     "prettier": "^2.7.1",
     "ts-node": "^10.9.2",
-    "vite": "^6.2.3"
+    "vite": "^6.2.3",
+    "vitest": "^3.2.7"
   }
 }
