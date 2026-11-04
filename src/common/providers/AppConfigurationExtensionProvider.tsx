@@ -42,7 +42,7 @@ export const AppConfigurationExtensionProvider = ({ children }: ChildProp) => {
       setInstallation(newInstallationData);
       setLoading(false);
     },
-    [location, setInstallation, setLoading]
+    [installationData, location]
   );
 
   return (

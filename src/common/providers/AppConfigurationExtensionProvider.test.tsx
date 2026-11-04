@@ -27,8 +27,8 @@ describe("AppConfigurationExtensionProvider", () => {
     expect(hook.result.current.installationData).toEqual(saved);
   });
 
-  // BUG: MKT-22163 setInstallationData merges into the first render's (empty) data, so saved keys are dropped.
-  it.skip("keeps saved keys when saving other keys", async () => {
+  // MKT-22163: the merge uses the current data, not the first render's.
+  it("keeps saved keys when saving other keys", async () => {
     const { hook, installation } = setup();
     await waitFor(() => expect(hook.result.current.loading).toBe(false));
     await act(() => hook.result.current.setInstallationData({ configuration: { new_key: "c" }, serverConfiguration: {} }));
