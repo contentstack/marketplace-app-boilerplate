@@ -47,15 +47,14 @@ export const MarketplaceAppProvider: React.FC<ProviderProps> = ({ children }) =>
       });
   }, []);
 
-  // wait until the SDK is initialized. This will ensure the values are set
-  // correctly for appSdk.
-  if (!failed && isNull(appSdk)) {
-    return <div>Loading...</div>;
-  }
-
   // Token validation failed
   if (isValidAppToken === false || failed) {
     return <AppFailed />;
+  }
+
+  // wait until the SDK is initialized and, for a signed location, the app-token is verified.
+  if (isNull(appSdk) || (token && isValidAppToken === null)) {
+    return <div>Loading...</div>;
   }
 
   return <MarketplaceAppContext.Provider value={{ appSdk, appConfig }}>{children}</MarketplaceAppContext.Provider>;
