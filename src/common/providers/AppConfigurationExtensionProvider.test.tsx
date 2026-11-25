@@ -37,4 +37,22 @@ describe("AppConfigurationExtensionProvider", () => {
       serverConfiguration: { saved_secret: "b" },
     });
   });
+
+  it("logs a failed load without the request headers (MKT-22152)", async () => {
+    const log = vi.spyOn(console, "error").mockImplementation(() => undefined);
+    const auth = `leak-${Math.random().toString(36).slice(2)}`;
+    const failure = Object.assign(new Error("load failed"), { config: { headers: { authtoken: auth } } });
+    const installation = { getInstallationData: vi.fn(async () => Promise.reject(failure)), setInstallationData: vi.fn() };
+    renderHook(() => useInstallationData(), {
+      wrapper: ({ children }: { children: React.ReactNode }) => (
+        <TestProvider appConfig={{}} appSdk={{ location: { AppConfigWidget: { installation } } }}>
+          <AppConfigurationExtensionProvider>{children as JSX.Element}</AppConfigurationExtensionProvider>
+        </TestProvider>
+      ),
+    });
+    await waitFor(() => expect(log).toHaveBeenCalled());
+    expect(JSON.stringify(log.mock.calls)).toContain("load failed");
+    expect(JSON.stringify(log.mock.calls)).not.toContain(auth);
+    log.mockRestore();
+  });
 });

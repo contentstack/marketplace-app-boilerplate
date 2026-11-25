@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { client } from '@contentstack/management';
 import { useAppSdk } from './useAppSdk';
+import { safeError } from '../utils/safeError';
 
 /**
  * useManagementClient Hook
@@ -28,7 +29,7 @@ export const useManagementClient = () => {
     try {
       return client({ adapter: appSdk.createAdapter(), host: appSdk.endpoints.CMA });
     } catch (error) {
-      console.error('Failed to initialize Management Client:', error);
+      console.error('Failed to initialize Management Client:', safeError(error));
       return null;
     }
   }, [appSdk]);

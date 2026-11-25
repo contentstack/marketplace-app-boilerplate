@@ -6,6 +6,7 @@ import FormData from 'form-data';
 import path from 'path';
 import fs from 'fs';
 import { EntryPage } from '../pages/EntryPage';
+import { safeError } from '../../src/common/utils/safeError';
 
 interface ExtensionUid {
   uid: string;
@@ -35,7 +36,7 @@ const writeFile = async (obj: Record<string, string>) => {
     .then((res: void) => {
       return res;
     })
-    .catch((error: unknown) => console.error(error));
+    .catch((error: unknown) => console.error(safeError(error)));
 };
 
 // Upload an asset to the stack
@@ -51,7 +52,7 @@ export const assetUpload = async (stackApiKey: string | undefined, authToken: st
   try {
     return await axios.post(`https://${BASE_API_URL}/v3/assets`, form, options);
   } catch (error) {
-    console.error(error);
+    console.error(safeError(error));
   }
 };
 
@@ -68,7 +69,7 @@ export const deleteAsset = async (authToken: string, assetUid: string) => {
   try {
     return await axios(options);
   } catch (error) {
-    console.error(error);
+    console.error(safeError(error));
   }
 };
 
@@ -93,7 +94,7 @@ export const getAuthToken = async () => {
     await writeFile(savedObj);
     return result.data.user.authtoken;
   } catch (error) {
-    console.error(error);
+    console.error(safeError(error));
   }
 };
 
@@ -421,7 +422,7 @@ export const getExtensionFieldUid = async (authToken: string) => {
     const result = await axios(options);
     return result.data.extensions[0].uid;
   } catch (error) {
-    console.error(error);
+    console.error(safeError(error));
   }
 };
 

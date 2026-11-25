@@ -6,6 +6,7 @@ import {
   InstallationData,
 } from "../contexts/appConfigurationExtensionContext";
 import { ChildProp } from "../types/types";
+import { safeError } from "../utils/safeError";
 
 export const AppConfigurationExtensionProvider = ({ children }: ChildProp) => {
   const [installationData, setInstallation] = useState<InstallationData>({
@@ -23,8 +24,8 @@ export const AppConfigurationExtensionProvider = ({ children }: ChildProp) => {
         setInstallation(data);
         setLoading(false);
       })
-      .catch((err: Error) => {
-        console.error(err);
+      .catch((err: unknown) => {
+        console.error(safeError(err));
       });
   }, [location]);
 

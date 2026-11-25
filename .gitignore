@@ -8,3 +8,4 @@ storageState.json
 test-results
 *.tsbuildinfo
 coverage
+data.json
