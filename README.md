@@ -18,6 +18,7 @@ A React + TypeScript + Vite starter for Contentstack Marketplace apps, with one 
    **Custom Hosting** and set `http://localhost:3000`. Add the UI locations you need, using the paths in
    `manifest.json` (for example `/custom-field`, `/entry-sidebar`, `/app-configuration`). Then **Install App**
    on a test stack and open an entry: the location loads from your dev server with hot reload.
+   If you mark a UI location **signed** in Developer Hub, set `signed: true` for its path in `manifest.json` too: the app refuses a signed location opened without an app-token.
 
 | Script | What it does |
 |---|---|
