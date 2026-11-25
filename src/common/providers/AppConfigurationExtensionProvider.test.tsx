@@ -44,6 +44,20 @@ describe("AppConfigurationExtensionProvider", () => {
     expect(hook.result.current.installationData.configuration).toEqual({ saved_key: "a", first: "1", second: "2" });
   });
 
+  it("a rejected save does not leak into the next save", async () => {
+    const { hook, installation } = setup();
+    await waitFor(() => expect(hook.result.current.loading).toBe(false));
+    installation.setInstallationData.mockRejectedValueOnce(new Error("host rejected"));
+    await act(() =>
+      expect(hook.result.current.setInstallationData({ configuration: { bad: "x" }, serverConfiguration: {} })).rejects.toThrow("host rejected")
+    );
+    await act(() => hook.result.current.setInstallationData({ configuration: { good: "y" }, serverConfiguration: {} }));
+    expect(installation.setInstallationData).toHaveBeenLastCalledWith({
+      configuration: { saved_key: "a", good: "y" },
+      serverConfiguration: { saved_secret: "b" },
+    });
+  });
+
   // MKT-22163: the merge uses the current data, not the first render's.
   it("keeps saved keys when saving other keys", async () => {
     const { hook, installation } = setup();

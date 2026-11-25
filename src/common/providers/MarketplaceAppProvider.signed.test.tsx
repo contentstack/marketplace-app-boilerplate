@@ -33,6 +33,12 @@ it("fails closed on a signed location opened without an app-token", async () => 
   expect(screen.queryByText("app content")).not.toBeInTheDocument();
 });
 
+it("fails closed on a signed location opened with a trailing slash and no app-token", async () => {
+  renderAt("/custom-field/");
+  expect(await screen.findByRole("alert")).toBeInTheDocument();
+  expect(screen.queryByText("app content")).not.toBeInTheDocument();
+});
+
 it("renders an unsigned location without an app-token", async () => {
   renderAt("/entry-sidebar");
   expect(await screen.findByText("app content")).toBeInTheDocument();

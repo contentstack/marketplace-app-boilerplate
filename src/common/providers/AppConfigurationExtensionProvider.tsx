@@ -15,12 +15,15 @@ export const AppConfigurationExtensionProvider = ({ children }: ChildProp) => {
   });
   const [loading, setLoading] = useState<boolean>(true);
   const { location } = useAppLocation();
+  // Latest data, also across saves made before a re-render, so no save overwrites another.
+  const latestRef = useRef(installationData);
 
   useEffect(() => {
     if (location && !("installation" in location)) return;
     location?.installation
       .getInstallationData()
       .then((data: InstallationData) => {
+        latestRef.current = data;
         setInstallation(data);
         setLoading(false);
       })
@@ -28,12 +31,6 @@ export const AppConfigurationExtensionProvider = ({ children }: ChildProp) => {
         console.error(safeError(err));
       });
   }, [location]);
-
-  // Latest data, also across calls made before a re-render, so no write overwrites another.
-  const latestRef = useRef(installationData);
-  useEffect(() => {
-    latestRef.current = installationData;
-  }, [installationData]);
 
   const setInstallationData = useCallback(
     async (data: {
@@ -45,8 +42,15 @@ export const AppConfigurationExtensionProvider = ({ children }: ChildProp) => {
         configuration: { ...latestRef.current.configuration, ...data.configuration },
         serverConfiguration: { ...latestRef.current.serverConfiguration, ...data.serverConfiguration },
       };
+      const previous = latestRef.current;
       latestRef.current = newInstallationData;
-      await location?.installation.setInstallationData(newInstallationData);
+      try {
+        await location?.installation.setInstallationData(newInstallationData);
+      } catch (err) {
+        // A rejected save must not leak into the next one.
+        if (latestRef.current === newInstallationData) latestRef.current = previous;
+        throw err;
+      }
       setInstallation(latestRef.current);
       setLoading(false);
     },

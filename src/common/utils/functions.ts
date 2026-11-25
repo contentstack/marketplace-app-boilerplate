@@ -23,5 +23,8 @@ export const getTokenFromUrl = (): string | null => {
 };
 
 // A location marked `signed: true` in manifest.json always gets an app-token from the host.
-export const isSignedLocation = (pathname: string): boolean =>
-  manifest.ui_location.locations.some((l) => l.meta.some((m) => m.path === pathname && m.signed));
+// Keep manifest.json's `signed` flags in step with the app's UI locations in Developer Hub.
+export const isSignedLocation = (pathname: string): boolean => {
+  const path = pathname.replace(/\/+$/, ""); // the router also matches "/custom-field/"
+  return manifest.ui_location.locations.some((l) => l.meta.some((m) => m.path === path && m.signed));
+};

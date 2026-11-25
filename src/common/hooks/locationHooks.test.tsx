@@ -34,9 +34,13 @@ describe("location hooks", () => {
 
   it("useFrame refuses locations without a frame", () => {
     vi.spyOn(console, "error").mockImplementation(() => undefined);
+    // React rethrows render errors through a window "error" event; jsdom would print it.
+    const quiet = (e: ErrorEvent) => e.preventDefault();
+    window.addEventListener("error", quiet);
     expect(() =>
       renderHook(() => useFrame(), { wrapper: wrap({ location: { SidebarWidget: { entry: {} } } }) })
     ).toThrow("useFrame hook cannot be used at SidebarWidget location");
+    window.removeEventListener("error", quiet);
   });
 
   it("useManagementClient is null without the SDK and a client with it", async () => {
