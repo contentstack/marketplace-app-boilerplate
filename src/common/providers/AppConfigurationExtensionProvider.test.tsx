@@ -27,8 +27,25 @@ describe("AppConfigurationExtensionProvider", () => {
     expect(hook.result.current.installationData).toEqual(saved);
   });
 
-  // BUG: MKT-22163 setInstallationData merges into the first render's (empty) data, so saved keys are dropped.
-  it.skip("keeps saved keys when saving other keys", async () => {
+  it("two quick saves before a re-render keep each other's keys", async () => {
+    const { hook, installation } = setup();
+    await waitFor(() => expect(hook.result.current.loading).toBe(false));
+    const save = hook.result.current.setInstallationData;
+    await act(() =>
+      Promise.all([
+        save({ configuration: { first: "1" }, serverConfiguration: {} }),
+        save({ configuration: { second: "2" }, serverConfiguration: {} }),
+      ])
+    );
+    expect(installation.setInstallationData).toHaveBeenLastCalledWith({
+      configuration: { saved_key: "a", first: "1", second: "2" },
+      serverConfiguration: { saved_secret: "b" },
+    });
+    expect(hook.result.current.installationData.configuration).toEqual({ saved_key: "a", first: "1", second: "2" });
+  });
+
+  // MKT-22163: the merge uses the current data, not the first render's.
+  it("keeps saved keys when saving other keys", async () => {
     const { hook, installation } = setup();
     await waitFor(() => expect(hook.result.current.loading).toBe(false));
     await act(() => hook.result.current.setInstallationData({ configuration: { new_key: "c" }, serverConfiguration: {} }));

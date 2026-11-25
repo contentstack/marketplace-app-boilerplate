@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { useAppLocation } from "../hooks/useAppLocation";
 import {
@@ -29,21 +29,28 @@ export const AppConfigurationExtensionProvider = ({ children }: ChildProp) => {
       });
   }, [location]);
 
+  // Latest data, also across calls made before a re-render, so no write overwrites another.
+  const latestRef = useRef(installationData);
+  useEffect(() => {
+    latestRef.current = installationData;
+  }, [installationData]);
+
   const setInstallationData = useCallback(
     async (data: {
       configuration: { [key: string]: unknown };
       serverConfiguration: { [key: string]: unknown };
     }) => {
-      const newInstallationData: InstallationData = {
-        configuration: { ...installationData.configuration, ...data.configuration },
-        serverConfiguration: { ...installationData.serverConfiguration, ...data.serverConfiguration },
-      };
       if (location && !("installation" in location)) return;
+      const newInstallationData: InstallationData = {
+        configuration: { ...latestRef.current.configuration, ...data.configuration },
+        serverConfiguration: { ...latestRef.current.serverConfiguration, ...data.serverConfiguration },
+      };
+      latestRef.current = newInstallationData;
       await location?.installation.setInstallationData(newInstallationData);
-      setInstallation(newInstallationData);
+      setInstallation(latestRef.current);
       setLoading(false);
     },
-    [location, setInstallation, setLoading]
+    [location]
   );
 
   return (
