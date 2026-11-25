@@ -39,8 +39,7 @@
     "test:firefox-headed": "npx playwright test --headed --config=playwright.config.ts --project=firefox",
     "test:report": "npx playwright test && npx playwright show-report",
     "test:report-ci": "npx playwright test --reporter=html,json,junit",
-    "report:show": "npx playwright show-report",
-    "report:generate": "./scripts/generate-report.sh"
+    "report:show": "npx playwright show-report"
   },
   "browserslist": {
     "production": [
@@ -55,7 +54,6 @@
     ]
   },
   "devDependencies": {
-    "@cucumber/cucumber": "^11.3.0",
     "@eslint-react/eslint-plugin": "^5.30.6",
     "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.23.1",
