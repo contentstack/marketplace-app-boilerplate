@@ -1,5 +1,5 @@
 import { useAppSdk } from "./useAppSdk";
-import { get } from "lodash";
+import get from "lodash/get";
 
 /**
  * useSdkDataByPath

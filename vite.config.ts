@@ -11,6 +11,15 @@ export default defineConfig({
   },
   build: {
     outDir: "dist",
+    rollupOptions: {
+      output: {
+        // Vendor code in its own long-cached chunks keeps every chunk under Vite's 500 kB warning.
+        manualChunks: {
+          react: ["react", "react-dom", "react-router-dom"],
+          "contentstack-app-sdk": ["@contentstack/app-sdk"],
+        },
+      },
+    },
   },
   server: {
     port: 3000,

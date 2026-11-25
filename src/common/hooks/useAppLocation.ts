@@ -1,6 +1,8 @@
 import UILocation from "@contentstack/app-sdk/dist/src/uiLocation";
 import { useAppSdk } from "./useAppSdk";
-import { get, isEmpty, keys } from "lodash";
+import get from "lodash/get";
+import isEmpty from "lodash/isEmpty";
+import keys from "lodash/keys";
 import { useMemo } from "react";
 
 type LocationType = UILocation["location"];

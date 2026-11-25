@@ -1,6 +1,8 @@
 import UILocation from "@contentstack/app-sdk/dist/src/uiLocation";
 
-import { get, isEmpty, keys } from "lodash";
+import get from "lodash/get";
+import isEmpty from "lodash/isEmpty";
+import keys from "lodash/keys";
 
 export function getAppLocation(sdk: UILocation): string {
   const locations = keys(sdk?.location);
