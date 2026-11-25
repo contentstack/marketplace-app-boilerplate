@@ -29,9 +29,9 @@ export const AppConfigurationExtensionProvider = ({ children }: ChildProp) => {
   }, [location]);
 
   // Latest data, also across calls made before a re-render, so no write overwrites another.
-  const latest = useRef(installationData);
+  const latestRef = useRef(installationData);
   useEffect(() => {
-    latest.current = installationData;
+    latestRef.current = installationData;
   }, [installationData]);
 
   const setInstallationData = useCallback(
@@ -41,12 +41,12 @@ export const AppConfigurationExtensionProvider = ({ children }: ChildProp) => {
     }) => {
       if (location && !("installation" in location)) return;
       const newInstallationData: InstallationData = {
-        configuration: { ...latest.current.configuration, ...data.configuration },
-        serverConfiguration: { ...latest.current.serverConfiguration, ...data.serverConfiguration },
+        configuration: { ...latestRef.current.configuration, ...data.configuration },
+        serverConfiguration: { ...latestRef.current.serverConfiguration, ...data.serverConfiguration },
       };
-      latest.current = newInstallationData;
+      latestRef.current = newInstallationData;
       await location?.installation.setInstallationData(newInstallationData);
-      setInstallation(latest.current);
+      setInstallation(latestRef.current);
       setLoading(false);
     },
     [location]
