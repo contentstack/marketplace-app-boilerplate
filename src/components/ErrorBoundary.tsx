@@ -1,5 +1,4 @@
 import React from "react";
-import { safeError } from "../common/utils/safeError";
 
 const ENV = process.env.NODE_ENV;
 
@@ -27,7 +26,7 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps> {
   componentDidCatch(error: Error) {
     // You can also log the error to an error reporting service
     if (ENV === "development") {
-      console.error(safeError(error));
+      console.error(error);
     }
   }
 
