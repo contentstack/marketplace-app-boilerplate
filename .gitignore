@@ -6,3 +6,6 @@ dist/
 
 storageState.json
 test-results
+
+# Contentstack CLI (csdx) writes run logs here
+logs/

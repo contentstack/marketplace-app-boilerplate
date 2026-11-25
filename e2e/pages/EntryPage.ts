@@ -66,7 +66,7 @@ export class EntryPage {
   async validateCustomFieldWithInvalidJWTToken() {
     const frame = await this.accessFrame();
     await frame?.waitForSelector('.app-failed-container');
-    const locateText = await frame?.locator("text='The App was loaded outside Contentstack Dashboard.'");
+    const locateText = await frame?.locator("text='This location could not be verified'");
     return locateText?.isVisible();
   }
 }
