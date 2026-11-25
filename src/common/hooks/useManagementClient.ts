@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useMemo } from 'react';
 import { client } from '@contentstack/management';
 import { useAppSdk } from './useAppSdk';
 import { safeError } from '../utils/safeError';
@@ -22,27 +22,15 @@ import { safeError } from '../utils/safeError';
  */
 export const useManagementClient = () => {
   const appSdk = useAppSdk();
-  const [managementClient, setManagementClient] = useState<ReturnType<typeof client> | null>(null);
 
-  useEffect(() => {
-    if (!appSdk) {
-      setManagementClient(null);
-      return;
-    }
-
+  // Derived from appSdk, so compute it instead of syncing it through state.
+  return useMemo(() => {
+    if (!appSdk) return null;
     try {
-      const contentstackAdapter = appSdk.createAdapter();
-      const managementClient = client({
-        adapter: contentstackAdapter,
-        host: appSdk.endpoints.CMA,
-      });
-      
-      setManagementClient(managementClient);
+      return client({ adapter: appSdk.createAdapter(), host: appSdk.endpoints.CMA });
     } catch (error) {
       console.error('Failed to initialize Management Client:', safeError(error));
-      setManagementClient(null);
+      return null;
     }
   }, [appSdk]);
-
-  return managementClient;
 };
