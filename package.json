@@ -2,6 +2,9 @@
   "name": "marketplace-app-boilerplate",
   "version": "2.0.6",
   "private": true,
+  "engines": {
+    "node": ">=20.19.0"
+  },
   "files": [
     "dist"
   ],
@@ -37,8 +40,7 @@
     "test:firefox-headed": "npx playwright test --headed --config=playwright.config.ts --project=firefox",
     "test:report": "npx playwright test && npx playwright show-report",
     "test:report-ci": "npx playwright test --reporter=html,json,junit",
-    "report:show": "npx playwright show-report",
-    "report:generate": "./scripts/generate-report.sh"
+    "report:show": "npx playwright show-report"
   },
   "eslintConfig": {
     "extends": [
@@ -59,7 +61,6 @@
     ]
   },
   "devDependencies": {
-    "@cucumber/cucumber": "^11.3.0",
     "@playwright/test": "^1.23.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.4.0",
