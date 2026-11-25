@@ -1,5 +1,32 @@
 # Contentstack Marketplace App Boilerplate
 
+A React + TypeScript + Vite starter for Contentstack Marketplace apps, with one route per UI location.
+
+## Quickstart
+
+1. **Node**: use the version in `.nvmrc` (`nvm use`). Node 20.19 or later works.
+2. **Install and start**:
+
+   ```bash
+   npm ci
+   npm run dev
+   ```
+
+   The dev server runs on `http://localhost:3000`. Opened directly in a browser, it shows
+   "The App was loaded outside Contentstack Dashboard". That is expected: the app runs inside Contentstack.
+3. **Connect it to a stack**: in Developer Hub, create an app (**+ New App**), then under **Hosting** choose
+   **Custom Hosting** and set `http://localhost:3000`. Add the UI locations you need, using the paths in
+   `manifest.json` (for example `/custom-field`, `/entry-sidebar`, `/app-configuration`). Then **Install App**
+   on a test stack and open an entry: the location loads from your dev server with hot reload.
+
+| Script | What it does |
+|---|---|
+| `npm run dev` | Dev server on port 3000 |
+| `npm run build` | Production build into `dist/` |
+| `npm run build:check` | Type-check, then build |
+| `npm run lint` / `npm run typecheck` | ESLint / TypeScript checks |
+| `npm run test:chrome` | Playwright e2e tests (see [Testing](#testing)) |
+
 ## Provider
 
 `<MarketplaceAppProvider>`
@@ -57,10 +84,10 @@ Hook to get Contentstack Management SDK client instance. Returns the initialized
 **Example:**
 ```typescript
 const managementClient = useManagementClient();
-const { apiKey } = useAppIds();
+const appSdk = useAppSdk();
 
-if (managementClient && apiKey) {
-  const stack = await managementClient.stack({ api_key: apiKey });
+if (managementClient && appSdk) {
+  const stack = await managementClient.stack({ api_key: appSdk.ids.apiKey });
   const entries = await stack.contentType('blog').entry().query().find();
 }
 ```
