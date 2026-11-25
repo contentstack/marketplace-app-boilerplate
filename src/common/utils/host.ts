@@ -1,5 +1,4 @@
-// Named import: only the locations ship in the bundle, not app or organization ids.
-import { ui_location } from "../../../manifest.json";
+import manifest from "../../../manifest.json";
 
 export type FailureReason = "not-in-stack" | "host-no-answer" | "app-token" | "init-failed";
 
@@ -81,7 +80,7 @@ export type AppLocation = LocationInfo & { type: string; path: string };
 type ManifestLocation = { type: string; meta: { path: string }[] };
 
 /** Every UI location in manifest.json, so the guide stays in step with the manifest. */
-export const appLocations: AppLocation[] = (ui_location.locations as ManifestLocation[]).flatMap((location) =>
+export const appLocations: AppLocation[] = (manifest.ui_location.locations as ManifestLocation[]).flatMap((location) =>
   location.meta.map((meta) => ({
     type: location.type,
     path: meta.path,

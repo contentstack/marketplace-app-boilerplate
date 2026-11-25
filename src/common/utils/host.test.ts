@@ -3,8 +3,12 @@ import manifest from "../../../manifest.json";
 import { appLocations, isOutsideContentstack, locationForPath, reasonFromInitError } from "./host";
 
 describe("host", () => {
-  test("a page in its own tab is outside Contentstack", () => {
+  test("a page in its own tab is outside Contentstack; one opened by the host is not", () => {
+    const opener = window.opener;
+    window.opener = null;
     expect(isOutsideContentstack()).toBe(true);
+    window.opener = opener;
+    expect(isOutsideContentstack()).toBe(false);
   });
 
   test("an init that gets no answer is told apart from other init failures", () => {
