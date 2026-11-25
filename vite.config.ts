@@ -32,7 +32,8 @@ export default defineConfig({
       include: ["src/**/*.{ts,tsx}"],
       exclude: ["src/**/*.test.{ts,tsx}", "src/**/*.d.ts", "src/test-utils/**", "src/setupTests.ts", "src/common/types/**"],
       // ratchet target 90 — MKT-22151: measured floor; raise as tests are added, never lower.
-      thresholds: { lines: 88, statements: 88, branches: 70, functions: 73 },
+      // Re-measured on Vitest 4, which counts statements from the AST (same tests; v3 read 88/88/70/73).
+      thresholds: { lines: 79, statements: 79, branches: 58, functions: 62 },
     },
   },
   esbuild: {
