@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { isEmpty } from "lodash";
+import isEmpty from "lodash/isEmpty";
 
 import { useAppLocation } from "../hooks/useAppLocation";
 import { CustomFieldExtensionContext } from "../contexts/customFieldExtensionContext";

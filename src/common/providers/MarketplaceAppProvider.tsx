@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ContentstackAppSDK from "@contentstack/app-sdk";
 import UiLocation from "@contentstack/app-sdk/dist/src/uiLocation";
-import { isNull } from "lodash";
+import isNull from "lodash/isNull";
 
 import { KeyValueObj } from "../types/types";
 import { AppFailed } from "../../components/AppFailed";
