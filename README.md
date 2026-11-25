@@ -25,6 +25,7 @@ A React + TypeScript + Vite starter for Contentstack Marketplace apps, with one 
 | `npm run build` | Production build into `dist/` |
 | `npm run build:check` | Type-check, then build |
 | `npm run lint` / `npm run typecheck` | ESLint / TypeScript checks |
+| `npm test` / `npm run test:coverage` | Unit tests (Vitest), with coverage |
 | `npm run test:chrome` | Playwright e2e tests (see [Testing](#testing)) |
 
 ## Provider
