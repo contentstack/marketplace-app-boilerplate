@@ -58,6 +58,8 @@ export const MarketplaceAppProvider: React.FC<ProviderProps> = ({ children }) =>
         setConfig(appConfig);
       })
       .catch((error) => {
+        // Message only: SDK errors can carry request headers and tokens.
+        console.error("App SDK failed to start:", error instanceof Error ? error.message : String(error));
         setFailure(reasonFromInitError(error));
       });
   }, [outside]);

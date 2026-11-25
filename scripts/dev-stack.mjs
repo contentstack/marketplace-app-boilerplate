@@ -17,14 +17,17 @@ const fail = (message) => {
   process.exit(1);
 };
 
-const csdx = (cmd, options = {}) => execFileSync("csdx", cmd, { encoding: "utf8", ...options });
+// Windows installs csdx as a .cmd shim, which Node only runs through a shell; every argument is validated below.
+const csdx = (cmd, options = {}) =>
+  execFileSync("csdx", cmd, { encoding: "utf8", shell: process.platform === "win32", ...options });
+const id = /^[a-z0-9]+$/i;
 
 if (!stack || !/^blt[a-z0-9]+$/i.test(stack)) {
   fail("Usage: npm run dev:stack -- --stack <stack_api_key> [--dry-run]\n  The stack API key starts with blt (Stack settings > API Keys).");
 }
 
 const manifest = JSON.parse(readFileSync(new URL("../manifest.json", import.meta.url), "utf8"));
-if (!manifest.uid || !manifest.organization_uid) {
+if (!id.test(manifest.uid ?? "") || !id.test(manifest.organization_uid ?? "")) {
   fail(
     "manifest.json has no app uid or organization_uid.\n" +
       "  Run `csdx app:create` (it registers the app and writes both), or create the app in Developer Hub\n" +
@@ -49,27 +52,37 @@ if (!dryRun) {
 
 const run = (cmd) => {
   console.log(`$ csdx ${cmd.join(" ")}`);
-  if (!dryRun) csdx(cmd, { stdio: "inherit" });
+  if (dryRun) return;
+  try {
+    csdx(cmd, { stdio: "inherit" });
+  } catch {
+    fail(`csdx ${cmd[0]} failed; its message is above. Fix that and run dev:stack again.`);
+  }
 };
 
 console.log(`\nApp ${manifest.uid}, base URL ${manifest.ui_location.base_url}, stack ${stack}${dryRun ? " (dry run)" : ""}\n`);
+// app:update writes Developer Hub's copy back into manifest.json (version, timestamps); commit what you want to keep.
 run(["app:update", "--app-manifest", "manifest.json", "--org", manifest.organization_uid]);
+// A second install is fine: the CLI reports the app is already installed and carries on.
 run(["app:install", "--app-uid", manifest.uid, "--stack-api-key", stack, "--org", manifest.organization_uid]);
 
-// Where to start for each location; the exact screen is listed on the dev server's home page.
+// Where to start for each location (routes checked in the Contentstack UI).
 const stackUrl = `${uiHost}/#!/stack/${stack}`;
 const start = {
+  "cs.cm.stack.dashboard": `${stackUrl}/dashboard`,
   "cs.cm.stack.custom_field": `${stackUrl}/content-types`,
   "cs.cm.stack.field_modifier": `${stackUrl}/content-types`,
-  "cs.cm.stack.sidebar": `${stackUrl}/content-types`,
   "cs.cm.stack.content_type_sidebar": `${stackUrl}/content-types`,
   "cs.cm.stack.rte": `${stackUrl}/content-types`,
+  "cs.cm.stack.sidebar": `${stackUrl}/entries`,
   "cs.cm.stack.asset_sidebar": `${stackUrl}/assets`,
+  "cs.cm.stack.full_page": "in the stack's left navigation, under the app's name",
+  "cs.cm.stack.config": "in Marketplace > Installed Apps > the app > Configuration",
 };
 console.log("\nOpen your locations (keep `npm run dev` running):\n");
 for (const location of manifest.ui_location.locations) {
   for (const meta of location.meta) {
-    console.log(`  ${meta.path.padEnd(24)} ${start[location.type] ?? `${stackUrl}/dashboard`}`);
+    console.log(`  ${meta.path.padEnd(24)} ${start[location.type] ?? stackUrl}`);
   }
 }
-console.log(`\nWhere each one appears: ${manifest.ui_location.base_url}/\n`);
+console.log(`\nWhat each one is and where it appears: ${manifest.ui_location.base_url}/\n`);

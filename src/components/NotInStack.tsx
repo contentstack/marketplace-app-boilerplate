@@ -80,7 +80,7 @@ const Steps = ({ origin, path, where }: { origin: string; path?: string; where?:
         <strong>{text.step1Title}</strong>
         <p>
           {text.step1Body} <code>{origin}</code>{" "}
-          <a href={`${uiHost}/#!/developerhub`} target="_blank" rel="noreferrer">
+          <a href={`${uiHost}/#!/developerhub/`} target="_blank" rel="noreferrer">
             {text.devHub}
           </a>
         </p>
