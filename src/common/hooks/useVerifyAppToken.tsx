@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import { KJUR } from "jsrsasign";
-import forge from "node-forge";
 
 const publicKeyUrl = import.meta.env.VITE_PUBLIC_KEY_BASE_URL || "https://app.contentstack.com";
 
@@ -20,6 +18,8 @@ export const useVerifyAppToken = (token: string | null) => {
           throw new Error("No valid public key found");
         }
 
+        // Loaded on demand: these two libraries are most of the bundle and only verify the token.
+        const [{ KJUR }, { default: forge }] = await Promise.all([import("jsrsasign"), import("node-forge")]);
         const keyPem = pkcs1.replace(/-----BEGIN RSA PUBLIC KEY-----|-----END RSA PUBLIC KEY-----/g, "").trim();
         const keyDer = forge.util.decode64(keyPem);
         const publicKey = forge.pki.publicKeyFromAsn1(forge.asn1.fromDer(keyDer));
@@ -30,8 +30,8 @@ export const useVerifyAppToken = (token: string | null) => {
           alg: ["RS256"], // specify the algorithm
         });
 
-        isValidAppTokenToken ? setIsValidAppToken(true) : setIsValidAppToken(false);
-      } catch (err) {
+        setIsValidAppToken(Boolean(isValidAppTokenToken));
+      } catch {
         setIsValidAppToken(false);
       }
     };

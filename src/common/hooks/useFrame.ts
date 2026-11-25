@@ -1,6 +1,6 @@
 import { useSdkDataByPath } from "./useSdkDataByPath";
 import { useAppLocation } from "./useAppLocation";
-import { includes } from "lodash";
+import includes from "lodash/includes";
 
 /**
  * Returns the Iframe instance for the location

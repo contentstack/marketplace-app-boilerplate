@@ -1,4 +1,6 @@
+import { expect, test } from "vitest";
 import { render, screen } from "@testing-library/react";
+import localeTexts from "../../common/locales/en-us/index";
 import { TestProvider } from "../../test-utils/test-utils";
 import EntrySidebarExtension from "./EntrySidebar";
 import { EntrySidebarExtensionProvider } from "../../common/providers/EntrySidebarExtensionProvider";
@@ -18,5 +20,5 @@ test("EntrySidebar component", async () => {
     ),
   });
 
-  expect(screen.getByText(/Sidebar Widget/)).toBeInTheDocument();
+  expect(screen.getByText(localeTexts.SidebarWidget.title)).toBeInTheDocument();
 });

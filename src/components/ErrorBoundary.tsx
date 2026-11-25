@@ -1,6 +1,6 @@
 import React from "react";
 
-const ENV: string = process.env.NODE_ENV;
+const ENV = process.env.NODE_ENV;
 
 /**
  * Global Error Boundary component

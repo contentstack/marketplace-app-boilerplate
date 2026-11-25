@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import ContentstackAppSDK from "@contentstack/app-sdk";
 import UiLocation from "@contentstack/app-sdk/dist/src/uiLocation";
-import { isNull } from "lodash";
+import isNull from "lodash/isNull";
 
 import { KeyValueObj } from "../types/types";
 import { AppFailed } from "../../components/AppFailed";
 import { MarketplaceAppContext } from "../contexts/marketplaceContext";
-import { ContentType } from "@contentstack/app-sdk/dist/src/types/stack.types";
 import { useVerifyAppToken } from "../hooks/useVerifyAppToken";
 import { getTokenFromUrl } from "../utils/functions";
 
@@ -25,15 +24,6 @@ export const MarketplaceAppProvider: React.FC<ProviderProps> = ({ children }) =>
   const token = getTokenFromUrl();
   const { isValidAppToken } = useVerifyAppToken(token);
 
-  const [sdkState, setSdkState] = useState<{
-    contentType: ContentType | null;
-    globalFields: unknown[];
-    error: Error | null;
-  }>({
-    contentType: null,
-    globalFields: [],
-    error: null,
-  });
   // Initialize the SDK and track analytics event
   useEffect(() => {
     ContentstackAppSDK.init()

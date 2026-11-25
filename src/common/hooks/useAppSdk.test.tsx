@@ -1,3 +1,4 @@
+import { expect, test, vi } from "vitest";
 import { renderHook } from "@testing-library/react";
 import { TestProvider } from "../../test-utils/test-utils";
 import { useAppSdk } from "./useAppSdk";
@@ -7,7 +8,7 @@ test("useAppSdk", async () => {
     location: {
       CustomField: {
         field: {
-          setData: jest.fn(),
+          setData: vi.fn(),
           getData: async () => "HELLO",
         },
       },

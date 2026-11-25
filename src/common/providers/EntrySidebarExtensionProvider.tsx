@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { isEmpty, isNull } from "lodash";
+import isEmpty from "lodash/isEmpty";
+import isNull from "lodash/isNull";
 
 import { useAppLocation } from "../hooks/useAppLocation";
 import { EntrySidebarExtensionContext } from "../contexts/entrySidebarExtensionContext";

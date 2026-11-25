@@ -42,7 +42,7 @@ export class AssetPage {
     await this.widgetSelector();
     const frame = await this.accessFrame();
     await frame?.waitForSelector('.ui-container');
-    const locateText: any = await frame?.locator('text="Asset Sidebar Widget"');
+    const locateText = frame?.locator('text="Asset Sidebar Widget"');
     const matchText = await locateText?.innerText();
     expect(matchText).toBe('Asset Sidebar Widget');
   }

@@ -6,3 +6,5 @@ dist/
 
 storageState.json
 test-results
+*.tsbuildinfo
+coverage

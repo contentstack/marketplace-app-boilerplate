@@ -1,4 +1,6 @@
+import { expect, test, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
+import localeTexts from "../../common/locales/en-us/index";
 import CustomFieldExtension from "./CustomField";
 import { CustomFieldTestProvider, TestProvider } from "../../test-utils/test-utils";
 
@@ -7,7 +9,7 @@ test("CustomFieldExtension component", async () => {
     location: {
       CustomField: {
         field: {
-          setData: jest.fn(),
+          setData: vi.fn(),
           getData: async () => "HELLO",
         },
       },
@@ -16,12 +18,12 @@ test("CustomFieldExtension component", async () => {
 
   const customField = {
     customField: "HELLO",
-    setFieldData: jest.fn(),
+    setFieldData: vi.fn(),
     loading: false,
   };
 
   render(<CustomFieldExtension />, {
-    wrapper: ({ children }: any) => (
+    wrapper: ({ children }: { children?: React.ReactNode }) => (
       <TestProvider appConfig={{}} appSdk={appSdkMock}>
         <CustomFieldTestProvider
           customField={customField.customField}
@@ -33,5 +35,5 @@ test("CustomFieldExtension component", async () => {
     ),
   });
 
-  expect(screen.getByText(/Custom Field/)).toBeInTheDocument();
+  expect(screen.getByText(localeTexts.CustomField.title)).toBeInTheDocument();
 });
