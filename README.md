@@ -4,7 +4,7 @@ A React + TypeScript + Vite starter for Contentstack Marketplace apps, with one 
 
 ## Quickstart
 
-1. **Node**: use the version in `.nvmrc` (`nvm use`). Supported: Node 20.19+, 22.13+ or 24+ (the `engines` range).
+1. **Node**: a current LTS release.
 2. **Install and start**:
 
    ```bash
