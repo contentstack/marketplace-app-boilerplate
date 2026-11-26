@@ -5,9 +5,11 @@ import isNull from "lodash/isNull";
 
 import { KeyValueObj } from "../types/types";
 import { AppFailed } from "../../components/AppFailed";
+import { NotInStack } from "../../components/NotInStack";
 import { MarketplaceAppContext } from "../contexts/marketplaceContext";
-import { useVerifyAppToken } from "../hooks/useVerifyAppToken";
-import { getTokenFromUrl } from "../utils/functions";
+import { tokenMatchesSdk, useVerifyAppToken } from "../hooks/useVerifyAppToken";
+import { getTokenFromUrl, isSignedLocation } from "../utils/functions";
+import { FailureReason, isOutsideContentstack, reasonFromInitError } from "../utils/host";
 
 type ProviderProps = {
   children?: React.ReactNode;
@@ -18,14 +20,19 @@ type ProviderProps = {
  * @param children: React.ReactNode
  */
 export const MarketplaceAppProvider: React.FC<ProviderProps> = ({ children }) => {
-  const [failed, setFailed] = useState<boolean>(false);
+  const [failure, setFailure] = useState<FailureReason | null>(null);
+  // Opened in its own tab: the SDK cannot start, so skip it and explain instead.
+  const outside = isOutsideContentstack();
   const [appSdk, setAppSdk] = useState<UiLocation | null>(null);
   const [appConfig, setConfig] = useState<KeyValueObj | null>(null);
   const token = getTokenFromUrl();
-  const { isValidAppToken } = useVerifyAppToken(token);
+  // A signed location without a token is never verified, so it must not run.
+  const missingToken = !token && isSignedLocation(window.location.pathname);
+  const { isValidAppToken, claims } = useVerifyAppToken(token);
 
   // Initialize the SDK and track analytics event
   useEffect(() => {
+    if (outside) return;
     ContentstackAppSDK.init()
       .then(async (appSdk) => {
         setAppSdk(appSdk);
@@ -42,20 +49,25 @@ export const MarketplaceAppProvider: React.FC<ProviderProps> = ({ children }) =>
 
         setConfig(appConfig);
       })
-      .catch(() => {
-        setFailed(true);
+      .catch((error) => {
+        // Message only: SDK errors can carry request headers and tokens.
+        console.error("App SDK failed to start:", error instanceof Error ? error.message : String(error));
+        setFailure(reasonFromInitError(error));
       });
-  }, []);
+  }, [outside]);
 
-  // wait until the SDK is initialized. This will ensure the values are set
-  // correctly for appSdk.
-  if (!failed && isNull(appSdk)) {
+  if (outside) return <NotInStack />;
+
+  // A token minted for another app or installation is as bad as a forged one.
+  const foreignToken = Boolean(appSdk && claims && !tokenMatchesSdk(claims, appSdk.ids));
+
+  // Token rejected or foreign, or a signed location came without one.
+  if (isValidAppToken === false || missingToken || foreignToken) return <AppFailed reason="app-token" />;
+  if (failure) return <AppFailed reason={failure} />;
+
+  // Wait until the SDK is initialized and, when there is a token, until it is verified.
+  if (isNull(appSdk) || (token && isValidAppToken === null)) {
     return <div>Loading...</div>;
-  }
-
-  // Token validation failed
-  if (isValidAppToken === false || failed) {
-    return <AppFailed />;
   }
 
   return <MarketplaceAppContext.Provider value={{ appSdk, appConfig }}>{children}</MarketplaceAppContext.Provider>;

@@ -27,8 +27,39 @@ describe("AppConfigurationExtensionProvider", () => {
     expect(hook.result.current.installationData).toEqual(saved);
   });
 
-  // BUG: MKT-22163 setInstallationData merges into the first render's (empty) data, so saved keys are dropped.
-  it.skip("keeps saved keys when saving other keys", async () => {
+  it("two quick saves before a re-render keep each other's keys", async () => {
+    const { hook, installation } = setup();
+    await waitFor(() => expect(hook.result.current.loading).toBe(false));
+    const save = hook.result.current.setInstallationData;
+    await act(() =>
+      Promise.all([
+        save({ configuration: { first: "1" }, serverConfiguration: {} }),
+        save({ configuration: { second: "2" }, serverConfiguration: {} }),
+      ])
+    );
+    expect(installation.setInstallationData).toHaveBeenLastCalledWith({
+      configuration: { saved_key: "a", first: "1", second: "2" },
+      serverConfiguration: { saved_secret: "b" },
+    });
+    expect(hook.result.current.installationData.configuration).toEqual({ saved_key: "a", first: "1", second: "2" });
+  });
+
+  it("a rejected save does not leak into the next save", async () => {
+    const { hook, installation } = setup();
+    await waitFor(() => expect(hook.result.current.loading).toBe(false));
+    installation.setInstallationData.mockRejectedValueOnce(new Error("host rejected"));
+    await act(() =>
+      expect(hook.result.current.setInstallationData({ configuration: { bad: "x" }, serverConfiguration: {} })).rejects.toThrow("host rejected")
+    );
+    await act(() => hook.result.current.setInstallationData({ configuration: { good: "y" }, serverConfiguration: {} }));
+    expect(installation.setInstallationData).toHaveBeenLastCalledWith({
+      configuration: { saved_key: "a", good: "y" },
+      serverConfiguration: { saved_secret: "b" },
+    });
+  });
+
+  // MKT-22163: the merge uses the current data, not the first render's.
+  it("keeps saved keys when saving other keys", async () => {
     const { hook, installation } = setup();
     await waitFor(() => expect(hook.result.current.loading).toBe(false));
     await act(() => hook.result.current.setInstallationData({ configuration: { new_key: "c" }, serverConfiguration: {} }));
@@ -36,5 +67,23 @@ describe("AppConfigurationExtensionProvider", () => {
       configuration: { saved_key: "a", new_key: "c" },
       serverConfiguration: { saved_secret: "b" },
     });
+  });
+
+  it("logs a failed load without the request headers (MKT-22152)", async () => {
+    const log = vi.spyOn(console, "error").mockImplementation(() => undefined);
+    const auth = `leak-${Math.random().toString(36).slice(2)}`;
+    const failure = Object.assign(new Error("load failed"), { config: { headers: { authtoken: auth } } });
+    const installation = { getInstallationData: vi.fn(async () => Promise.reject(failure)), setInstallationData: vi.fn() };
+    renderHook(() => useInstallationData(), {
+      wrapper: ({ children }: { children: React.ReactNode }) => (
+        <TestProvider appConfig={{}} appSdk={{ location: { AppConfigWidget: { installation } } }}>
+          <AppConfigurationExtensionProvider>{children as JSX.Element}</AppConfigurationExtensionProvider>
+        </TestProvider>
+      ),
+    });
+    await waitFor(() => expect(log).toHaveBeenCalled());
+    expect(JSON.stringify(log.mock.calls)).toContain("load failed");
+    expect(JSON.stringify(log.mock.calls)).not.toContain(auth);
+    log.mockRestore();
   });
 });

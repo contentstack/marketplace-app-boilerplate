@@ -1,4 +1,5 @@
 import { expect, Locator, Page } from '@playwright/test';
+import { safeError } from '../../src/common/utils/safeError';
 
 export class LoginPage {
   // Define selectors
@@ -52,7 +53,7 @@ export class LoginPage {
         await this.page.context().storageState({ path: 'storageState.json' });
       }
     } catch (e) {
-      console.error(e);
+      console.error(safeError(e));
     }
   }
 }

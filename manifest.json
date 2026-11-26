@@ -95,16 +95,6 @@
             "enabled": true
           }
         ]
-      },
-      {
-        "type": "cs.cm.stack.rte",
-        "meta": [
-          {
-            "path": "/json-rte.js",
-            "signed": false,
-            "enabled": true
-          }
-        ]
       }
     ]
   },

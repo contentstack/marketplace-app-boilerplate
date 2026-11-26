@@ -79,13 +79,29 @@ const localeTexts = {
       url: "https://www.contentstack.com/docs/developers/developer-hub/field-modifier-location/",
     },
   },
+  // One entry per reason the app cannot start; `code` is shown on screen so docs and support can key on it.
   AppFailed: {
-    Message1: "The App was loaded outside Contentstack Dashboard.",
-    Message2: "Please navigate to Your Stack in Contentstack where you just installed the Application ",
-    body: "For Assistance, please reach out to us at support@contentstack.com",
-    button: {
-      text: "Learn More",
-      url: "https://www.contentstack.com/docs/developers/developer-hub/marketplace-app-boilerplate/",
+    docsUrl: "https://www.contentstack.com/docs/developers/developer-hub/marketplace-app-boilerplate/",
+    docsText: "Read the docs",
+    "not-in-stack": {
+      code: "NOT_IN_STACK",
+      title: "Open this app from Contentstack",
+      body: "This page is part of a Contentstack app and only works inside a stack. Go to your stack and open the app from the place it was installed.",
+    },
+    "host-no-answer": {
+      code: "HOST_NO_ANSWER",
+      title: "Contentstack did not answer the app",
+      body: "The app is inside a frame, but the page around it did not reply within 10 seconds. Reload the page. If it keeps happening, make sure you opened it from Contentstack, and that your browser is not blocking a localhost frame (Chrome: Private Network Access).",
+    },
+    "app-token": {
+      code: "APP_TOKEN_INVALID",
+      title: "This location could not be verified",
+      body: "This is a signed location and its app-token was missing or not valid, so the app did not load. Reload the page. If it keeps happening, check the app's signing settings in Developer Hub and VITE_PUBLIC_KEY_BASE_URL for your region.",
+    },
+    "init-failed": {
+      code: "SDK_INIT_FAILED",
+      title: "The app could not start",
+      body: "The App SDK failed to start inside Contentstack. Reload the page; the browser console has the reason.",
     },
   },
 };

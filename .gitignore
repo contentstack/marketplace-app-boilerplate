@@ -8,3 +8,7 @@ storageState.json
 test-results
 *.tsbuildinfo
 coverage
+data.json
+
+# Contentstack CLI (csdx) writes run logs here
+logs/

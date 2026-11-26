@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { useAppLocation } from "../hooks/useAppLocation";
 import {
@@ -6,6 +6,7 @@ import {
   InstallationData,
 } from "../contexts/appConfigurationExtensionContext";
 import { ChildProp } from "../types/types";
+import { safeError } from "../utils/safeError";
 
 export const AppConfigurationExtensionProvider = ({ children }: ChildProp) => {
   const [installationData, setInstallation] = useState<InstallationData>({
@@ -14,17 +15,20 @@ export const AppConfigurationExtensionProvider = ({ children }: ChildProp) => {
   });
   const [loading, setLoading] = useState<boolean>(true);
   const { location } = useAppLocation();
+  // Latest data, also across saves made before a re-render, so no save overwrites another.
+  const latestRef = useRef(installationData);
 
   useEffect(() => {
     if (location && !("installation" in location)) return;
     location?.installation
       .getInstallationData()
       .then((data: InstallationData) => {
+        latestRef.current = data;
         setInstallation(data);
         setLoading(false);
       })
-      .catch((err: Error) => {
-        console.error(err);
+      .catch((err: unknown) => {
+        console.error(safeError(err));
       });
   }, [location]);
 
@@ -33,16 +37,24 @@ export const AppConfigurationExtensionProvider = ({ children }: ChildProp) => {
       configuration: { [key: string]: unknown };
       serverConfiguration: { [key: string]: unknown };
     }) => {
-      const newInstallationData: InstallationData = {
-        configuration: { ...installationData.configuration, ...data.configuration },
-        serverConfiguration: { ...installationData.serverConfiguration, ...data.serverConfiguration },
-      };
       if (location && !("installation" in location)) return;
-      await location?.installation.setInstallationData(newInstallationData);
-      setInstallation(newInstallationData);
+      const newInstallationData: InstallationData = {
+        configuration: { ...latestRef.current.configuration, ...data.configuration },
+        serverConfiguration: { ...latestRef.current.serverConfiguration, ...data.serverConfiguration },
+      };
+      const previous = latestRef.current;
+      latestRef.current = newInstallationData;
+      try {
+        await location?.installation.setInstallationData(newInstallationData);
+      } catch (err) {
+        // A rejected save must not leak into the next one.
+        if (latestRef.current === newInstallationData) latestRef.current = previous;
+        throw err;
+      }
+      setInstallation(latestRef.current);
       setLoading(false);
     },
-    [location, setInstallation, setLoading]
+    [location]
   );
 
   return (

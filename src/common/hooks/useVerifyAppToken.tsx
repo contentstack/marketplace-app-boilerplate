@@ -2,8 +2,27 @@ import { useEffect, useState } from "react";
 
 const publicKeyUrl = import.meta.env.VITE_PUBLIC_KEY_BASE_URL || "https://app.contentstack.com";
 
+// Claims Developer Hub puts in the app-token (installations.service createToken).
+export type AppTokenClaims = {
+  app_uid?: string;
+  installation_uid?: string;
+  organization_uid?: string;
+  stack_api_key?: string;
+};
+
+type SdkIds = { appUID: string; installationUID: string; orgUID: string; apiKey: string };
+
+/** A valid signature is not enough: the token must be for this app, installation, organization and stack. */
+export const tokenMatchesSdk = (claims: AppTokenClaims, ids: SdkIds): boolean =>
+  claims.app_uid === ids.appUID &&
+  claims.installation_uid === ids.installationUID &&
+  (claims.organization_uid === undefined || claims.organization_uid === ids.orgUID) &&
+  // Organization apps get no stack_api_key.
+  (claims.stack_api_key === undefined || claims.stack_api_key === ids.apiKey);
+
 export const useVerifyAppToken = (token: string | null) => {
   const [isValidAppToken, setIsValidAppToken] = useState<boolean | null>(null);
+  const [claims, setClaims] = useState<AppTokenClaims | null>(null);
 
   useEffect(() => {
     const verify = async () => {
@@ -30,6 +49,7 @@ export const useVerifyAppToken = (token: string | null) => {
           alg: ["RS256"], // specify the algorithm
         });
 
+        if (isValidAppTokenToken) setClaims(KJUR.jws.JWS.parse(token).payloadObj as AppTokenClaims);
         setIsValidAppToken(Boolean(isValidAppTokenToken));
       } catch {
         setIsValidAppToken(false);
@@ -39,5 +59,5 @@ export const useVerifyAppToken = (token: string | null) => {
     verify();
   }, [token]);
 
-  return { isValidAppToken };
+  return { isValidAppToken, claims };
 };
