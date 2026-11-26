@@ -20,6 +20,6 @@
       "declarationMap": true,
       "sourceMap": true
     },
-    "include": ["vite.config.ts"],
+    "include": ["vite.config.ts", "src/common/utils/journey.ts", "src/common/utils/host.ts"],
     "exclude": ["node_modules"]
   }

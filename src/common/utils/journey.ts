@@ -1,4 +1,4 @@
-import { AppLocation } from "./host";
+import type { AppLocation } from "./host";
 
 export type StepStatus = "done" | "next" | "todo" | "optional" | "later";
 
