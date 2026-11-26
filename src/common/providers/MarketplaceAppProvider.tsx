@@ -7,7 +7,7 @@ import { KeyValueObj } from "../types/types";
 import { AppFailed } from "../../components/AppFailed";
 import { NotInStack } from "../../components/NotInStack";
 import { MarketplaceAppContext } from "../contexts/marketplaceContext";
-import { useVerifyAppToken } from "../hooks/useVerifyAppToken";
+import { tokenMatchesSdk, useVerifyAppToken } from "../hooks/useVerifyAppToken";
 import { getTokenFromUrl, isSignedLocation } from "../utils/functions";
 import { FailureReason, isOutsideContentstack, reasonFromInitError } from "../utils/host";
 
@@ -28,7 +28,7 @@ export const MarketplaceAppProvider: React.FC<ProviderProps> = ({ children }) =>
   const token = getTokenFromUrl();
   // A signed location without a token is never verified, so it must not run.
   const missingToken = !token && isSignedLocation(window.location.pathname);
-  const { isValidAppToken } = useVerifyAppToken(token);
+  const { isValidAppToken, claims } = useVerifyAppToken(token);
 
   // Initialize the SDK and track analytics event
   useEffect(() => {
@@ -58,8 +58,11 @@ export const MarketplaceAppProvider: React.FC<ProviderProps> = ({ children }) =>
 
   if (outside) return <NotInStack />;
 
-  // Token rejected, or a signed location came without one.
-  if (isValidAppToken === false || missingToken) return <AppFailed reason="app-token" />;
+  // A token minted for another app or installation is as bad as a forged one.
+  const foreignToken = Boolean(appSdk && claims && !tokenMatchesSdk(claims, appSdk.ids));
+
+  // Token rejected or foreign, or a signed location came without one.
+  if (isValidAppToken === false || missingToken || foreignToken) return <AppFailed reason="app-token" />;
   if (failure) return <AppFailed reason={failure} />;
 
   // Wait until the SDK is initialized and, when there is a token, until it is verified.
