@@ -344,3 +344,198 @@ not used in app config field , Sidebar
   white-space: pre;
   text-align: left;
 }
+
+/* not-in-stack guide: shown when a route is opened in its own tab */
+
+.not-in-stack {
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+  color: #222222;
+  line-height: 1.5;
+}
+
+.not-in-stack h1 {
+  font-size: 1.75rem;
+  margin: 0.75rem 0 0.5rem;
+}
+
+.not-in-stack h2 {
+  font-size: 1.125rem;
+  margin: 2rem 0 0.5rem;
+}
+
+.not-in-stack code {
+  background: #f1f1f4;
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+}
+
+.not-in-stack pre {
+  background: #1e1e2e;
+  color: #ffffff;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+}
+
+.not-in-stack pre code {
+  background: none;
+  color: inherit;
+}
+
+.not-in-stack a {
+  color: #6c5ce7;
+}
+
+.nis-badge {
+  display: inline-block;
+  background: #e6f4ea;
+  color: #1e6b34;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 1rem;
+}
+
+.nis-steps li {
+  margin-bottom: 1rem;
+}
+
+.nis-steps p {
+  margin: 0.25rem 0;
+}
+
+.nis-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.nis-table th,
+.nis-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.5rem;
+  border-bottom: 1px solid #e3e3e8;
+}
+
+.nis-links {
+  margin-top: 2rem;
+}
+
+/* the global p rule is inline and centred; these screens need block paragraphs */
+.not-in-stack p,
+.app-failed-container p {
+  display: block;
+  text-align: left;
+}
+
+.not-in-stack p {
+  margin: 0.25rem 0 0.5rem;
+}
+
+.nis-steps strong {
+  display: block;
+}
+
+/* journey map */
+.nis-journey {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0;
+  border-left: 2px solid #e3e3e8;
+}
+
+.nis-step {
+  display: grid;
+  grid-template-columns: 6rem 1fr;
+  gap: 1rem;
+  padding: 0 0 1.5rem 1rem;
+  position: relative;
+}
+
+.nis-step::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: 0.35rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #c9c9d3;
+}
+
+.nis-step.is-done::before {
+  background: #1e7a45;
+}
+
+.nis-step.is-next::before {
+  background: #6c5ce7;
+  box-shadow: 0 0 0 4px #e7e3fd;
+}
+
+.nis-step h2 {
+  margin: 0 0 0.25rem;
+  font-size: 1.05rem;
+}
+
+.nis-step.is-todo h2,
+.nis-step.is-later h2 {
+  color: #6b6b7b;
+}
+
+.nis-step.is-next > div {
+  background: #f7f5ff;
+  border: 1px solid #e0dafc;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+}
+
+.nis-status {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #6b6b7b;
+  padding-top: 0.15rem;
+}
+
+.is-done > .nis-status,
+.nis-parts .is-done .nis-status {
+  color: #1e7a45;
+}
+
+.is-next > .nis-status,
+.nis-parts .is-next .nis-status {
+  color: #6c5ce7;
+}
+
+.nis-parts {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.nis-parts li {
+  font-size: 0.9rem;
+}
+
+.nis-table-wrap {
+  overflow-x: auto;
+}
+
+.nis-foot {
+  color: #6b6b7b;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 560px) {
+  .nis-step {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+}

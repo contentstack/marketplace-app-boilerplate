@@ -1,5 +1,15 @@
 # Contentstack Marketplace App Boilerplate
 
+## Run it inside Contentstack
+
+Every route is a UI location, and locations only run inside Contentstack: they get their entry, field, config and user through the App SDK.
+
+1. `npm run dev`. Opening a route in its own tab shows what that location is and how to see it in a stack. `http://localhost:3000/` lists every location from `manifest.json`.
+2. Register the app once: `csdx app:create` does it, or create the app in Developer Hub with base URL `http://localhost:3000`.
+3. `npm run dev:stack -- --stack <stack_api_key>` pushes `manifest.json` and installs the app with the Contentstack CLI (`csdx auth:login` first), then prints where to open each location. Add `--dry-run` to see the commands only.
+
+Inside Contentstack, a failure shows its own message and code: `HOST_NO_ANSWER` (the page around the app did not answer), `APP_TOKEN_INVALID` (signed location not verified), `SDK_INIT_FAILED`. A deployed URL opened in its own tab shows `NOT_IN_STACK`.
+
 ## Provider
 
 `<MarketplaceAppProvider>`
