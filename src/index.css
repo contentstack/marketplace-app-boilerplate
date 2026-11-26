@@ -439,3 +439,103 @@ not used in app config field , Sidebar
 .nis-steps strong {
   display: block;
 }
+
+/* journey map */
+.nis-journey {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0;
+  border-left: 2px solid #e3e3e8;
+}
+
+.nis-step {
+  display: grid;
+  grid-template-columns: 6rem 1fr;
+  gap: 1rem;
+  padding: 0 0 1.5rem 1rem;
+  position: relative;
+}
+
+.nis-step::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: 0.35rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #c9c9d3;
+}
+
+.nis-step.is-done::before {
+  background: #1e7a45;
+}
+
+.nis-step.is-next::before {
+  background: #6c5ce7;
+  box-shadow: 0 0 0 4px #e7e3fd;
+}
+
+.nis-step h2 {
+  margin: 0 0 0.25rem;
+  font-size: 1.05rem;
+}
+
+.nis-step.is-todo h2,
+.nis-step.is-later h2 {
+  color: #6b6b7b;
+}
+
+.nis-step.is-next > div {
+  background: #f7f5ff;
+  border: 1px solid #e0dafc;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+}
+
+.nis-status {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #6b6b7b;
+  padding-top: 0.15rem;
+}
+
+.is-done > .nis-status,
+.nis-parts .is-done .nis-status {
+  color: #1e7a45;
+}
+
+.is-next > .nis-status,
+.nis-parts .is-next .nis-status {
+  color: #6c5ce7;
+}
+
+.nis-parts {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.nis-parts li {
+  font-size: 0.9rem;
+}
+
+.nis-table-wrap {
+  overflow-x: auto;
+}
+
+.nis-foot {
+  color: #6b6b7b;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 560px) {
+  .nis-step {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+}

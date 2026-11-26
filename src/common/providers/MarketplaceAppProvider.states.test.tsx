@@ -30,14 +30,14 @@ describe("MarketplaceAppProvider states", () => {
 
   test("local, own tab, on /: lists every location and never starts the SDK", () => {
     renderAt("/");
-    expect(screen.getByText("Your app is running locally")).toBeInTheDocument();
+    expect(screen.getByText("Your app runs inside Contentstack, and it is not there yet")).toBeInTheDocument();
     expect(screen.getByText("/custom-field")).toBeInTheDocument();
     expect(sdk.init).not.toHaveBeenCalled();
   });
 
   test("local, own tab, on a location route: explains that location", () => {
     renderAt("/entry-sidebar");
-    expect(screen.getByText("Entry Sidebar runs inside Contentstack")).toBeInTheDocument();
+    expect(screen.getByText(/This page is the Entry Sidebar location/)).toBeInTheDocument();
     expect(screen.queryByText("app content")).not.toBeInTheDocument();
   });
 
